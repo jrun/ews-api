@@ -9,10 +9,10 @@ Set the endpoint
   EWS::Service.endpoint :uri => 'https://example.com/ews/exchange.asmx',
                         :version => 1         
  
-Set the credentials if the service requires autentication. NTLM is used.
+Set the credentials if the service requires autentication. NTLM is known to work.
 
   EWS::Service.set_auth 'testuser', 'xxxxxx'
 
 == Copyright
 
-Copyright (c) 2009 jrun. See LICENSE for details.
+Copyright (c) 2009 Jeremy Burks. See LICENSE for details.
