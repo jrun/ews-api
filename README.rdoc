@@ -1,16 +1,17 @@
 = ews-api
 
-Description goes here.
+Exchange Web Services API.
 
-== Note on Patches/Pull Requests
+== Configuration
+
+Set the endpoint
+
+  EWS::Service.endpoint :uri => 'https://example.com/ews/exchange.asmx',
+                        :version => 1         
  
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+Set the credentials if the service requires autentication. NTLM is used.
+
+  EWS::Service.set_auth 'testuser', 'xxxxxx'
 
 == Copyright
 

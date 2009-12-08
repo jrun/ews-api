@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "ews-api.gemspec",
      "lib/ews-api.rb",
      "spec/ews-api_spec.rb",
      "spec/spec.opts",
