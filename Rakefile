@@ -5,15 +5,38 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "ews-api"
-    gem.summary = %Q{Exchange Web Services API}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = 'Exchange Web Services API'
+    gem.description = "Exchange Web Services API. It doesn't use soap4r."
     gem.email = "jeremy.burks@gmail.com"
     gem.homepage = "http://github.com/jrun/ews-api"
     gem.authors = ["jrun"]
+    gem.add_dependency 'httpclient'
+    gem.add_dependency 'rubyntlm'
+    gem.add_dependency 'handsoap', '1.1.4'
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+
+    desc "Install development dependencies."
+    task :setup do
+      gems = ::Gem::SourceIndex.from_installed_gems
+      gem.dependencies.each do |dep|
+        if gems.find_name(dep.name, dep.version_requirements).empty?
+          puts "Installing dependency: #{dep}"
+          system %Q|gem install #{dep.name} -v "#{dep.version_requirements}" --development|
+        end
+      end
+    end
+    
+    desc "Build and reinstall the gem locally."
+    task :reinstall => :build do
+      version = File.read('VERSION')
+      if (system("gem list #{gem.name} -l") || "") =~ /#{gem.name}-#{version}/
+        system "gem uninstall #{gem.name}"
+      end
+      system "gem install --no-rdoc --no-ri -l pkg/#{gem.name}-#{version}"
+    end
   end
+  
   Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
@@ -43,3 +66,17 @@ rescue LoadError
     abort "YARD is not available. In order to run yardoc, you must: sudo gem install yard"
   end
 end
+
+begin
+  require 'grancher/task'
+  Grancher::Task.new do |g|
+    g.branch = 'gh-pages'
+    g.push_to = 'origin'
+    g.directory 'doc'
+  end
+rescue LoadError
+  task :publish do
+    abort "grancher is not available. Run 'rake setup' to install all development dependencies."
+  end
+end
+
