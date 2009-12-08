@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
      "VERSION",
      "ews-api.gemspec",
      "lib/ews-api.rb",
-     "spec/ews-api_spec.rb",
+     "lib/ews/service.rb",
+     "spec/ews/service_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -36,7 +37,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Exchange Web Services API}
   s.test_files = [
     "spec/spec_helper.rb",
-     "spec/ews-api_spec.rb"
+     "spec/ews/service_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

@@ -55,8 +55,8 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
 end
 
 task :spec => :check_dependencies
-
 task :default => :spec
+task :build => :spec
 
 begin
   require 'yard'

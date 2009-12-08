@@ -13,6 +13,26 @@ Set the credentials if the service requires autentication. NTLM is known to work
 
   EWS::Service.set_auth 'testuser', 'xxxxxx'
 
+== Testing
+
+Typically it isn't a good idea for tests to depend on external resources.
+This project is in its early days and I am new to EWS. So as to make it
+easier to implement the service the tests depend on connecting to EWS.
+
+If +spec/test-config+ exists it will be loaded and the +EWS::Service+ will
+be configured.
+
+The config file is ignored via +.gitignore+.
+
+=== Example +spec/test-config.yml+
+
+  # Example spec/test-config.yml
+  endpoint:
+    :uri: 'https://localhost/ews/exchange.asmx'
+    :version: 1
+  username: testuser
+  password: xxxxxx
+
 == Copyright
 
 Copyright (c) 2009 Jeremy Burks. See LICENSE for details.
