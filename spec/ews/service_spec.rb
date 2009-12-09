@@ -9,12 +9,19 @@ describe EWS::Service do
     end.should raise_error(/Missing option :uri/)
   end
 
-  context '#get_folder' do
+  context '#find_folder' do
     it "should successfully retrieve the inbox" do
       lambda do
-        EWS::Service.get_folder('inbox')
+        EWS::Service.find_folder
       end.should_not raise_error
     end
   end
-  
+
+  context '#get_folder' do
+    it "should successfully retrieve the inbox" do
+      lambda do
+        EWS::Service.get_folder
+      end.should_not raise_error
+    end
+  end  
 end

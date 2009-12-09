@@ -4,6 +4,11 @@
 Handsoap.http_driver = :http_client
 
 module EWS
+  # Implementation of Exchange Web Services
+  #
+  # @see http://msdn.microsoft.com/en-us/library/bb409286.aspx Exchange Web Services Operations
+  # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx BaseShape
+  # @see http://msdn.microsoft.com/en-us/library/aa494311.aspx FolderShape
   class Service < Handsoap::Service
     
     @@username, @@password = nil, nil
@@ -44,11 +49,41 @@ module EWS
       end
     end
     
-    def find_folder
+    # Finds folders for the given parent folder.
+    #
+    # @param [#to_s] parent_folder_name
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa563918.aspx MSDN
+    # - Find Folder operation
+    #
+    # @example Request
+    #
+    #  <FindFolder Traversal="Shallow" xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+    #    <FolderShape>
+    #      <t:BaseShape>Default</t:BaseShape>
+    #    </FolderShape>
+    #    <ParentFolderIds>
+    #      <t:DistinguishedFolderId Id="inbox"/>
+    #    </ParentFolderIds>
+    #  </FindFolder>
+    #
+    # @todo Support options
+    #   Traversal: +Shallow, Deep, SoftDeleted+
+    #   FolderShape: +IdOnly, Default, AllProperties+
+    def find_folder(parent_folder_name = :root)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'
-      response = invoke('tns:FindFolder', soap_action) do |message|
-        raise "TODO"
+      response = invoke('tns:FindFolder', soap_action) do |find_folder|
+        find_folder.set_attr 'Traversal', 'Deep'
+        find_folder.add('tns:FolderShape') do |shape|
+          shape.add('t:BaseShape', 'Default')
+        end
+        find_folder.add('tns:ParentFolderIds') do |ids|
+          ids.add('t:DistinguishedFolderId') do |id|
+            id.set_attr 'Id', parent_folder_name
+          end
+        end
       end
+      
     end
     
     def find_item
@@ -58,7 +93,7 @@ module EWS
       end
     end
     
-    # @param [String] name The name of the folder to retrieve
+    # @param [#to_s] name The name of the folder to retrieve
     #
     # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx MSDN
     # - GetFolder operation
@@ -75,7 +110,7 @@ module EWS
     #    </FolderIds>
     #  </GetFolder>
     #
-    def get_folder(name)
+    def get_folder(name = :root)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
         get_folder.add('tns:FolderShape') do |shape|
