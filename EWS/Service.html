@@ -73,7 +73,29 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Implementation of Exchange Web Services
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="Exchange Web Services Operations" href="http://msdn.microsoft.com/en-us/library/bb409286.aspx">Exchange Web Services Operations</a></li>
+    
+      <li><a title="BaseShape" href="http://msdn.microsoft.com/en-us/library/aa580545.aspx">BaseShape</a></li>
+    
+      <li><a title="FolderShape" href="http://msdn.microsoft.com/en-us/library/aa494311.aspx">FolderShape</a></li>
+    
+  </ul>
+
+</div>
 
   
 
@@ -261,7 +283,7 @@
 
     
       <li class="public ">
-  <span class="summary_signature"><a title="#find_folder (instance method)" href="#find_folder-instance_method">- (Object) <strong>find_folder</strong> </a>
+  <span class="summary_signature"><a title="#find_folder (instance method)" href="#find_folder-instance_method">- (Object) <strong>find_folder</strong>(parent_folder_name = :root) </a>
   
   </span>
   
@@ -270,7 +292,10 @@
   
 
   
-    <span class="summary_desc"></span>
+    <span class="summary_desc">
+Finds folders for the given parent folder.
+
+</span>
   
 </li>
 
@@ -336,7 +361,7 @@
 
     
       <li class="public ">
-  <span class="summary_signature"><a title="#get_folder (instance method)" href="#get_folder-instance_method">- (Object) <strong>get_folder</strong>(name) </a>
+  <span class="summary_signature"><a title="#get_folder (instance method)" href="#get_folder-instance_method">- (Object) <strong>get_folder</strong>(name = :root) </a>
   
   </span>
   
@@ -351,7 +376,7 @@
 
     
       <li class="public ">
-  <span class="summary_signature"><a title="#get_item (instance method)" href="#get_item-instance_method">- (Object) <strong>get_item</strong> </a>
+  <span class="summary_signature"><a title="#get_item (instance method)" href="#get_item-instance_method">- (Object) <strong>get_item</strong>(item_id, change_key = nil) </a>
   
   </span>
   
@@ -674,15 +699,15 @@ public methods.
       <pre class="lines">
 
 
-249
-250
-251
-252
-253
-254</pre>
+317
+318
+319
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 249</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 317</span>
 
 <span class='def def kw'>def</span> <span class='add_delegate! fid id'>add_delegate!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/AddDelegate'</span>
@@ -709,15 +734,15 @@ public methods.
       <pre class="lines">
 
 
-88
-89
-90
-91
-92
-93</pre>
+125
+126
+127
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 125</span>
 
 <span class='def def kw'>def</span> <span class='convert_id! fid id'>convert_id!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ConvertId'</span>
@@ -744,15 +769,15 @@ public methods.
       <pre class="lines">
 
 
-123
-124
-125
-126
-127
-128</pre>
+160
+161
+162
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 160</span>
 
 <span class='def def kw'>def</span> <span class='copy_folder! fid id'>copy_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CopyFolder'</span>
@@ -779,15 +804,15 @@ public methods.
       <pre class="lines">
 
 
-214
-215
-216
-217
-218
-219</pre>
+282
+283
+284
+285
+286
+287</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 214</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 282</span>
 
 <span class='def def kw'>def</span> <span class='copy_item! fid id'>copy_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CopyItem'</span>
@@ -814,15 +839,15 @@ public methods.
       <pre class="lines">
 
 
-221
-222
-223
-224
-225
-226</pre>
+289
+290
+291
+292
+293
+294</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 289</span>
 
 <span class='def def kw'>def</span> <span class='create_attachment! fid id'>create_attachment!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateAttachment'</span>
@@ -849,15 +874,15 @@ public methods.
       <pre class="lines">
 
 
-95
-96
-97
-98
-99
-100</pre>
+132
+133
+134
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 95</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 132</span>
 
 <span class='def def kw'>def</span> <span class='create_folder! fid id'>create_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolder'</span>
@@ -884,15 +909,15 @@ public methods.
       <pre class="lines">
 
 
-179
-180
-181
-182
-183
-184</pre>
+247
+248
+249
+250
+251
+252</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 247</span>
 
 <span class='def def kw'>def</span> <span class='create_item! fid id'>create_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateItem'</span>
@@ -919,15 +944,15 @@ public methods.
       <pre class="lines">
 
 
-165
-166
-167
-168
-169
-170</pre>
+202
+203
+204
+205
+206
+207</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 165</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 202</span>
 
 <span class='def def kw'>def</span> <span class='create_managed_folder! fid id'>create_managed_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateManagedFolder'</span>
@@ -954,15 +979,15 @@ public methods.
       <pre class="lines">
 
 
-228
-229
-230
-231
-232
-233</pre>
+296
+297
+298
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 296</span>
 
 <span class='def def kw'>def</span> <span class='delete_attachment! fid id'>delete_attachment!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteAttachment'</span>
@@ -989,15 +1014,15 @@ public methods.
       <pre class="lines">
 
 
-102
-103
-104
-105
-106
-107</pre>
+139
+140
+141
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 139</span>
 
 <span class='def def kw'>def</span> <span class='delete_folder! fid id'>delete_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteFolder'</span>
@@ -1024,15 +1049,15 @@ public methods.
       <pre class="lines">
 
 
-186
-187
-188
-189
-190
-191</pre>
+254
+255
+256
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 186</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 254</span>
 
 <span class='def def kw'>def</span> <span class='delete_item! fid id'>delete_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteItem'</span>
@@ -1059,15 +1084,15 @@ public methods.
       <pre class="lines">
 
 
-40
-41
-42
-43
-44
-45</pre>
+45
+46
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 45</span>
 
 <span class='def def kw'>def</span> <span class='expand_dl! fid id'>expand_dl!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ExpandDL'</span>
@@ -1084,31 +1109,114 @@ public methods.
       <div class="method_details ">
   <p class="signature " id="find_folder-instance_method">
   
-    - (<tt>Object</tt>) <strong>find_folder</strong> 
+    - (<tt>Object</tt>) <strong>find_folder</strong>(parent_folder_name = :root) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <p class="note todo">
+    <strong>TODO:</strong> 
+    
+Support options Traversal: <tt>Shallow, Deep, SoftDeleted</tt> FolderShape:
+<tt>IdOnly, Default, AllProperties</tt>
+
+
+  </p>
+
+<p>
+Finds folders for the given parent folder.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4>
+Request
+
+</h4>
+      <pre class="example code">
+ <span class='lt op'>&lt;</span><span class='FindFolder constant id'>FindFolder</span> <span class='Traversal constant id'>Traversal</span><span class='assign token'>=</span><span class='string val'>&quot;Shallow&quot;</span> <span class='xmlns identifier id'>xmlns</span><span class='assign token'>=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='FolderShape constant id'>FolderShape</span><span class='gt op'>&gt;</span>
+     <span class='lt op'>&lt;</span><span class='t identifier id'>t</span><span class='symbol val'>:BaseShape</span><span class='gt op'>&gt;</span><span class='Default constant id'>Default</span><span class='lt op'>&lt;</span><span class='regexp val'>/t:BaseShape&gt;
+   &lt;/</span><span class='FolderShape constant id'>FolderShape</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='ParentFolderIds constant id'>ParentFolderIds</span><span class='gt op'>&gt;</span>
+     <span class='lt op'>&lt;</span><span class='t identifier id'>t</span><span class='symbol val'>:DistinguishedFolderId</span> <span class='Id constant id'>Id</span><span class='assign token'>=</span><span class='string val'>&quot;inbox&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='regexp val'>/ParentFolderIds&gt;
+ &lt;/</span><span class='FindFolder constant id'>FindFolder</span><span class='gt op'>&gt;</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>#to_s</tt>)</span>
+      
+      
+        <span class='name'>parent_folder_name</span>
+      
+      
+        <em class="default">(defaults to: <tt>:root</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="MSDN - Find Folder operation" href="http://msdn.microsoft.com/en-us/library/aa563918.aspx">MSDN - Find Folder operation</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-47
-48
-49
-50
-51
-52</pre>
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 73</span>
 
-<span class='def def kw'>def</span> <span class='find_folder identifier id'>find_folder</span>
+<span class='def def kw'>def</span> <span class='find_folder identifier id'>find_folder</span><span class='lparen token'>(</span><span class='parent_folder_name identifier id'>parent_folder_name</span> <span class='assign token'>=</span> <span class='symbol val'>:root</span><span class='rparen token'>)</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'</span>
-  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:FindFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
-    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:FindFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='find_folder identifier id'>find_folder</span><span class='bitor op'>|</span>
+    <span class='find_folder identifier id'>find_folder</span><span class='dot token'>.</span><span class='set_attr identifier id'>set_attr</span> <span class='string val'>'Traversal'</span><span class='comma token'>,</span> <span class='string val'>'Deep'</span>
+    <span class='find_folder identifier id'>find_folder</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:FolderShape'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='shape identifier id'>shape</span><span class='bitor op'>|</span>
+      <span class='shape identifier id'>shape</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:BaseShape'</span><span class='comma token'>,</span> <span class='string val'>'Default'</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+    <span class='find_folder identifier id'>find_folder</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:ParentFolderIds'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ids identifier id'>ids</span><span class='bitor op'>|</span>
+      <span class='ids identifier id'>ids</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:DistinguishedFolderId'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='id identifier id'>id</span><span class='bitor op'>|</span>
+        <span class='id identifier id'>id</span><span class='dot token'>.</span><span class='set_attr identifier id'>set_attr</span> <span class='string val'>'Id'</span><span class='comma token'>,</span> <span class='parent_folder_name identifier id'>parent_folder_name</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
   <span class='end end kw'>end</span>
+  
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1129,15 +1237,15 @@ public methods.
       <pre class="lines">
 
 
-54
-55
-56
-57
-58
-59</pre>
+89
+90
+91
+92
+93
+94</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 89</span>
 
 <span class='def def kw'>def</span> <span class='find_item identifier id'>find_item</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'</span>
@@ -1164,15 +1272,15 @@ public methods.
       <pre class="lines">
 
 
-235
-236
-237
-238
-239
-240</pre>
+303
+304
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 303</span>
 
 <span class='def def kw'>def</span> <span class='get_attachment identifier id'>get_attachment</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment'</span>
@@ -1199,15 +1307,15 @@ public methods.
       <pre class="lines">
 
 
-242
-243
-244
-245
-246
-247</pre>
+310
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 242</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 310</span>
 
 <span class='def def kw'>def</span> <span class='get_delegate identifier id'>get_delegate</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetDelegate'</span>
@@ -1234,15 +1342,15 @@ public methods.
       <pre class="lines">
 
 
-144
-145
-146
-147
-148
-149</pre>
+181
+182
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 181</span>
 
 <span class='def def kw'>def</span> <span class='get_events identifier id'>get_events</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents'</span>
@@ -1259,7 +1367,7 @@ public methods.
       <div class="method_details ">
   <p class="signature " id="get_folder-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_folder</strong>(name) 
+    - (<tt>Object</tt>) <strong>get_folder</strong>(name = :root) 
   
 
   
@@ -1278,8 +1386,7 @@ public methods.
 Request
 
 </h4>
-      <pre class="example code"> <span class='Source constant id'>Source</span><span class='colon op'>:</span> <span class='http identifier id'>http</span><span class='symbol val'>:/</span><span class='regexp val'>/msdn.microsoft.com/e</span><span class='n identifier id'>n</span><span class='minus op'>-</span><span class='us identifier id'>us</span><span class='div op'>/</span><span class='library identifier id'>library</span><span class='div op'>/</span><span class='aa580263 identifier id'>aa580263</span><span class='dot token'>.</span><span class='aspx identifier id'>aspx</span>
-
+      <pre class="example code">
  <span class='lt op'>&lt;</span><span class='GetFolder constant id'>GetFolder</span> <span class='xmlns identifier id'>xmlns</span><span class='assign token'>=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;</span>
             <span class='xmlns identifier id'>xmlns</span><span class='symbol val'>:t=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;</span><span class='gt op'>&gt;</span>
    <span class='lt op'>&lt;</span><span class='FolderShape constant id'>FolderShape</span><span class='gt op'>&gt;</span>
@@ -1297,16 +1404,18 @@ Request
   
     <li>
       
-        <span class='type'></span>
+        <span class='type'>(<tt>#to_s</tt>)</span>
       
       
-        <span class='name'>The</span>
+        <span class='name'>name</span>
       
+      
+        <em class="default">(defaults to: <tt>:root</tt>)</em>
       
       
         &mdash;
         
-name of the folder to retrieve
+The name of the folder to retrieve
 
 
       
@@ -1314,28 +1423,35 @@ name of the folder to retrieve
   
 </ul>
 
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="MSDN - GetFolder operation" href="http://msdn.microsoft.com/en-us/library/aa580274.aspx">MSDN - GetFolder operation</a></li>
+    
+  </ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86</pre>
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 113</span>
 
-<span class='def def kw'>def</span> <span class='get_folder identifier id'>get_folder</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+<span class='def def kw'>def</span> <span class='get_folder identifier id'>get_folder</span><span class='lparen token'>(</span><span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='symbol val'>:root</span><span class='rparen token'>)</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'</span>
   <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='get_folder identifier id'>get_folder</span><span class='bitor op'>|</span>
     <span class='get_folder identifier id'>get_folder</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:FolderShape'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='shape identifier id'>shape</span><span class='bitor op'>|</span>
@@ -1355,31 +1471,91 @@ name of the folder to retrieve
       <div class="method_details ">
   <p class="signature " id="get_item-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_item</strong> 
+    - (<tt>Object</tt>) <strong>get_item</strong>(item_id, change_key = nil) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4>
+Request for getting a mail message
+
+</h4>
+      <pre class="example code"> <span class='lt op'>&lt;</span><span class='GetItem constant id'>GetItem</span> <span class='xmlns identifier id'>xmlns</span><span class='assign token'>=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;</span>
+          <span class='xmlns identifier id'>xmlns</span><span class='symbol val'>:t=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='ItemShape constant id'>ItemShape</span><span class='gt op'>&gt;</span>
+     <span class='lt op'>&lt;</span><span class='t identifier id'>t</span><span class='symbol val'>:BaseShape</span><span class='gt op'>&gt;</span><span class='Default constant id'>Default</span><span class='lt op'>&lt;</span><span class='regexp val'>/t:BaseShape&gt;
+     &lt;t:IncludeMimeContent&gt;true&lt;/</span><span class='t identifier id'>t</span><span class='symbol val'>:IncludeMimeContent</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='regexp val'>/ItemShape&gt;
+   &lt;ItemIds&gt;
+     &lt;t:ItemId Id=&quot;AAAlAF&quot; ChangeKey=&quot;CQAAAB&quot; /</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='regexp val'>/ItemIds&gt;
+ &lt;/</span><span class='GetItem constant id'>GetItem</span><span class='gt op'>&gt;</span>
+</pre>
+    
+  </div>
+
+  <h3>See Also:</h3>
+  <ul class="see">
+    
+      <li><a title="GetItem (E-mail Message)" href="http://msdn.microsoft.com/en-us/library/aa566013.aspx">GetItem (E-mail Message)</a></li>
+    
+      <li><a title="ItemShape" href="http://msdn.microsoft.com/en-us/library/aa565261.aspx">ItemShape</a></li>
+    
+      <li><a title="ItmeIds" href="http://msdn.microsoft.com/en-us/library/aa563525.aspx">ItmeIds</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-172
-173
-174
-175
-176
-177</pre>
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 172</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 230</span>
 
-<span class='def def kw'>def</span> <span class='get_item identifier id'>get_item</span>
+<span class='def def kw'>def</span> <span class='get_item identifier id'>get_item</span><span class='lparen token'>(</span><span class='item_id identifier id'>item_id</span><span class='comma token'>,</span> <span class='change_key identifier id'>change_key</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span><span class='rparen token'>)</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'</span>
-  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
-    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='get_item identifier id'>get_item</span><span class='bitor op'>|</span>
+    <span class='get_item identifier id'>get_item</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:ItemShape'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='shape identifier id'>shape</span><span class='bitor op'>|</span>
+      <span class='shape identifier id'>shape</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:BaseShape'</span><span class='comma token'>,</span> <span class='string val'>'Default'</span><span class='rparen token'>)</span>
+      <span class='shape identifier id'>shape</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:IncludeMimeContent'</span><span class='comma token'>,</span> <span class='false false kw'>false</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+    <span class='get_item identifier id'>get_item</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:ItemIds'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ids identifier id'>ids</span><span class='bitor op'>|</span>
+      <span class='ids identifier id'>ids</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:ItemId'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='item_id identifier id'>item_id</span><span class='bitor op'>|</span>
+        <span class='id identifier id'>id</span><span class='dot token'>.</span><span class='set_attr identifier id'>set_attr</span> <span class='string val'>'Id'</span><span class='comma token'>,</span> <span class='id identifier id'>id</span>
+        <span class='id identifier id'>id</span><span class='dot token'>.</span><span class='set_attr identifier id'>set_attr</span> <span class='string val'>'ChangeKey'</span><span class='comma token'>,</span> <span class='change_key identifier id'>change_key</span> <span class='if if_mod kw'>if</span> <span class='change_key identifier id'>change_key</span>
+      <span class='end end kw'>end</span>
+    <span class='end end kw'>end</span>
   <span class='end end kw'>end</span>
+  
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1400,15 +1576,15 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-270
-271
-272
-273
-274
-275</pre>
+338
+339
+340
+341
+342
+343</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 270</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 338</span>
 
 <span class='def def kw'>def</span> <span class='get_user_availability identifier id'>get_user_availability</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetUserAvailability'</span>
@@ -1435,15 +1611,15 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-277
-278
-279
-280
-281
-282</pre>
+345
+346
+347
+348
+349
+350</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 345</span>
 
 <span class='def def kw'>def</span> <span class='get_user_oof_settings identifier id'>get_user_oof_settings</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetUserOofSettings'</span>
@@ -1470,15 +1646,15 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-116
-117
-118
-119
-120
-121</pre>
+153
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 116</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 153</span>
 
 <span class='def def kw'>def</span> <span class='move_folder! fid id'>move_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/MoveFolder'</span>
@@ -1505,15 +1681,15 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-207
-208
-209
-210
-211
-212</pre>
+275
+276
+277
+278
+279
+280</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 207</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 275</span>
 
 <span class='def def kw'>def</span> <span class='move_item! fid id'>move_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'</span>
@@ -1540,14 +1716,14 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-15
-16
-17
-18
-19</pre>
+20
+21
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 20</span>
 
 <span class='def def kw'>def</span> <span class='on_after_create_http_request identifier id'>on_after_create_http_request</span><span class='lparen token'>(</span><span class='req identifier id'>req</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='@@username ivar id'>@@username</span> <span class='andop op'>&amp;&amp;</span> <span class='@@password ivar id'>@@password</span> 
@@ -1573,14 +1749,14 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-21
-22
-23
-24
-25</pre>
+26
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 26</span>
 
 <span class='def def kw'>def</span> <span class='on_create_document identifier id'>on_create_document</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
   <span class='comment val'># register namespaces for the request</span>
@@ -1606,13 +1782,13 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-27
-28
-29
-30</pre>
+32
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 32</span>
 
 <span class='def def kw'>def</span> <span class='on_response_document identifier id'>on_response_document</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
   <span class='comment val'># register namespaces for the response</span>
@@ -1637,15 +1813,15 @@ name of the folder to retrieve
       <pre class="lines">
 
 
-256
-257
-258
-259
-260
-261</pre>
+324
+325
+326
+327
+328
+329</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 256</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 324</span>
 
 <span class='def def kw'>def</span> <span class='remove_delegate! fid id'>remove_delegate!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDelegate'</span>
@@ -1683,15 +1859,15 @@ public methods
       <pre class="lines">
 
 
-33
-34
-35
-36
-37
-38</pre>
+38
+39
+40
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 38</span>
 
 <span class='def def kw'>def</span> <span class='resolve_names! fid id'>resolve_names!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ResolveNames'</span>
@@ -1718,15 +1894,15 @@ public methods
       <pre class="lines">
 
 
-200
-201
-202
-203
-204
-205</pre>
+268
+269
+270
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 268</span>
 
 <span class='def def kw'>def</span> <span class='send_item! fid id'>send_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SendItem'</span>
@@ -1753,12 +1929,12 @@ public methods
       <pre class="lines">
 
 
-11
-12
-13</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='set_auth identifier id'>set_auth</span><span class='lparen token'>(</span><span class='username identifier id'>username</span><span class='comma token'>,</span> <span class='password identifier id'>password</span><span class='rparen token'>)</span>
   <span class='@@username ivar id'>@@username</span><span class='comma token'>,</span> <span class='@@password ivar id'>@@password</span> <span class='assign token'>=</span> <span class='username identifier id'>username</span><span class='comma token'>,</span> <span class='password identifier id'>password</span>
@@ -1782,15 +1958,15 @@ public methods
       <pre class="lines">
 
 
-284
-285
-286
-287
-288
-289</pre>
+352
+353
+354
+355
+356
+357</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 284</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 352</span>
 
 <span class='def def kw'>def</span> <span class='set_user_oof_settings! fid id'>set_user_oof_settings!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SetUserOofSettings'</span>
@@ -1817,15 +1993,15 @@ public methods
       <pre class="lines">
 
 
-130
-131
-132
-133
-134
-135</pre>
+167
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 167</span>
 
 <span class='def def kw'>def</span> <span class='subscribe! fid id'>subscribe!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/Subscribe'</span>
@@ -1852,15 +2028,15 @@ public methods
       <pre class="lines">
 
 
-151
-152
-153
-154
-155
-156</pre>
+188
+189
+190
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 188</span>
 
 <span class='def def kw'>def</span> <span class='sync_folder_hierarchy! fid id'>sync_folder_hierarchy!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderHierarchy'</span>
@@ -1887,15 +2063,15 @@ public methods
       <pre class="lines">
 
 
-158
-159
-160
-161
-162
-163</pre>
+195
+196
+197
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 195</span>
 
 <span class='def def kw'>def</span> <span class='sync_folder_items! fid id'>sync_folder_items!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderItems'</span>
@@ -1922,15 +2098,15 @@ public methods
       <pre class="lines">
 
 
-137
-138
-139
-140
-141
-142</pre>
+174
+175
+176
+177
+178
+179</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 174</span>
 
 <span class='def def kw'>def</span> <span class='unsubscribe! fid id'>unsubscribe!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/Unsubscribe'</span>
@@ -1957,15 +2133,15 @@ public methods
       <pre class="lines">
 
 
-263
-264
-265
-266
-267
-268</pre>
+331
+332
+333
+334
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 331</span>
 
 <span class='def def kw'>def</span> <span class='update_delegate! fid id'>update_delegate!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateDelegate'</span>
@@ -1992,15 +2168,15 @@ public methods
       <pre class="lines">
 
 
-109
-110
-111
-112
-113
-114</pre>
+146
+147
+148
+149
+150
+151</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 146</span>
 
 <span class='def def kw'>def</span> <span class='update_folder! fid id'>update_folder!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateFolder'</span>
@@ -2027,15 +2203,15 @@ public methods
       <pre class="lines">
 
 
-193
-194
-195
-196
-197
-198</pre>
+261
+262
+263
+264
+265
+266</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 261</span>
 
 <span class='def def kw'>def</span> <span class='update_item! fid id'>update_item!</span>
   <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItem'</span>
@@ -2054,7 +2230,7 @@ public methods
 </div>
     
     <div id="footer">
-  Generated on Wed Dec  9 07:26:33 2009 by 
+  Generated on Wed Dec  9 08:53:44 2009 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.4.0 (ruby-1.8.7).
 </div>
