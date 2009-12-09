@@ -56,7 +56,7 @@ end
 
 task :spec => :check_dependencies
 task :default => :spec
-task :build => :spec
+task :build => [:spec, :yardoc]
 
 begin
   require 'yard'
