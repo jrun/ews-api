@@ -58,10 +58,12 @@ module EWS
       end
     end
     
-    # @param The name of the folder to retrieve
-    # 
+    # @param [String] name The name of the folder to retrieve
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx MSDN
+    # - GetFolder operation
+    #
     # @example Request
-    #  Source: http://msdn.microsoft.com/en-us/library/aa580263.aspx
     #
     #  <GetFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
     #             xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
