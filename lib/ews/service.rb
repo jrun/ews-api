@@ -322,12 +322,29 @@ module EWS
         raise "TODO"
       end
     end
-    
-    def get_attachment
+
+    # @example Request
+    #  <GetAttachment xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+    #                 xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+    #    <AttachmentShape/>
+    #    <AttachmentIds>
+    #      <t:AttachmentId Id="AAAtAEFkbWluaX..."/>
+    #    </AttachmentIds>
+    #  </GetAttachment>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa494316.aspx
+    # GetAttachment
+    def get_attachment(attachment_id)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment'
-      response = invoke('tns:GetAttachment', soap_action) do |message|
-        raise "TODO"
+      response = invoke('tns:GetAttachment', soap_action) do |get_attachment|
+        get_attachment.add('tns:AttachmentShape')
+        get_attachment.add('tns:AttachmentIds') do |ids|
+          ids.add('t:AttachmentId') do |attachment|
+            attachment.set_attr 'Id', attachment_id
+          end
+        end
       end
+      
     end
     
     def get_delegate

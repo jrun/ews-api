@@ -34,12 +34,26 @@ describe EWS::Service do
   end
   
   context '#get_item' do
+    it "should be successfull" do
+      lambda do
+        EWS::Service.get_item EWS_CONFIG['item_id'] # lame
+      end.should_not raise_error
+    end
+    
     it "should raise an error when the id is not found" do
       pending do
         lambda do
           EWS::Service.get_item nil
         end.should raise_error
       end
+    end
+  end
+
+  context '#get_attachment' do
+    it "should successfully get the attachment" do
+      lambda do
+        EWS::Service.get_attachment EWS_CONFIG['attachment_id'] # lame 
+      end.should_not raise_error
     end
   end
   
