@@ -1,0 +1,2063 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Class: EWS::Service</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (S)</a> &raquo; 
+    <a title="EWS" href="../EWS.html">EWS</a>
+     &raquo; 
+    <span class="title">Service</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: EWS::Service 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Handsoap::Service</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Handsoap::Service</li>
+          
+            <li class="next">EWS::Service</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ews/service.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#add_delegate! (instance method)" href="#add_delegate%21-instance_method">- (Object) <strong>add_delegate!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#convert_id! (instance method)" href="#convert_id%21-instance_method">- (Object) <strong>convert_id!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#copy_folder! (instance method)" href="#copy_folder%21-instance_method">- (Object) <strong>copy_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#copy_item! (instance method)" href="#copy_item%21-instance_method">- (Object) <strong>copy_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#create_attachment! (instance method)" href="#create_attachment%21-instance_method">- (Object) <strong>create_attachment!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#create_folder! (instance method)" href="#create_folder%21-instance_method">- (Object) <strong>create_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#create_item! (instance method)" href="#create_item%21-instance_method">- (Object) <strong>create_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#create_managed_folder! (instance method)" href="#create_managed_folder%21-instance_method">- (Object) <strong>create_managed_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#delete_attachment! (instance method)" href="#delete_attachment%21-instance_method">- (Object) <strong>delete_attachment!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#delete_folder! (instance method)" href="#delete_folder%21-instance_method">- (Object) <strong>delete_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#delete_item! (instance method)" href="#delete_item%21-instance_method">- (Object) <strong>delete_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#expand_dl! (instance method)" href="#expand_dl%21-instance_method">- (Object) <strong>expand_dl!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#find_folder (instance method)" href="#find_folder-instance_method">- (Object) <strong>find_folder</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#find_item (instance method)" href="#find_item-instance_method">- (Object) <strong>find_item</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_attachment (instance method)" href="#get_attachment-instance_method">- (Object) <strong>get_attachment</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_delegate (instance method)" href="#get_delegate-instance_method">- (Object) <strong>get_delegate</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_events (instance method)" href="#get_events-instance_method">- (Object) <strong>get_events</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_folder (instance method)" href="#get_folder-instance_method">- (Object) <strong>get_folder</strong>(name) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_item (instance method)" href="#get_item-instance_method">- (Object) <strong>get_item</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_user_availability (instance method)" href="#get_user_availability-instance_method">- (Object) <strong>get_user_availability</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#get_user_oof_settings (instance method)" href="#get_user_oof_settings-instance_method">- (Object) <strong>get_user_oof_settings</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#move_folder! (instance method)" href="#move_folder%21-instance_method">- (Object) <strong>move_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#move_item! (instance method)" href="#move_item%21-instance_method">- (Object) <strong>move_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#on_after_create_http_request (instance method)" href="#on_after_create_http_request-instance_method">- (Object) <strong>on_after_create_http_request</strong>(req) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#on_create_document (instance method)" href="#on_create_document-instance_method">- (Object) <strong>on_create_document</strong>(doc) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#on_response_document (instance method)" href="#on_response_document-instance_method">- (Object) <strong>on_response_document</strong>(doc) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#remove_delegate! (instance method)" href="#remove_delegate%21-instance_method">- (Object) <strong>remove_delegate!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#resolve_names! (instance method)" href="#resolve_names%21-instance_method">- (Object) <strong>resolve_names!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+public methods.
+
+</span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#send_item! (instance method)" href="#send_item%21-instance_method">- (Object) <strong>send_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#set_auth (instance method)" href="#set_auth-instance_method">- (Object) <strong>set_auth</strong>(username, password) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#set_user_oof_settings! (instance method)" href="#set_user_oof_settings%21-instance_method">- (Object) <strong>set_user_oof_settings!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#subscribe! (instance method)" href="#subscribe%21-instance_method">- (Object) <strong>subscribe!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#sync_folder_hierarchy! (instance method)" href="#sync_folder_hierarchy%21-instance_method">- (Object) <strong>sync_folder_hierarchy!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#sync_folder_items! (instance method)" href="#sync_folder_items%21-instance_method">- (Object) <strong>sync_folder_items!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#unsubscribe! (instance method)" href="#unsubscribe%21-instance_method">- (Object) <strong>unsubscribe!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#update_delegate! (instance method)" href="#update_delegate%21-instance_method">- (Object) <strong>update_delegate!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#update_folder! (instance method)" href="#update_folder%21-instance_method">- (Object) <strong>update_folder!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#update_item! (instance method)" href="#update_item%21-instance_method">- (Object) <strong>update_item!</strong> </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+
+  <div id="method_details">
+    <h2>Method Details</h2>
+    
+      <div class="method_details first">
+  <p class="signature first" id="add_delegate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>add_delegate!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+249
+250
+251
+252
+253
+254</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 249</span>
+
+<span class='def def kw'>def</span> <span class='add_delegate! fid id'>add_delegate!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/AddDelegate'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:AddDelegate'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="convert_id!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>convert_id!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 88</span>
+
+<span class='def def kw'>def</span> <span class='convert_id! fid id'>convert_id!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ConvertId'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:ConvertId'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="copy_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>copy_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125
+126
+127
+128</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 123</span>
+
+<span class='def def kw'>def</span> <span class='copy_folder! fid id'>copy_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CopyFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CopyFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="copy_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>copy_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+214
+215
+216
+217
+218
+219</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 214</span>
+
+<span class='def def kw'>def</span> <span class='copy_item! fid id'>copy_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CopyItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CopyItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_attachment!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_attachment!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 221</span>
+
+<span class='def def kw'>def</span> <span class='create_attachment! fid id'>create_attachment!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateAttachment'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CreateAttachment'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 95</span>
+
+<span class='def def kw'>def</span> <span class='create_folder! fid id'>create_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CreateFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+179
+180
+181
+182
+183
+184</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 179</span>
+
+<span class='def def kw'>def</span> <span class='create_item! fid id'>create_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CreateItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="create_managed_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_managed_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+165
+166
+167
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 165</span>
+
+<span class='def def kw'>def</span> <span class='create_managed_folder! fid id'>create_managed_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/CreateManagedFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:CreateManagedFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_attachment!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_attachment!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+228
+229
+230
+231
+232
+233</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 228</span>
+
+<span class='def def kw'>def</span> <span class='delete_attachment! fid id'>delete_attachment!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteAttachment'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:DeleteAttachment'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+102
+103
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 102</span>
+
+<span class='def def kw'>def</span> <span class='delete_folder! fid id'>delete_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:DeleteFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="delete_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190
+191</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 186</span>
+
+<span class='def def kw'>def</span> <span class='delete_item! fid id'>delete_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/DeleteItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:DeleteItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="expand_dl!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>expand_dl!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 40</span>
+
+<span class='def def kw'>def</span> <span class='expand_dl! fid id'>expand_dl!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ExpandDL'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:ExpandDL'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_folder-instance_method">
+  
+    - (<tt>Object</tt>) <strong>find_folder</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+47
+48
+49
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 47</span>
+
+<span class='def def kw'>def</span> <span class='find_folder identifier id'>find_folder</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:FindFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_item-instance_method">
+  
+    - (<tt>Object</tt>) <strong>find_item</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 54</span>
+
+<span class='def def kw'>def</span> <span class='find_item identifier id'>find_item</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:FindItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_attachment-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_attachment</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+235
+236
+237
+238
+239
+240</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 235</span>
+
+<span class='def def kw'>def</span> <span class='get_attachment identifier id'>get_attachment</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetAttachment'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_delegate-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_delegate</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+242
+243
+244
+245
+246
+247</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 242</span>
+
+<span class='def def kw'>def</span> <span class='get_delegate identifier id'>get_delegate</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetDelegate'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetDelegate'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_events-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_events</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146
+147
+148
+149</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 144</span>
+
+<span class='def def kw'>def</span> <span class='get_events identifier id'>get_events</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetEvents'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetEvents'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_folder-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_folder</strong>(name) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h3>Examples:</h3>
+    
+      <h4>
+Request
+
+</h4>
+      <pre class="example code"> <span class='Source constant id'>Source</span><span class='colon op'>:</span> <span class='http identifier id'>http</span><span class='symbol val'>:/</span><span class='regexp val'>/msdn.microsoft.com/e</span><span class='n identifier id'>n</span><span class='minus op'>-</span><span class='us identifier id'>us</span><span class='div op'>/</span><span class='library identifier id'>library</span><span class='div op'>/</span><span class='aa580263 identifier id'>aa580263</span><span class='dot token'>.</span><span class='aspx identifier id'>aspx</span>
+
+ <span class='lt op'>&lt;</span><span class='GetFolder constant id'>GetFolder</span> <span class='xmlns identifier id'>xmlns</span><span class='assign token'>=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;</span>
+            <span class='xmlns identifier id'>xmlns</span><span class='symbol val'>:t=</span><span class='string val'>&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='FolderShape constant id'>FolderShape</span><span class='gt op'>&gt;</span>
+     <span class='lt op'>&lt;</span><span class='t identifier id'>t</span><span class='symbol val'>:BaseShape</span><span class='gt op'>&gt;</span><span class='Default constant id'>Default</span><span class='lt op'>&lt;</span><span class='regexp val'>/t:BaseShape&gt;
+   &lt;/</span><span class='FolderShape constant id'>FolderShape</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='FolderIds constant id'>FolderIds</span><span class='gt op'>&gt;</span>
+     <span class='lt op'>&lt;</span><span class='t identifier id'>t</span><span class='symbol val'>:DistinguishedFolderId</span> <span class='Id constant id'>Id</span><span class='assign token'>=</span><span class='string val'>&quot;inbox&quot;</span><span class='div op'>/</span><span class='gt op'>&gt;</span>
+   <span class='lt op'>&lt;</span><span class='regexp val'>/FolderIds&gt;
+ &lt;/</span><span class='GetFolder constant id'>GetFolder</span><span class='gt op'>&gt;</span>
+</pre>
+    
+  </div>
+<h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+        <span class='name'>The</span>
+      
+      
+      
+        &mdash;
+        
+name of the folder to retrieve
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 76</span>
+
+<span class='def def kw'>def</span> <span class='get_folder identifier id'>get_folder</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='get_folder identifier id'>get_folder</span><span class='bitor op'>|</span>
+    <span class='get_folder identifier id'>get_folder</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:FolderShape'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='shape identifier id'>shape</span><span class='bitor op'>|</span>
+      <span class='shape identifier id'>shape</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:BaseShape'</span><span class='comma token'>,</span> <span class='string val'>'Default'</span><span class='rparen token'>)</span>
+    <span class='end end kw'>end</span>
+    <span class='get_folder identifier id'>get_folder</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'tns:FolderIds'</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='ids identifier id'>ids</span><span class='bitor op'>|</span>
+      <span class='ids identifier id'>ids</span><span class='dot token'>.</span><span class='add identifier id'>add</span><span class='lparen token'>(</span><span class='string val'>'t:DistinguishedFolderId'</span><span class='rparen token'>)</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='id identifier id'>id</span><span class='bitor op'>|</span> <span class='id identifier id'>id</span><span class='dot token'>.</span><span class='set_attr identifier id'>set_attr</span> <span class='string val'>'Id'</span><span class='comma token'>,</span> <span class='name identifier id'>name</span> <span class='rbrace token'>}</span>
+    <span class='end end kw'>end</span>
+  <span class='end end kw'>end</span>    
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_item-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_item</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+172
+173
+174
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 172</span>
+
+<span class='def def kw'>def</span> <span class='get_item identifier id'>get_item</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_user_availability-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_user_availability</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+270
+271
+272
+273
+274
+275</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 270</span>
+
+<span class='def def kw'>def</span> <span class='get_user_availability identifier id'>get_user_availability</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetUserAvailability'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetUserAvailability'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_user_oof_settings-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_user_oof_settings</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+277
+278
+279
+280
+281
+282</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 277</span>
+
+<span class='def def kw'>def</span> <span class='get_user_oof_settings identifier id'>get_user_oof_settings</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/GetUserOofSettings'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:GetUserOofSettings'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="move_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>move_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119
+120
+121</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 116</span>
+
+<span class='def def kw'>def</span> <span class='move_folder! fid id'>move_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/MoveFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:MoveFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="move_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>move_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209
+210
+211
+212</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 207</span>
+
+<span class='def def kw'>def</span> <span class='move_item! fid id'>move_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:MoveItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_after_create_http_request-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_after_create_http_request</strong>(req) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 15</span>
+
+<span class='def def kw'>def</span> <span class='on_after_create_http_request identifier id'>on_after_create_http_request</span><span class='lparen token'>(</span><span class='req identifier id'>req</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='@@username ivar id'>@@username</span> <span class='andop op'>&amp;&amp;</span> <span class='@@password ivar id'>@@password</span> 
+    <span class='req identifier id'>req</span><span class='dot token'>.</span><span class='set_auth identifier id'>set_auth</span> <span class='@@username ivar id'>@@username</span><span class='comma token'>,</span> <span class='@@password ivar id'>@@password</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_create_document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_create_document</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 21</span>
+
+<span class='def def kw'>def</span> <span class='on_create_document identifier id'>on_create_document</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='comment val'># register namespaces for the request</span>
+  <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='alias identifier id'>alias</span> <span class='string val'>'tns'</span><span class='comma token'>,</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages'</span>
+  <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='alias identifier id'>alias</span> <span class='string val'>'t'</span><span class='comma token'>,</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/types'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="on_response_document-instance_method">
+  
+    - (<tt>Object</tt>) <strong>on_response_document</strong>(doc) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 27</span>
+
+<span class='def def kw'>def</span> <span class='on_response_document identifier id'>on_response_document</span><span class='lparen token'>(</span><span class='doc identifier id'>doc</span><span class='rparen token'>)</span>
+  <span class='comment val'># register namespaces for the response</span>
+  <span class='doc identifier id'>doc</span><span class='dot token'>.</span><span class='add_namespace identifier id'>add_namespace</span> <span class='string val'>'ns'</span><span class='comma token'>,</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages'</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="remove_delegate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>remove_delegate!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+256
+257
+258
+259
+260
+261</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 256</span>
+
+<span class='def def kw'>def</span> <span class='remove_delegate! fid id'>remove_delegate!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/RemoveDelegate'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:RemoveDelegate'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="resolve_names!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>resolve_names!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+public methods
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 33</span>
+
+<span class='def def kw'>def</span> <span class='resolve_names! fid id'>resolve_names!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/ResolveNames'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:ResolveNames'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="send_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>send_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+200
+201
+202
+203
+204
+205</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 200</span>
+
+<span class='def def kw'>def</span> <span class='send_item! fid id'>send_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SendItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:SendItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_auth-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set_auth</strong>(username, password) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+11
+12
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 11</span>
+
+<span class='def def kw'>def</span> <span class='set_auth identifier id'>set_auth</span><span class='lparen token'>(</span><span class='username identifier id'>username</span><span class='comma token'>,</span> <span class='password identifier id'>password</span><span class='rparen token'>)</span>
+  <span class='@@username ivar id'>@@username</span><span class='comma token'>,</span> <span class='@@password ivar id'>@@password</span> <span class='assign token'>=</span> <span class='username identifier id'>username</span><span class='comma token'>,</span> <span class='password identifier id'>password</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_user_oof_settings!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set_user_oof_settings!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+284
+285
+286
+287
+288
+289</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 284</span>
+
+<span class='def def kw'>def</span> <span class='set_user_oof_settings! fid id'>set_user_oof_settings!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SetUserOofSettings'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:SetUserOofSettings'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="subscribe!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>subscribe!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+130
+131
+132
+133
+134
+135</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 130</span>
+
+<span class='def def kw'>def</span> <span class='subscribe! fid id'>subscribe!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/Subscribe'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:Subscribe'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sync_folder_hierarchy!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sync_folder_hierarchy!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+151
+152
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 151</span>
+
+<span class='def def kw'>def</span> <span class='sync_folder_hierarchy! fid id'>sync_folder_hierarchy!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderHierarchy'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:SyncFolderHierarchy'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="sync_folder_items!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>sync_folder_items!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160
+161
+162
+163</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 158</span>
+
+<span class='def def kw'>def</span> <span class='sync_folder_items! fid id'>sync_folder_items!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/SyncFolderItems'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:SyncFolderItems'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unsubscribe!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>unsubscribe!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140
+141
+142</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 137</span>
+
+<span class='def def kw'>def</span> <span class='unsubscribe! fid id'>unsubscribe!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/Unsubscribe'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:Unsubscribe'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_delegate!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_delegate!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+263
+264
+265
+266
+267
+268</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 263</span>
+
+<span class='def def kw'>def</span> <span class='update_delegate! fid id'>update_delegate!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateDelegate'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:UpdateDelegate'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_folder!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_folder!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 109</span>
+
+<span class='def def kw'>def</span> <span class='update_folder! fid id'>update_folder!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateFolder'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:UpdateFolder'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="update_item!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_item!</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/service.rb', line 193</span>
+
+<span class='def def kw'>def</span> <span class='update_item! fid id'>update_item!</span>
+  <span class='soap_action identifier id'>soap_action</span> <span class='assign token'>=</span> <span class='string val'>'http://schemas.microsoft.com/exchange/services/2006/messages/UpdateItem'</span>
+  <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='invoke identifier id'>invoke</span><span class='lparen token'>(</span><span class='string val'>'tns:UpdateItem'</span><span class='comma token'>,</span> <span class='soap_action identifier id'>soap_action</span><span class='rparen token'>)</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='message identifier id'>message</span><span class='bitor op'>|</span>
+    <span class='raise identifier id'>raise</span> <span class='string val'>&quot;TODO&quot;</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed Dec  9 07:26:33 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
