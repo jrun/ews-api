@@ -8,7 +8,6 @@ module EWS
   #
   # @see http://msdn.microsoft.com/en-us/library/bb409286.aspx Exchange Web Services Operations
   # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx BaseShape
-  # @see http://msdn.microsoft.com/en-us/library/aa494311.aspx FolderShape
   class Service < Handsoap::Service
     
     @@username, @@password = nil, nil
@@ -51,11 +50,6 @@ module EWS
     
     # Finds folders for the given parent folder.
     #
-    # @param [#to_s] parent_folder_name
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa563918.aspx MSDN
-    # - Find Folder operation
-    #
     # @example Request
     #
     #  <FindFolder Traversal="Shallow" xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
@@ -66,6 +60,12 @@ module EWS
     #      <t:DistinguishedFolderId Id="inbox"/>
     #    </ParentFolderIds>
     #  </FindFolder>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa563918.aspx
+    # FindFolder
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa494311.aspx
+    # FolderShape
     #
     # @todo Support options
     #   Traversal: +Shallow, Deep, SoftDeleted+
@@ -85,19 +85,7 @@ module EWS
       end
       
     end
-    
-    def find_item
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
-      response = invoke('tns:FindItem', soap_action) do |message|
-        raise "TODO"
-      end
-    end
-    
-    # @param [#to_s] name The name of the folder to retrieve
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx MSDN
-    # - GetFolder operation
-    #
+        
     # @example Request
     #
     #  <GetFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
@@ -109,6 +97,9 @@ module EWS
     #      <t:DistinguishedFolderId Id="inbox"/>
     #    </FolderIds>
     #  </GetFolder>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx
+    # MSDN - GetFolder operation
     #
     def get_folder(name = :root)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'
@@ -205,12 +196,75 @@ module EWS
         raise "TODO"
       end
     end
-    
-    def get_item
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
-      response = invoke('tns:GetItem', soap_action) do |message|
-        raise "TODO"
+
+    # @example Request
+    #  <FindItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+    #            xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+    #          Traversal="Shallow">
+    #    <ItemShape>
+    #      <t:BaseShape>IdOnly</t:BaseShape>
+    #    </ItemShape>
+    #    <ParentFolderIds>
+    #      <t:DistinguishedFolderId Id="deleteditems"/>
+    #    </ParentFolderIds>
+    #  </FindItem>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa566107.aspx
+    # FindItem
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
+    # BaseShape
+    def find_item(parent_folder_name = :root)
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
+      response = invoke('tns:FindItem', soap_action) do |find_item|
+        find_item.set_attr 'Traversal', 'Shallow'
+        find_item.add('tns:ItemShape') do |shape|
+          shape.add('t:BaseShape', 'IdOnly')
+        end
+        find_item.add('tns:ParentFolderIds') do |ids|
+          ids.add('t:DistinguishedFolderId') do |folder_id|
+            folder_id.set_attr 'Id', parent_folder_name
+          end
+        end
       end
+      
+    end
+    
+    # @example Request for getting a mail message
+    #  <GetItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+    #           xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+    #    <ItemShape>
+    #      <t:BaseShape>Default</t:BaseShape>
+    #      <t:IncludeMimeContent>true</t:IncludeMimeContent>
+    #    </ItemShape>
+    #    <ItemIds>
+    #      <t:ItemId Id="AAAlAF" ChangeKey="CQAAAB" />
+    #    </ItemIds>
+    #  </GetItem>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa566013.aspx
+    # GetItem (E-mail Message)
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa565261.aspx
+    # ItemShape
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa563525.aspx
+    # ItmeIds
+    def get_item(item_id, change_key = nil)
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
+      response = invoke('tns:GetItem', soap_action) do |get_item|
+        get_item.add('tns:ItemShape') do |shape|
+          shape.add('t:BaseShape', 'AllProperties')
+          shape.add('t:IncludeMimeContent', false)
+        end
+        get_item.add('tns:ItemIds') do |ids|
+          ids.add('t:ItemId') do |item|
+            item.set_attr 'Id', item_id
+            item.set_attr 'ChangeKey', change_key if change_key
+          end
+        end
+      end
+      
     end
     
     def create_item!

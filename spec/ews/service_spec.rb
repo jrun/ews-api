@@ -23,5 +23,24 @@ describe EWS::Service do
         EWS::Service.get_folder
       end.should_not raise_error
     end
-  end  
+  end
+
+  context '#find_item' do
+    it "should successfully find the item" do
+      lambda do
+        EWS::Service.find_item(:inbox)
+      end.should_not raise_error
+    end
+  end
+  
+  context '#get_item' do
+    it "should raise an error when the id is not found" do
+      pending do
+        lambda do
+          EWS::Service.get_item nil
+        end.should raise_error
+      end
+    end
+  end
+  
 end
