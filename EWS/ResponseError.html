@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=UTF-8" />
+<title>Exception: EWS::ResponseError</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <a title="EWS" href="../EWS.html">EWS</a>
+     &raquo; 
+    <span class="title">ResponseError</span>
+  
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Namespace List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Exception: EWS::ResponseError 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><a title="EWS::Error" href="Error.html">EWS::Error</a></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">StandardError</li>
+          
+            <li class="next"><a title="EWS::Error" href="Error.html">EWS::Error</a></li>
+          
+            <li class="next">EWS::ResponseError</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/ews/error.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+  
+  
+  
+  
+  
+  <h2>Attribute Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#response_code (instance method)" href="#response_code-instance_method">- (Object) <strong>response_code</strong> </a>
+  
+  </span>
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+Returns the value of attribute <tt>response_code</tt>.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  <h2>Method Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature"><a title="#initialize (instance method)" href="#initialize-instance_method">- (ResponseError) <strong>initialize</strong>(message, response_code) </a>
+  
+  </span>
+  
+  
+  
+  
+
+  
+    <span class="summary_desc">
+A new instance of <tt>ResponseError</tt>.
+
+</span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+  
+  
+  
+  
+  <div id="constructor_details">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a title="ResponseError" href="">ResponseError</a></tt>) <strong>initialize</strong>(message, response_code) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A new instance of <tt>ResponseError</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a title="ResponseError" href="">ResponseError</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        
+a new instance of <tt>ResponseError</tt>
+
+
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/error.rb', line 9</span>
+
+<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='message identifier id'>message</span><span class='comma token'>,</span> <span class='response_code identifier id'>response_code</span><span class='rparen token'>)</span>
+  <span class='super super kw'>super</span> <span class='message identifier id'>message</span>
+  <span class='@response_code ivar id'>@response_code</span> <span class='assign token'>=</span> <span class='response_code identifier id'>response_code</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="attr_details">
+    <h2>Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="response_code-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="response_code-instance_method">
+  
+    - (<tt>Object</tt>) <strong>response_code</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Returns the value of attribute <tt>response_code</tt>
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7
+8
+9</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ews/error.rb', line 7</span>
+
+<span class='def def kw'>def</span> <span class='response_code identifier id'>response_code</span>
+  <span class='@response_code ivar id'>@response_code</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Dec 10 15:51:40 2009 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.4.0 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>
