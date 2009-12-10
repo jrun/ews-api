@@ -4,26 +4,12 @@ describe EWS::Service do
   DEFAULT_HEADERS = {
     'Content-Type' => 'text/xml; charset=utf-8'
   }
-
-  def mock_body(soap_body)
-    <<-EOS
-<?xml version="1.0" encoding="UTF-8"?>
-<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <soap:Header>
-    <t:ServerVersionInfo xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" MajorVersion="1" MinorVersion="1" MajorBuildNumber="1" MinorBuildNumber="1"/>
-  </soap:Header>
-  <soap:Body>
-  #{soap_body}
-  </soap:Body>
-</soap:Envelope>
-EOS
-  end
   
   def mock_response(soap_body, headers = {})
     Handsoap::Http.drivers[:mock] =
       Handsoap::Http::Drivers::MockDriver.new(:status => 200,
                                               :headers => DEFAULT_HEADERS.merge(headers),
-                                              :content => mock_body(soap_body))
+                                              :content => soap_body)
     Handsoap.http_driver = :mock
   end
   
