@@ -52,6 +52,20 @@ module EWS::SpecHelper
     doc
   end
 
+  def mock_response(soap_body, headers = {}, status = 200)
+    Handsoap::Http.drivers[:mock] =
+      Handsoap::Http::Drivers::MockDriver.new(:status => status,
+                                              :headers => default_headers,
+                                              :content => soap_body)
+    Handsoap.http_driver = :mock
+  end
+
+  def default_headers
+    @default_headers ||= {
+      'Content-Type' => 'text/xml; charset=utf-8'
+    }
+  end
+  
   def wrap_in_soap_response(soap_body)
     <<-EOS
 <?xml version="1.0" encoding="UTF-8"?>
