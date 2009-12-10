@@ -1,60 +1,51 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-EWS::Service.logger = $stdout
-
 describe EWS::Service do
-  it "something simple to see green" do
-    lambda do 
-      EWS::Service.endpoint
-    end.should raise_error(/Missing option :uri/)
-  end
+  DEFAULT_HEADERS = {
+    'Content-Type' => 'text/xml; charset=utf-8'
+  }
 
-  context '#find_folder' do
-    it "should successfully retrieve the inbox" do
-      lambda do
-        EWS::Service.find_folder
-      end.should_not raise_error
-    end
-  end
-
-  context '#get_folder' do
-    it "should successfully retrieve the inbox" do
-      lambda do
-        EWS::Service.get_folder
-      end.should_not raise_error
-    end
-  end
-
-  context '#find_item' do
-    it "should successfully find the item" do
-      lambda do
-        EWS::Service.find_item(:inbox)
-      end.should_not raise_error
-    end
+  def mock_body(soap_body)
+    <<-EOS
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Header>
+    <t:ServerVersionInfo xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" MajorVersion="1" MinorVersion="1" MajorBuildNumber="1" MinorBuildNumber="1"/>
+  </soap:Header>
+  <soap:Body>
+  #{soap_body}
+  </soap:Body>
+</soap:Envelope>
+EOS
   end
   
-  context '#get_item' do
-    it "should be successfull" do
-      lambda do
-        EWS::Service.get_item EWS_CONFIG['item_id'] # lame
-      end.should_not raise_error
-    end
-    
+  def mock_response(soap_body, headers = {})
+    Handsoap::Http.drivers[:mock] =
+      Handsoap::Http::Drivers::MockDriver.new(:status => 200,
+                                              :headers => DEFAULT_HEADERS.merge(headers),
+                                              :content => mock_body(soap_body))
+    Handsoap.http_driver = :mock
+  end
+  
+  context '#get_item' do    
     it "should raise an error when the id is not found" do
-      pending do
-        lambda do
-          EWS::Service.get_item nil
-        end.should raise_error
-      end
+      mock_response <<-EOS
+<m:GetItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+                  xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <m:ResponseMessages>
+    <m:GetItemResponseMessage ResponseClass="Error">
+      <m:MessageText>Id must be non-empty.</m:MessageText>
+      <m:ResponseCode>ErrorInvalidIdEmpty</m:ResponseCode>
+      <m:DescriptiveLinkKey>0</m:DescriptiveLinkKey>
+      <m:Items/>
+    </m:GetItemResponseMessage>
+  </m:ResponseMessages>
+</m:GetItemResponse>
+EOS
+      lambda do
+        EWS::Service.get_item nil
+      end.should raise_error(EWS::ResponseError, 'Id must be non-empty.')
     end
   end
 
-  context '#get_attachment' do
-    it "should successfully get the attachment" do
-      lambda do
-        EWS::Service.get_attachment EWS_CONFIG['attachment_id'] # lame 
-      end.should_not raise_error
-    end
-  end
-  
 end

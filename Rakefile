@@ -48,6 +48,12 @@ Spec::Rake::SpecTask.new(:spec) do |spec|
   spec.spec_files = FileList['spec/**/*_spec.rb']
 end
 
+desc 'Run tests against a real EWS server'
+Spec::Rake::SpecTask.new(:integration) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/integration.rb']
+end
+
 Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.libs << 'lib' << 'spec'
   spec.pattern = 'spec/**/*_spec.rb'
@@ -56,7 +62,7 @@ end
 
 task :spec => :check_dependencies
 task :default => :spec
-task :build => [:spec, :yard]
+task :build => [:spec, :integration, :yard]
 
 begin
   require 'yard'

@@ -4,6 +4,8 @@ require 'ews-api'
 require 'spec'
 require 'spec/autorun'
 
+EWS::Service.logger = $stdout
+
 config_file = File.dirname(__FILE__) + '/test-config.yml'
 
 if File.exist?(config_file)

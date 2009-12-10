@@ -2,6 +2,7 @@
 
 # ntlm authentication works using httpclient and rubyntlm
 Handsoap.http_driver = :http_client
+Handsoap.xml_query_driver = :nokogiri
 
 module EWS
   # Implementation of Exchange Web Services
@@ -30,7 +31,10 @@ module EWS
     
     def on_response_document(doc)
       # register namespaces for the response
-      doc.add_namespace 'ns', 'http://schemas.microsoft.com/exchange/services/2006/messages'
+      doc.add_namespace 'soap', '"http://schemas.xmlsoap.org/soap/envelope'
+      doc.add_namespace 't', 'http://schemas.microsoft.com/exchange/services/2006/types'
+      doc.add_namespace 'm', 'http://schemas.microsoft.com/exchange/services/2006/messages'
+      parse_response_message doc
     end
     # public methods
   
@@ -110,7 +114,8 @@ module EWS
         get_folder.add('tns:FolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') { |id| id.set_attr 'Id', name }
         end
-      end    
+      end
+      
     end
     
     def convert_id!
@@ -264,7 +269,6 @@ module EWS
           end
         end
       end
-      
     end
     
     def create_item!
@@ -344,7 +348,6 @@ module EWS
           end
         end
       end
-      
     end
     
     def get_delegate
@@ -395,9 +398,58 @@ module EWS
         raise "TODO"
       end
     end
+       
+    private    
+    RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
+                          '//m:GetFolderResponseMessage',
+                          '//m:FindItemResponseMessage',
+                          '//m:GetItemResponseMessage',
+                          '//m:GetAttachmentResponseMessage'].join('|')
     
-    private
+    # Parses the ResponseMessage looking for errors.
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa494164%28EXCHG.80%29.aspx
+    # Exhange 2007 Valid Response Messages
+    #    
+    # CopyFolderResponseMessage
+    # CopyItemResponseMessage
+    # CreateAttachmentResponseMessage
+    # CreateFolderResponseMessage
+    # CreateItemResponseMessage
+    # CreateManagedFolderResponseMessage
+    # DeleteAttachmentResponseMessage
+    # DeleteFolderResponseMessage
+    # DeleteItemResponseMessage
+    # ExpandDLResponseMessage
+    # FindFolderResponseMessage
+    # FindItemResponseMessage
+    # GetAttachmentResponseMessage
+    # GetEventsResponseMessage
+    # GetFolderResponseMessage
+    # GetItemResponseMessage
+    # MoveFolderResponseMessage
+    # MoveItemResponseMessage
+    # ResolveNamesResponseMessage
+    # SendItemResponseMessage
+    # SendNotificationResponseMessage
+    # SubscribeResponseMessage
+    # SyncFolderHierarchyResponseMessage
+    # SyncFolderItemsResponseMessage
+    # UnsubscribeResponseMessage
+    # UpdateFolderResponseMessage
+    # UpdateItemResponseMessage
+    # ConvertIdResponseMessage
+    def parse_response_message(doc)
+      response_msg = doc.xpath(RESPONSE_MSG_XPATH)
+      if (response_msg / '@ResponseClass').to_s == 'Error'
+        error_msg = (response_msg / 'm:MessageText/text()').to_s
+        response_code = (response_msg / 'm:ResponseCode/text()').to_s
+        raise EWS::ResponseError.new(error_msg, response_code)
+      end
+    end
+    
     # helpers
+    
     # TODO
   end
 end
