@@ -25,8 +25,15 @@ Gem::Specification.new do |s|
      "VERSION",
      "ews-api.gemspec",
      "lib/ews-api.rb",
+     "lib/ews/error.rb",
+     "lib/ews/folder.rb",
+     "lib/ews/model.rb",
+     "lib/ews/parser.rb",
      "lib/ews/service.rb",
+     "spec/ews/parser_spec.rb",
      "spec/ews/service_spec.rb",
+     "spec/integration.rb",
+     "spec/response_fixtures.yml",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -38,6 +45,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/spec_helper.rb",
      "spec/integration.rb",
+     "spec/ews/parser_spec.rb",
      "spec/ews/service_spec.rb"
   ]
 

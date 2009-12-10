@@ -30,11 +30,14 @@ module EWS
     end
     
     def on_response_document(doc)
-      # register namespaces for the response
+      apply_namespaces! doc
+      parse_response_message doc
+    end
+
+    def apply_namespaces!(doc)
       doc.add_namespace 'soap', '"http://schemas.xmlsoap.org/soap/envelope'
       doc.add_namespace 't', 'http://schemas.microsoft.com/exchange/services/2006/types'
       doc.add_namespace 'm', 'http://schemas.microsoft.com/exchange/services/2006/messages'
-      parse_response_message doc
     end
     # public methods
   
@@ -54,8 +57,10 @@ module EWS
     
     # Finds folders for the given parent folder.
     #
-    # @example Request
+    # @param [Hash] opts Options to manipulate the FindFolder response
+    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
     #
+    # @example Request
     #  <FindFolder Traversal="Shallow" xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
     #    <FolderShape>
     #      <t:BaseShape>Default</t:BaseShape>
@@ -74,12 +79,14 @@ module EWS
     # @todo Support options
     #   Traversal: +Shallow, Deep, SoftDeleted+
     #   FolderShape: +IdOnly, Default, AllProperties+
-    def find_folder(parent_folder_name = :root)
+    def find_folder(parent_folder_name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'
+      opts[:base_shape] ||= :Default
+      
       response = invoke('tns:FindFolder', soap_action) do |find_folder|
         find_folder.set_attr 'Traversal', 'Deep'
         find_folder.add('tns:FolderShape') do |shape|
-          shape.add('t:BaseShape', 'Default')
+          shape.add 't:BaseShape', opts[:base_shape]
         end
         find_folder.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |id|
@@ -87,9 +94,11 @@ module EWS
           end
         end
       end
-      
     end
-        
+
+    # @param [Hash] opts Options to manipulate the FindFolder response
+    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
+    #
     # @example Request
     #
     #  <GetFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
@@ -105,17 +114,19 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx
     # MSDN - GetFolder operation
     #
-    def get_folder(name = :root)
+    def get_folder(name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'
+      opts[:base_shape] ||= :Default
+      
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
         get_folder.add('tns:FolderShape') do |shape|
-          shape.add('t:BaseShape', 'Default')
+          shape.add 't:BaseShape', opts[:base_shape]
         end
         get_folder.add('tns:FolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') { |id| id.set_attr 'Id', name }
         end
       end
-      
+      parser.parse_get_folder response.document
     end
     
     def convert_id!
@@ -202,6 +213,9 @@ module EWS
       end
     end
 
+    # @param [Hash] opts Options to manipulate the FindItem response
+    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
+    #
     # @example Request
     #  <FindItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
     #            xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
@@ -218,23 +232,29 @@ module EWS
     # FindItem
     #
     # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
-    # BaseShape
-    def find_item(parent_folder_name = :root)
+    # BaseShape    
+    def find_item(parent_folder_name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
+      opts[:base_shape] ||= :IdOnly
+      
       response = invoke('tns:FindItem', soap_action) do |find_item|
         find_item.set_attr 'Traversal', 'Shallow'
         find_item.add('tns:ItemShape') do |shape|
-          shape.add('t:BaseShape', 'IdOnly')
+          shape.add 't:BaseShape', opts[:base_shape]
         end
         find_item.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |folder_id|
             folder_id.set_attr 'Id', parent_folder_name
           end
         end
+        yield find_item if block_given?
       end
-      
     end
-    
+
+    # @param [Hash] opts Options to manipulate the FindFolder response
+    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
+    # @option opts [String] :change_key
+    #
     # @example Request for getting a mail message
     #  <GetItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
     #           xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
@@ -255,20 +275,25 @@ module EWS
     #
     # @see http://msdn.microsoft.com/en-us/library/aa563525.aspx
     # ItmeIds
-    def get_item(item_id, change_key = nil)
+    def get_item(item_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
+      opts[:base_shape] ||= :Default
+      
       response = invoke('tns:GetItem', soap_action) do |get_item|
         get_item.add('tns:ItemShape') do |shape|
-          shape.add('t:BaseShape', 'AllProperties')
-          shape.add('t:IncludeMimeContent', false)
+          shape.add 't:BaseShape', opts[:base_shape]
+          shape.add 't:IncludeMimeContent', false
         end
         get_item.add('tns:ItemIds') do |ids|
           ids.add('t:ItemId') do |item|
             item.set_attr 'Id', item_id
-            item.set_attr 'ChangeKey', change_key if change_key
+            if opts[:change_key]
+              item.set_attr 'ChangeKey', opts[:change_key]
+            end
           end
         end
       end
+      
     end
     
     def create_item!
@@ -399,7 +424,11 @@ module EWS
       end
     end
        
-    private    
+    private
+    def parser
+      @parser ||= Parser.new      
+    end
+    
     RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
                           '//m:GetFolderResponseMessage',
                           '//m:FindItemResponseMessage',
@@ -440,6 +469,7 @@ module EWS
     # UpdateItemResponseMessage
     # ConvertIdResponseMessage
     def parse_response_message(doc)
+      
       response_msg = doc.xpath(RESPONSE_MSG_XPATH)
       if (response_msg / '@ResponseClass').to_s == 'Error'
         error_msg = (response_msg / 'm:MessageText/text()').to_s

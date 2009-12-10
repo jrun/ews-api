@@ -32,3 +32,49 @@ find_item: |-
         </m:FindItemResponseMessage>
       </m:ResponseMessages>
     </m:FindItemResponse>
+
+:find_folder: |-
+    <m:FindFolderResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <m:ResponseMessages>
+        <m:FindFolderResponseMessage ResponseClass="Success">
+          <m:ResponseCode>NoError</m:ResponseCode>
+          <m:RootFolder TotalItemsInView="2" IncludesLastItemInRange="true">
+            <t:Folders>
+              <t:Folder>
+                <t:FolderId Id="1" ChangeKey="1"/>
+                <t:DisplayName>subfolder1</t:DisplayName>
+                <t:TotalCount>0</t:TotalCount>
+                <t:ChildFolderCount>0</t:ChildFolderCount>
+                <t:UnreadCount>0</t:UnreadCount>
+              </t:Folder>
+              <t:Folder>
+                <t:FolderId Id="2" ChangeKey="2"/>
+                <t:DisplayName>subfolder2</t:DisplayName>
+                <t:TotalCount>0</t:TotalCount>
+                <t:ChildFolderCount>0</t:ChildFolderCount>
+                <t:UnreadCount>0</t:UnreadCount>
+              </t:Folder>
+            </t:Folders>
+          </m:RootFolder>
+        </m:FindFolderResponseMessage>
+      </m:ResponseMessages>
+    </m:FindFolderResponse>
+
+get_folder: |-
+    <m:GetFolderResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <m:ResponseMessages>
+        <m:GetFolderResponseMessage ResponseClass="Success">
+          <m:ResponseCode>NoError</m:ResponseCode>
+          <m:Folders>
+            <t:Folder>
+              <t:FolderId Id="AAA" ChangeKey="BBB"/>
+              <t:DisplayName>Inbox</t:DisplayName>
+              <t:TotalCount>43</t:TotalCount>
+              <t:ChildFolderCount>2</t:ChildFolderCount>
+              <t:UnreadCount>0</t:UnreadCount>
+            </t:Folder>
+          </m:Folders>
+        </m:GetFolderResponseMessage>
+      </m:ResponseMessages>
+    </m:GetFolderResponse>
+

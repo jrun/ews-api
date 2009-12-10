@@ -1,10 +1,12 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
+EWS::Service.logger = $stdout
+
 describe 'Integration Tests' do
   context 'find_folder' do
     it "should find the folder without errors" do
       lambda do
-        EWS::Service.find_folder
+        EWS::Service.find_folder(:inbox)
       end.should_not raise_error
     end
 
@@ -17,10 +19,8 @@ describe 'Integration Tests' do
   end
 
   context 'get_folder' do
-    it "should successfully retrieve the inbox" do
-      lambda do
-        EWS::Service.get_folder
-      end.should_not raise_error
+    it "should get the folder without errors" do
+      EWS::Service.get_folder(:inbox).should be_instance_of(EWS::Folder)
     end
     
     it "should raise a SoapError when the ResponseMessage is an Error" do
@@ -49,7 +49,7 @@ describe 'Integration Tests' do
   context 'get_item' do
     it "should get the item without errors" do
       lambda do
-        EWS::Service.get_item EWS_CONFIG['item_id'] # lame
+        EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :AllProperties
       end.should_not raise_error
     end
 

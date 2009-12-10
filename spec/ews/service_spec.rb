@@ -29,23 +29,10 @@ EOS
   
   context '#get_item' do    
     it "should raise an error when the id is not found" do
-      mock_response <<-EOS
-<m:GetItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
-                  xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
-  <m:ResponseMessages>
-    <m:GetItemResponseMessage ResponseClass="Error">
-      <m:MessageText>Id must be non-empty.</m:MessageText>
-      <m:ResponseCode>ErrorInvalidIdEmpty</m:ResponseCode>
-      <m:DescriptiveLinkKey>0</m:DescriptiveLinkKey>
-      <m:Items/>
-    </m:GetItemResponseMessage>
-  </m:ResponseMessages>
-</m:GetItemResponse>
-EOS
+      mock_response response(:get_item_with_error)
       lambda do
         EWS::Service.get_item nil
       end.should raise_error(EWS::ResponseError, 'Id must be non-empty.')
     end
   end
-
 end
