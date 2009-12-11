@@ -83,7 +83,7 @@ module EWS
         @message = @parser.parse_get_item response_to_doc(:get_item_default)
       end
       
-      it "should set the ParentFolderId to nil" do
+      it "should set the parent_folder_id to nil" do
         @message.parent_folder_id be_nil
       end
 
