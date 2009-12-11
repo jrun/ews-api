@@ -78,9 +78,17 @@ module EWS
       end
     end
 
-    context 'parsing get_item with Default base_shape' do
-      it "should parse without errors" do
+    context 'parsing get_item with base_shape of "Default"' do
+      before(:each) do
         @message = @parser.parse_get_item response_to_doc(:get_item_default)
+      end
+      
+      it "should set the ParentFolderId to nil" do
+        @message.parent_folder_id be_nil
+      end
+
+      it "should set the header to an empty hash" do
+        @message.header.should == {}
       end
     end
     
