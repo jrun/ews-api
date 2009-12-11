@@ -4,38 +4,6 @@ require 'ews-api'
 require 'spec'
 require 'spec/autorun'
 
-config_file = File.dirname(__FILE__) + '/test-config.yml'
-
-if File.exist?(config_file)
-  unless defined? EWS_CONFIG
-    EWS_CONFIG = YAML.load_file config_file
-  end
-  
-  EWS::Service.endpoint EWS_CONFIG['endpoint']
-  EWS::Service.set_auth EWS_CONFIG['username'], EWS_CONFIG['password']
-else
-  unless defined? EWS_CONFIG
-    EWS_CONFIG = nil
-  end
-  
-  puts <<-EOS
-
-=================================================================
-Create 'spec/test-config.yml' to automatically configure
-the endpoint and credentials. The file is ignored via
-.gitignore so it will not be committed.
-
-endpoint:
-  :uri: 'https://localhost/ews/exchange.asmx'
-  :version: 1
-username: testuser
-password: xxxxxx
-
-=================================================================
-
-EOS
-end
-
 module EWS::SpecHelper
   def response_to_doc(name)
     to_doc response(name)
