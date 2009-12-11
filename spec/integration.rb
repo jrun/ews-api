@@ -66,7 +66,7 @@ describe 'Integration Tests' do
   context 'find_item' do
     it "should find the item without errors" do
       lambda do
-        EWS::Service.find_item(:inbox)
+        EWS::Service.find_item(:inbox, :base_shape => :AllProperties)
       end.should_not raise_error
     end
 
