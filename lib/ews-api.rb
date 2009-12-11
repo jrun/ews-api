@@ -3,6 +3,8 @@ require 'handsoap'
 
 require 'ews/error'
 require 'ews/model'
+require 'ews/attachment'
+require 'ews/message'
 require 'ews/folder'
 require 'ews/parser'
 require 'ews/service'
