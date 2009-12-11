@@ -50,6 +50,22 @@ module EWS
         attachment.name.should == "A Clash of Kings"
         attachment.content_type.should == "message/rfc822"
       end
+
+      it "header" do        
+        @message.header.size.should == 7
+
+        @message.header['received'] = ['from example.com (0.0.0.0) by example.com (0.0.0.0) with SMTP Server id 0.0.0.0; Wed, 2 Dec 2009 10:38:47 -0600',
+                    'from example.com ([0.0.0.0])  by example.com with SMTP; 02 Dec 2009 10:38:47 -0600',
+                    'from example.com (0.0.0.0) by example.com (0.0.0.0) with SMTP Server id 0.0.0.0; Wed, 2 Dec 2009 10:38:47 -0600',
+                    'from localhost by example.com;  02 Dec 2009 10:38:47 -0600']
+        
+        @message.header['subject'].should == ['A Clash of Kings']
+        @message.header['message-id'].should == ['<847mtq@example.com>']
+        @message.header['date'].should == ['Wed, 2 Dec 2009 10:38:47 -0600']
+        @message.header['mime-version'].should == ['1.0']
+        @message.header['content-type'].should == ['multipart/report']
+        @message.header['return-path'].should == ['<>']
+      end
     end
 
     context 'parsing get_item with no attachments' do

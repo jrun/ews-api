@@ -26,7 +26,8 @@ module EWS
         :body             => message_node.xpath('t:Body/text()').to_s,
         :body_type        => message_node.xpath('t:Body/@BodyType').to_s,
         :has_attachments  => parse_bool(message_node.xpath('t:HasAttachments')),
-        :attachments      => parse_attachments(message_node.xpath('t:Attachments'))
+        :attachments      => parse_attachments(message_node.xpath('t:Attachments')),
+        :header           => parse_header(message_node.xpath('t:InternetMessageHeaders'))
       }
       Message.new attrs
     end
@@ -40,6 +41,16 @@ module EWS
           :content_type  => node.xpath('t:ContentType/text()').to_s
         }
         Attachment.new attrs
+      end
+    end
+
+    def parse_header(header_node)
+      header_node.xpath('t:InternetMessageHeader').inject({}) do |header, node|
+        name = node.xpath('@HeaderName').to_s.downcase
+        
+        header[name] = [] unless header.has_key?(name)          
+        header[name] << node.xpath('text()').to_s        
+        header
       end
     end
     
