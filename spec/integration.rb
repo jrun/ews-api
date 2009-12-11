@@ -51,6 +51,15 @@ describe 'Integration Tests' do
   end
 
   context 'get_folder' do
+    it "should get the folder using the Default base_shape" do
+      EWS::Service.get_folder(:inbox).should be_instance_of(EWS::Folder)
+    end
+
+    it "should get the folder using the AllProperties base_shape" do
+      folder = EWS::Service.get_folder(:inbox, :base_shape => :AllProperties)
+      folder.should be_instance_of(EWS::Folder)
+    end
+
     it "should get the folder without errors" do
       EWS::Service.get_folder(:inbox).should be_instance_of(EWS::Folder)
     end
@@ -79,10 +88,13 @@ describe 'Integration Tests' do
   end
   
   context 'get_item' do
-    it "should get the item without errors" do
-      lambda do
-        EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :AllProperties
-      end.should_not raise_error
+    it "should get the item using the Default base_shape" do
+      EWS::Service.get_item(EWS_CONFIG['item_id']).should be_instance_of(EWS::Message)
+    end
+
+    it "should get the item using the AllProperties base_shape" do
+      item = EWS::Service.get_item(EWS_CONFIG['item_id'], :base_shape => :AllProperties)
+      item.should be_instance_of(EWS::Message)
     end
 
     it "should raise a SoapError when the ResponseMessage is an Error" do

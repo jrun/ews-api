@@ -14,11 +14,13 @@ module EWS
     end
 
     def parse_get_item(doc)
-      parse_message doc.xpath('//t:Message').first
+      # TODO: support all of the types of items
+      parse_message doc.xpath('//t:Message')
     end
 
     private
     def parse_message(message_node)
+      return nil if message_node.empty?
       attrs = {
         :item_id          => parse_id(message_node.xpath('t:ItemId')),
         :parent_folder_id => parse_id(message_node.xpath('t:ParentFolderId')),
@@ -33,7 +35,7 @@ module EWS
     end
 
     def parse_attachments(attachments_node)
-      return [] unless attachments_node
+      return [] if attachments_node.empty?
       attachments_node.xpath('t:ItemAttachment').map do |node|
         attrs = {
           :attachment_id => node.xpath('t:AttachmentId/@Id').to_s,
@@ -45,6 +47,7 @@ module EWS
     end
 
     def parse_header(header_node)
+      return {} if header_node.empty?
       header_node.xpath('t:InternetMessageHeader').inject({}) do |header, node|
         name = node.xpath('@HeaderName').to_s.downcase
         
@@ -55,6 +58,7 @@ module EWS
     end
     
     def parse_id(id_node)
+      return nil if id_node.empty?
       { :id         => id_node.xpath('@Id').to_s,
         :change_key => id_node.xpath('@ChangeKey').to_s }
     end

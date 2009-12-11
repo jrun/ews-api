@@ -77,6 +77,12 @@ module EWS
         @message.attachments.should == []
       end
     end
+
+    context 'parsing get_item with Default base_shape' do
+      it "should parse without errors" do
+        @message = @parser.parse_get_item response_to_doc(:get_item_default)
+      end
+    end
     
   end
 end

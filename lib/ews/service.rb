@@ -293,7 +293,7 @@ module EWS
           end
         end
       end
-      
+      parser.parse_get_item response.document
     end
     
     def create_item!
