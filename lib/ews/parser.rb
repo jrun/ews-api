@@ -8,14 +8,61 @@ module EWS
         :folder_id => folder.xpath('t:FolderId/@Id').to_s,
         :change_key => folder.xpath('t:FolderId/@ChangeKey').to_s,
         :name => folder.xpath('t:DisplayName/text()').to_s
-      }
-       
+      }      
       Folder.new attrs
     end
 
     def parse_get_item(doc)
       # TODO: support all of the types of items
       parse_message doc.xpath('//t:Message')
+    end
+    
+    RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
+                          '//m:GetFolderResponseMessage',
+                          '//m:FindItemResponseMessage',
+                          '//m:GetItemResponseMessage',
+                          '//m:GetAttachmentResponseMessage'].join('|')
+    
+    # Parses the ResponseMessage looking for errors.
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa494164%28EXCHG.80%29.aspx
+    # Exhange 2007 Valid Response Messages
+    #    
+    # CopyFolderResponseMessage
+    # CopyItemResponseMessage
+    # CreateAttachmentResponseMessage
+    # CreateFolderResponseMessage
+    # CreateItemResponseMessage
+    # CreateManagedFolderResponseMessage
+    # DeleteAttachmentResponseMessage
+    # DeleteFolderResponseMessage
+    # DeleteItemResponseMessage
+    # ExpandDLResponseMessage
+    # FindFolderResponseMessage
+    # FindItemResponseMessage
+    # GetAttachmentResponseMessage
+    # GetEventsResponseMessage
+    # GetFolderResponseMessage
+    # GetItemResponseMessage
+    # MoveFolderResponseMessage
+    # MoveItemResponseMessage
+    # ResolveNamesResponseMessage
+    # SendItemResponseMessage
+    # SendNotificationResponseMessage
+    # SubscribeResponseMessage
+    # SyncFolderHierarchyResponseMessage
+    # SyncFolderItemsResponseMessage
+    # UnsubscribeResponseMessage
+    # UpdateFolderResponseMessage
+    # UpdateItemResponseMessage
+    # ConvertIdResponseMessage
+    def parse_response_message(doc)      
+      response_msg = doc.xpath(RESPONSE_MSG_XPATH)
+      if response_msg.xpath('@ResponseClass').to_s == 'Error'
+        error_msg = (response_msg / 'm:MessageText/text()').to_s
+        response_code = (response_msg / 'm:ResponseCode/text()').to_s
+        raise EWS::ResponseError.new(error_msg, response_code)
+      end
     end
 
     private

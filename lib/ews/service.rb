@@ -31,7 +31,7 @@ module EWS
     
     def on_response_document(doc)
       apply_namespaces! doc
-      parse_response_message doc
+      parser.parse_response_message doc
     end
 
     def apply_namespaces!(doc)
@@ -427,56 +427,7 @@ module EWS
     private
     def parser
       @parser ||= Parser.new      
-    end
-    
-    RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
-                          '//m:GetFolderResponseMessage',
-                          '//m:FindItemResponseMessage',
-                          '//m:GetItemResponseMessage',
-                          '//m:GetAttachmentResponseMessage'].join('|')
-    
-    # Parses the ResponseMessage looking for errors.
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa494164%28EXCHG.80%29.aspx
-    # Exhange 2007 Valid Response Messages
-    #    
-    # CopyFolderResponseMessage
-    # CopyItemResponseMessage
-    # CreateAttachmentResponseMessage
-    # CreateFolderResponseMessage
-    # CreateItemResponseMessage
-    # CreateManagedFolderResponseMessage
-    # DeleteAttachmentResponseMessage
-    # DeleteFolderResponseMessage
-    # DeleteItemResponseMessage
-    # ExpandDLResponseMessage
-    # FindFolderResponseMessage
-    # FindItemResponseMessage
-    # GetAttachmentResponseMessage
-    # GetEventsResponseMessage
-    # GetFolderResponseMessage
-    # GetItemResponseMessage
-    # MoveFolderResponseMessage
-    # MoveItemResponseMessage
-    # ResolveNamesResponseMessage
-    # SendItemResponseMessage
-    # SendNotificationResponseMessage
-    # SubscribeResponseMessage
-    # SyncFolderHierarchyResponseMessage
-    # SyncFolderItemsResponseMessage
-    # UnsubscribeResponseMessage
-    # UpdateFolderResponseMessage
-    # UpdateItemResponseMessage
-    # ConvertIdResponseMessage
-    def parse_response_message(doc)
-      
-      response_msg = doc.xpath(RESPONSE_MSG_XPATH)
-      if (response_msg / '@ResponseClass').to_s == 'Error'
-        error_msg = (response_msg / 'm:MessageText/text()').to_s
-        response_code = (response_msg / 'm:ResponseCode/text()').to_s
-        raise EWS::ResponseError.new(error_msg, response_code)
-      end
-    end
+    end   
     
     # helpers
     
