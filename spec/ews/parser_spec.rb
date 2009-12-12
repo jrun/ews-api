@@ -21,6 +21,17 @@ module EWS
         end
       end      
     end
+    
+    context 'parsing find_item with the base_shape of "AllProperties"' do
+      it "should build an array of items" do
+        items = @parser.parse_find_item response_to_doc(:find_item_all_properties)
+        items.size.should == 3
+        
+        item = items.first
+        item.item_id.should == {:id => 'BUEm5G5U', :change_key => 'LABU0Ut45'}
+        item.subject.should == 'test'
+      end
+    end
 
     context 'parsing get_item with all properites should build a message with' do
       MESSAGE_BODY = "<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper egestas accumsan. Nulla rhoncus porttitor dictum. Curabitur ac nulla a orci sollicitudin blandit at quis odio. Integer eleifend fringilla bibendum. Sed condimentum, lectus vitae suscipit sollicitudin, quam tortor faucibus nisl, ac tristique lectus justo in leo. Aliquam placerat arcu erat, vel lobortis dui. Nulla posuere sodales sapien eu interdum. Cras in pretium ante. Pellentesque ut velit est. Quisque nisl risus, molestie vel porta in, pellentesque a odio. Curabitur sit amet faucibus lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas et fermentum enim. Nulla ac dolor elit. Quisque eu dui sapien, ac tincidunt orci.</body></html>"

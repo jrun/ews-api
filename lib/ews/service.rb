@@ -228,13 +228,18 @@ module EWS
     #    </ParentFolderIds>
     #  </FindItem>
     #
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa566107(EXCHG.80).aspx
+    # FindItem - Exchange 2007
+    #
     # @see http://msdn.microsoft.com/en-us/library/aa566107.aspx
-    # FindItem
+    # FindItem - Exchange 2010
     #
     # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
     # BaseShape    
     def find_item(parent_folder_name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
+      
       opts[:base_shape] ||= :IdOnly
       
       response = invoke('tns:FindItem', soap_action) do |find_item|
@@ -247,8 +252,8 @@ module EWS
             folder_id.set_attr 'Id', parent_folder_name
           end
         end
-        yield find_item if block_given?
       end
+      parser.parse_find_item response.document
     end
 
     # @param [Hash] opts Options to manipulate the FindFolder response

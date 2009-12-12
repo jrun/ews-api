@@ -11,7 +11,18 @@ module EWS
       }      
       Folder.new attrs
     end
-
+    
+    def parse_find_item(doc)
+      doc.xpath('//t:Items/*').map do |node|
+        case node.node_name
+        when 'Message'
+          parse_message node.xpath('.') # force NodeSelection
+        else
+          nil
+        end
+      end.compact    
+    end
+    
     def parse_get_item(doc)
       # TODO: support all of the types of items
       parse_message doc.xpath('//t:Message')

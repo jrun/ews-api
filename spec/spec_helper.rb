@@ -7,7 +7,7 @@ require 'spec/autorun'
 module EWS::SpecHelper
   def fixtures
     @fixtures ||= Dir[File.dirname(__FILE__) + '/fixtures/*.xml'].inject({}) do |fixtures, f|
-      fixtures[File.basename(f).chomp('.xml')] = f
+      fixtures[File.basename(f).chomp('.xml')] = File.expand_path(f)
       fixtures
     end
   end

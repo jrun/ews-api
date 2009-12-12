@@ -117,5 +117,15 @@ describe 'Integration Tests' do
       end.should raise_error(EWS::ResponseError, /Id must be non-empty/)
     end
   end
+  
+  context 'EWS' do
+    context '.folder' do
+      it "should get the folder" do
+        folder = EWS.folder(:inbox)
+        folder.should be_an_instance_of(EWS::Folder)
+        folder.name.should == 'Inbox'
+      end
+    end
+  end
 
 end

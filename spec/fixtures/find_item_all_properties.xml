@@ -1,120 +1,120 @@
 <m:FindItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
-      <m:ResponseMessages>
-        <m:FindItemResponseMessage ResponseClass="Success">
-          <m:ResponseCode>NoError</m:ResponseCode>
-          <m:RootFolder TotalItemsInView="3" IncludesLastItemInRange="true">
-            <t:Items>
-              <t:Message>
-                <t:ItemId Id="BUEm5G5U" ChangeKey="LABU0Ut45"/>
-                <t:ParentFolderId Id="AQAUAH" ChangeKey="AQA"/>
-                <t:ItemClass>IPM.Note</t:ItemClass>
-                <t:Subject>test</t:Subject>
-                <t:Sensitivity>Normal</t:Sensitivity>
-                <t:DateTimeReceived>2009-12-11T16:40:44Z</t:DateTimeReceived>
-                <t:Size>754</t:Size>
-                <t:Importance>Normal</t:Importance>
-                <t:IsSubmitted>false</t:IsSubmitted>
-                <t:IsDraft>false</t:IsDraft>
-                <t:IsFromMe>false</t:IsFromMe>
-                <t:IsResend>false</t:IsResend>
-                <t:IsUnmodified>true</t:IsUnmodified>
-                <t:DateTimeSent>2009-12-11T16:39:44Z</t:DateTimeSent>
-                <t:DateTimeCreated>2009-12-11T16:40:44Z</t:DateTimeCreated>
-                <t:DisplayCc/>
-                <t:DisplayTo>'foo-bar-test@example.com'</t:DisplayTo>
-                <t:HasAttachments>false</t:HasAttachments>
-                <t:Culture>en-US</t:Culture>
-                <t:Sender>
-                  <t:Mailbox>
-                    <t:Name>Lannister, Jaime</t:Name>
-                  </t:Mailbox>
-                </t:Sender>
-                <t:ConversationIndex>Acp6gIr/Ta2Ik/1+S+apI9ymV3kTuw==</t:ConversationIndex>
-                <t:ConversationTopic>test</t:ConversationTopic>
-                <t:From>
-                  <t:Mailbox>
-                    <t:Name>Stark, Eddard</t:Name>
-                  </t:Mailbox>
-                </t:From>
-                <t:InternetMessageId>&lt;93C802589845@example.com&gt;</t:InternetMessageId>
-                <t:IsRead>true</t:IsRead>
-              </t:Message>
-              <t:Message>
-                <t:ItemId Id="4wpPi" ChangeKey="FwAAABYA"/>
-                <t:ParentFolderId Id="AQAU" ChangeKey="AQA"/>
-                <t:ItemClass>REPORT.IPM.Note.NDR</t:ItemClass>
-                <t:Subject>Regarding Brandon Stark</t:Subject>
-                <t:Sensitivity>Normal</t:Sensitivity>
-                <t:DateTimeReceived>2009-12-10T04:03:04Z</t:DateTimeReceived>
-                <t:Size>5492</t:Size>
-                <t:Importance>Normal</t:Importance>
-                <t:IsSubmitted>false</t:IsSubmitted>
-                <t:IsDraft>false</t:IsDraft>
-                <t:IsFromMe>false</t:IsFromMe>
-                <t:IsResend>false</t:IsResend>
-                <t:IsUnmodified>true</t:IsUnmodified>
-                <t:DateTimeSent>2009-12-10T04:03:04Z</t:DateTimeSent>
-                <t:DateTimeCreated>2009-12-10T04:03:04Z</t:DateTimeCreated>
-                <t:DisplayCc/>
-                <t:DisplayTo>tyrion@example.com</t:DisplayTo>
-                <t:HasAttachments>true</t:HasAttachments>
-                <t:Culture>en-US</t:Culture>
-                <t:Sender>
-                  <t:Mailbox>
-                    <t:Name>Tyrion Lannister</t:Name>
-                  </t:Mailbox>
-                </t:Sender>
-                <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
-                <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
-                <t:ConversationIndex>Acp5TaxEDBVAU</t:ConversationIndex>
-                <t:ConversationTopic>Regarding Brandon Stark</t:ConversationTopic>
-                <t:From>
-                  <t:Mailbox>
-                    <t:Name>Tyrion Lannister</t:Name>
-                  </t:Mailbox>
-                </t:From>
-                <t:InternetMessageId>&lt;871mi5@example.com&gt;</t:InternetMessageId>
-                <t:IsRead>true</t:IsRead>
-              </t:Message>
-              <t:Message>
-                <t:ItemId Id="AA==" ChangeKey="FwAA"/>
-                <t:ParentFolderId Id="XncAAAA" ChangeKey="AQAA"/>
-                <t:ItemClass>REPORT.IPM.Note.NDR</t:ItemClass>
-                <t:Subject>Re: Regarding Brandon Stark</t:Subject>
-                <t:Sensitivity>Normal</t:Sensitivity>
-                <t:DateTimeReceived>2009-12-08T04:04:13Z</t:DateTimeReceived>
-                <t:Size>5492</t:Size>
-                <t:Importance>Normal</t:Importance>
-                <t:IsSubmitted>false</t:IsSubmitted>
-                <t:IsDraft>false</t:IsDraft>
-                <t:IsFromMe>false</t:IsFromMe>
-                <t:IsResend>false</t:IsResend>
-                <t:IsUnmodified>true</t:IsUnmodified>
-                <t:DateTimeSent>2009-12-08T04:04:13Z</t:DateTimeSent>
-                <t:DateTimeCreated>2009-12-08T04:04:13Z</t:DateTimeCreated>
-                <t:DisplayCc/>
-                <t:DisplayTo>tyrion@example.com</t:DisplayTo>
-                <t:HasAttachments>true</t:HasAttachments>
-                <t:Culture>en-US</t:Culture>
-                <t:Sender>
-                  <t:Mailbox>
-                    <t:Name>Tyrion Lannister</t:Name>
-                  </t:Mailbox>
-                </t:Sender>
-                <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
-                <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
-                <t:ConversationIndex>AcAAA7</t:ConversationIndex>
-                <t:ConversationTopic>Re: Regarding Braondon Stark</t:ConversationTopic>
-                <t:From>
-                  <t:Mailbox>
-                    <t:Name>Tyrion Lannister</t:Name>
-                  </t:Mailbox>
-                </t:From>
-                <t:InternetMessageId>&lt7@example.com&gt;</t:InternetMessageId>
-                <t:IsRead>true</t:IsRead>
-              </t:Message>
-            </t:Items>
-          </m:RootFolder>
-        </m:FindItemResponseMessage>
-      </m:ResponseMessages>
-    </m:FindItemResponse>
+  <m:ResponseMessages>
+    <m:FindItemResponseMessage ResponseClass="Success">
+      <m:ResponseCode>NoError</m:ResponseCode>
+      <m:RootFolder TotalItemsInView="3" IncludesLastItemInRange="true">
+        <t:Items>
+          <t:Message>
+            <t:ItemId Id="BUEm5G5U" ChangeKey="LABU0Ut45"/>
+            <t:ParentFolderId Id="AQAUAH" ChangeKey="AQA"/>
+            <t:ItemClass>IPM.Note</t:ItemClass>
+            <t:Subject>test</t:Subject>
+            <t:Sensitivity>Normal</t:Sensitivity>
+            <t:DateTimeReceived>2009-12-11T16:40:44Z</t:DateTimeReceived>
+            <t:Size>754</t:Size>
+            <t:Importance>Normal</t:Importance>
+            <t:IsSubmitted>false</t:IsSubmitted>
+            <t:IsDraft>false</t:IsDraft>
+            <t:IsFromMe>false</t:IsFromMe>
+            <t:IsResend>false</t:IsResend>
+            <t:IsUnmodified>true</t:IsUnmodified>
+            <t:DateTimeSent>2009-12-11T16:39:44Z</t:DateTimeSent>
+            <t:DateTimeCreated>2009-12-11T16:40:44Z</t:DateTimeCreated>
+            <t:DisplayCc/>
+            <t:DisplayTo>'foo-bar-test@example.com'</t:DisplayTo>
+            <t:HasAttachments>false</t:HasAttachments>
+            <t:Culture>en-US</t:Culture>
+            <t:Sender>
+              <t:Mailbox>
+                <t:Name>Lannister, Jaime</t:Name>
+              </t:Mailbox>
+            </t:Sender>
+            <t:ConversationIndex>Acp6gIr/Ta2Ik/1+S+apI9ymV3kTuw==</t:ConversationIndex>
+            <t:ConversationTopic>test</t:ConversationTopic>
+            <t:From>
+              <t:Mailbox>
+                <t:Name>Stark, Eddard</t:Name>
+              </t:Mailbox>
+            </t:From>
+            <t:InternetMessageId>&lt;93C802589845@example.com&gt;</t:InternetMessageId>
+            <t:IsRead>true</t:IsRead>
+          </t:Message>
+          <t:Message>
+            <t:ItemId Id="4wpPi" ChangeKey="FwAAABYA"/>
+            <t:ParentFolderId Id="AQAU" ChangeKey="AQA"/>
+            <t:ItemClass>REPORT.IPM.Note.NDR</t:ItemClass>
+            <t:Subject>Regarding Brandon Stark</t:Subject>
+            <t:Sensitivity>Normal</t:Sensitivity>
+            <t:DateTimeReceived>2009-12-10T04:03:04Z</t:DateTimeReceived>
+            <t:Size>5492</t:Size>
+            <t:Importance>Normal</t:Importance>
+            <t:IsSubmitted>false</t:IsSubmitted>
+            <t:IsDraft>false</t:IsDraft>
+            <t:IsFromMe>false</t:IsFromMe>
+            <t:IsResend>false</t:IsResend>
+            <t:IsUnmodified>true</t:IsUnmodified>
+            <t:DateTimeSent>2009-12-10T04:03:04Z</t:DateTimeSent>
+            <t:DateTimeCreated>2009-12-10T04:03:04Z</t:DateTimeCreated>
+            <t:DisplayCc/>
+            <t:DisplayTo>tyrion@example.com</t:DisplayTo>
+            <t:HasAttachments>true</t:HasAttachments>
+            <t:Culture>en-US</t:Culture>
+            <t:Sender>
+              <t:Mailbox>
+                <t:Name>Tyrion Lannister</t:Name>
+              </t:Mailbox>
+            </t:Sender>
+            <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
+            <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
+            <t:ConversationIndex>Acp5TaxEDBVAU</t:ConversationIndex>
+            <t:ConversationTopic>Regarding Brandon Stark</t:ConversationTopic>
+            <t:From>
+              <t:Mailbox>
+                <t:Name>Tyrion Lannister</t:Name>
+              </t:Mailbox>
+            </t:From>
+            <t:InternetMessageId>&lt;871mi5@example.com&gt;</t:InternetMessageId>
+            <t:IsRead>true</t:IsRead>
+          </t:Message>
+          <t:Message>
+            <t:ItemId Id="AA==" ChangeKey="FwAA"/>
+            <t:ParentFolderId Id="XncAAAA" ChangeKey="AQAA"/>
+            <t:ItemClass>REPORT.IPM.Note.NDR</t:ItemClass>
+            <t:Subject>Re: Regarding Brandon Stark</t:Subject>
+            <t:Sensitivity>Normal</t:Sensitivity>
+            <t:DateTimeReceived>2009-12-08T04:04:13Z</t:DateTimeReceived>
+            <t:Size>5492</t:Size>
+            <t:Importance>Normal</t:Importance>
+            <t:IsSubmitted>false</t:IsSubmitted>
+            <t:IsDraft>false</t:IsDraft>
+            <t:IsFromMe>false</t:IsFromMe>
+            <t:IsResend>false</t:IsResend>
+            <t:IsUnmodified>true</t:IsUnmodified>
+            <t:DateTimeSent>2009-12-08T04:04:13Z</t:DateTimeSent>
+            <t:DateTimeCreated>2009-12-08T04:04:13Z</t:DateTimeCreated>
+            <t:DisplayCc/>
+            <t:DisplayTo>tyrion@example.com</t:DisplayTo>
+            <t:HasAttachments>true</t:HasAttachments>
+            <t:Culture>en-US</t:Culture>
+            <t:Sender>
+              <t:Mailbox>
+                <t:Name>Tyrion Lannister</t:Name>
+              </t:Mailbox>
+            </t:Sender>
+            <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
+            <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
+            <t:ConversationIndex>AcAAA7</t:ConversationIndex>
+            <t:ConversationTopic>Re: Regarding Braondon Stark</t:ConversationTopic>
+            <t:From>
+              <t:Mailbox>
+                <t:Name>Tyrion Lannister</t:Name>
+              </t:Mailbox>
+            </t:From>
+            <t:InternetMessageId>&lt;7@example.com&gt;</t:InternetMessageId>
+            <t:IsRead>true</t:IsRead>
+          </t:Message>
+        </t:Items>
+      </m:RootFolder>
+    </m:FindItemResponseMessage>
+  </m:ResponseMessages>
+</m:FindItemResponse>
