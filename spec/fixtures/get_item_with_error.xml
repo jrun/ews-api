@@ -1,0 +1,11 @@
+<m:GetItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+                  xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <m:ResponseMessages>
+    <m:GetItemResponseMessage ResponseClass="Error">
+      <m:MessageText>Id must be non-empty.</m:MessageText>
+      <m:ResponseCode>ErrorInvalidIdEmpty</m:ResponseCode>
+      <m:DescriptiveLinkKey>0</m:DescriptiveLinkKey>
+      <m:Items/>
+    </m:GetItemResponseMessage>
+  </m:ResponseMessages>
+</m:GetItemResponse>

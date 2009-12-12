@@ -1,0 +1,80 @@
+   <m:GetItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <m:ResponseMessages>
+        <m:GetItemResponseMessage ResponseClass="Success">
+          <m:ResponseCode>NoError</m:ResponseCode>
+          <m:Items>
+            <t:Message>
+              <t:ItemId Id="HRlZ" ChangeKey="0Tk4V"/>
+              <t:ParentFolderId Id="AQAUAAA" ChangeKey="AQAAAA=="/>
+              <t:ItemClass>REPORT.IPM.Note.NDR</t:ItemClass>
+              <t:Subject>A Clash of Kings</t:Subject>
+              <t:Sensitivity>Normal</t:Sensitivity>
+              <t:Body BodyType="HTML">&lt;html&gt;&lt;body&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper egestas accumsan. Nulla rhoncus porttitor dictum. Curabitur ac nulla a orci sollicitudin blandit at quis odio. Integer eleifend fringilla bibendum. Sed condimentum, lectus vitae suscipit sollicitudin, quam tortor faucibus nisl, ac tristique lectus justo in leo. Aliquam placerat arcu erat, vel lobortis dui. Nulla posuere sodales sapien eu interdum. Cras in pretium ante. Pellentesque ut velit est. Quisque nisl risus, molestie vel porta in, pellentesque a odio. Curabitur sit amet faucibus lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas et fermentum enim. Nulla ac dolor elit. Quisque eu dui sapien, ac tincidunt orci.&lt;/body&gt;&lt;/html&gt;</t:Body>
+              <t:Attachments>
+                <t:ItemAttachment>
+                  <t:AttachmentId Id="UAHR"/>
+                  <t:Name>A Clash of Kings</t:Name>
+                  <t:ContentType>message/rfc822</t:ContentType>
+                </t:ItemAttachment>
+              </t:Attachments>
+              <t:DateTimeReceived>2009-12-02T16:38:47Z</t:DateTimeReceived>
+              <t:Size>5496</t:Size>
+              <t:Importance>Normal</t:Importance>
+              <t:IsSubmitted>false</t:IsSubmitted>
+              <t:IsDraft>false</t:IsDraft>
+              <t:IsFromMe>false</t:IsFromMe>
+              <t:IsResend>false</t:IsResend>
+              <t:IsUnmodified>true</t:IsUnmodified>
+              <t:InternetMessageHeaders>
+                <t:InternetMessageHeader HeaderName="Received">from example.com (0.0.0.0) by example.com (0.0.0.0) with SMTP Server id 0.0.0.0; Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Received">from example.com ([0.0.0.0])  by example.com with SMTP; 02 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Received">from example.com (0.0.0.0) by example.com (0.0.0.0) with SMTP Server id 0.0.0.0; Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Received">from localhost by example.com;  02 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Subject">A Clash of Kings</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Message-ID">&lt;847mtq@example.com&gt;</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Date">Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="MIME-Version">1.0</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Content-Type">multipart/report</t:InternetMessageHeader>
+                <t:InternetMessageHeader HeaderName="Return-Path">&lt;&gt;</t:InternetMessageHeader>
+              </t:InternetMessageHeaders>
+              <t:DateTimeSent>2009-12-02T16:38:47Z</t:DateTimeSent>
+              <t:DateTimeCreated>2009-12-02T16:38:47Z</t:DateTimeCreated>
+              <t:ResponseObjects>
+                <t:ForwardItem/>
+              </t:ResponseObjects>
+              <t:DisplayCc/>
+              <t:DisplayTo>sansa@example.com</t:DisplayTo>
+              <t:HasAttachments>true</t:HasAttachments>
+              <t:Culture>en-US</t:Culture>
+              <t:Sender>
+                <t:Mailbox>
+                  <t:Name>Mail Delivery System</t:Name>
+                  <t:EmailAddress>DAEMON@example.com</t:EmailAddress>
+                  <t:RoutingType>SMTP</t:RoutingType>
+                </t:Mailbox>
+              </t:Sender>
+              <t:ToRecipients>
+                <t:Mailbox>
+                  <t:Name>sansa@example.com</t:Name>
+                  <t:EmailAddress>sansa@example.com</t:EmailAddress>
+                  <t:RoutingType>SMTP</t:RoutingType>
+                </t:Mailbox>
+              </t:ToRecipients>
+              <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
+              <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
+              <t:ConversationIndex>AAAADR</t:ConversationIndex>
+              <t:ConversationTopic>A Clash of Kings</t:ConversationTopic>
+              <t:From>
+                <t:Mailbox>
+                  <t:Name>Mail Delivery System</t:Name>
+                  <t:EmailAddress>DAEMON@example.com</t:EmailAddress>
+                  <t:RoutingType>SMTP</t:RoutingType>
+                </t:Mailbox>
+              </t:From>
+              <t:InternetMessageId>&lt;8i32324i$hmtq@example.com&gt;</t:InternetMessageId>
+              <t:IsRead>true</t:IsRead>
+            </t:Message>
+          </m:Items>
+        </m:GetItemResponseMessage>
+      </m:ResponseMessages>
+    </m:GetItemResponse>

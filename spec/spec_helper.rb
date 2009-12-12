@@ -5,13 +5,20 @@ require 'spec'
 require 'spec/autorun'
 
 module EWS::SpecHelper
+  def fixtures
+    @fixtures ||= Dir[File.dirname(__FILE__) + '/fixtures/*.xml'].inject({}) do |fixtures, f|
+      fixtures[File.basename(f).chomp('.xml')] = f
+      fixtures
+    end
+  end
+  
   def response_to_doc(name)
     to_doc response(name)
   end
   
   def response(name)
-    @responses ||= YAML.load_file File.dirname(__FILE__) + '/response_fixtures.yml'
-    wrap_in_soap_response @responses[name.to_s]
+    response = File.read fixtures[name.to_s]
+    wrap_in_soap_response response
   end
 
   def to_doc(xml)    

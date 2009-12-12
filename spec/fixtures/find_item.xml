@@ -1,0 +1,20 @@
+<m:FindItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+    <m:ResponseMessages>
+          <m:ResponseCode>NoError</m:ResponseCode>
+          <m:RootFolder TotalItemsInView="3" IncludesLastItemInRange="true">
+      <m:FindItemResponseMessage ResponseClass="Success">
+            <t:Items>
+              <t:Message>
+                <t:ItemId Id="1" ChangeKey="1"/>
+              </t:Message>
+              <t:Message>
+                <t:ItemId Id="2" ChangeKey="2"/>
+              </t:Message>
+              <t:Message>
+                <t:ItemId Id="3" ChangeKey="3"/>
+              </t:Message>
+            </t:Items>
+          </m:RootFolder>
+        </m:FindItemResponseMessage>
+      </m:ResponseMessages>
+    </m:FindItemResponse>

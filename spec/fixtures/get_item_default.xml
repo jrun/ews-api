@@ -1,0 +1,46 @@
+<m:GetItemResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <m:ResponseMessages>
+        <m:GetItemResponseMessage ResponseClass="Success">
+          <m:ResponseCode>NoError</m:ResponseCode>
+          <m:Items>
+            <t:Message>
+              <t:ItemId Id="EEE" ChangeKey="999"/>
+              <t:Subject>I am a subject. Hear me roar.</t:Subject>
+              <t:Sensitivity>Normal</t:Sensitivity>
+              <t:Body BodyType="HTML">&lt;html&gt;&lt;body&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ullamcorper egestas accumsan. Nulla rhoncus porttitor dictum. Curabitur ac nulla a orci sollicitudin blandit at quis odio. Integer eleifend fringilla bibendum. Sed condimentum, lectus vitae suscipit sollicitudin, quam tortor faucibus nisl, ac tristique lectus justo in leo. Aliquam placerat arcu erat, vel lobortis dui. Nulla posuere sodales sapien eu interdum. Cras in pretium ante. Pellentesque ut velit est. Quisque nisl risus, molestie vel porta in, pellentesque a odio. Curabitur sit amet faucibus lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas et fermentum enim. Nulla ac dolor elit. Quisque eu dui sapien, ac tincidunt orci.&lt;/body&gt;&lt;/html&gt;</t:Body>
+              <t:Attachments>
+                <t:ItemAttachment>
+                  <t:AttachmentId Id="XXX"/>
+                  <t:Name>I have attached myself to this message.</t:Name>
+                  <t:ContentType>message/rfc822</t:ContentType>
+                </t:ItemAttachment>
+              </t:Attachments>
+              <t:Size>5496</t:Size>
+              <t:DateTimeSent>2009-12-02T16:38:47Z</t:DateTimeSent>
+              <t:DateTimeCreated>2009-12-02T16:38:47Z</t:DateTimeCreated>
+              <t:ResponseObjects>
+                <t:ForwardItem/>
+              </t:ResponseObjects>
+              <t:HasAttachments>true</t:HasAttachments>
+              <t:ToRecipients>
+                <t:Mailbox>
+                  <t:Name>doesnotexist@example.com</t:Name>
+                  <t:EmailAddress>doesnotexist@example.com</t:EmailAddress>
+                  <t:RoutingType>SMTP</t:RoutingType>
+                </t:Mailbox>
+              </t:ToRecipients>
+              <t:IsReadReceiptRequested>false</t:IsReadReceiptRequested>
+              <t:IsDeliveryReceiptRequested>false</t:IsDeliveryReceiptRequested>
+              <t:From>
+                <t:Mailbox>
+                  <t:Name>Mail Delivery System</t:Name>
+                  <t:EmailAddress>MAILER-DAEMON@example.com</t:EmailAddress>
+                  <t:RoutingType>SMTP</t:RoutingType>
+                </t:Mailbox>
+              </t:From>
+              <t:IsRead>true</t:IsRead>
+            </t:Message>
+          </m:Items>
+        </m:GetItemResponseMessage>
+      </m:ResponseMessages>
+    </m:GetItemResponse>
