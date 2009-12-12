@@ -5,6 +5,12 @@ module EWS
       @attrs = attrs.dup
     end
     
+    protected
+    def service
+      EWS::Service
+    end
+
+    public
     def method_missing(meth, *args)
       method_name = meth.to_s
       if method_name.end_with?('=')
@@ -16,7 +22,7 @@ module EWS
       elsif @attrs.has_key?(meth)        
         @attrs[meth]        
       else
-        super method_name, *args
+        super meth, *args
       end
     end
     
