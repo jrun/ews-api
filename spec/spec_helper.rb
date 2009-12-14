@@ -30,7 +30,7 @@ module EWS::SpecHelper
   def mock_response(soap_body, headers = {}, status = 200)
     Handsoap::Http.drivers[:mock] =
       Handsoap::Http::Drivers::MockDriver.new(:status => status,
-                                              :headers => default_headers,
+                                              :headers => default_headers.merge(headers),
                                               :content => soap_body)
     Handsoap.http_driver = :mock
   end
