@@ -84,9 +84,15 @@ module EWS
         :parent_folder_id => parse_id(message_node.xpath('t:ParentFolderId')),
         :subject          => message_node.xpath('t:Subject/text()').to_s,
         :body             => message_node.xpath('t:Body/text()').to_s,
-        :body_type        => message_node.xpath('t:Body/@BodyType').to_s,
-        :has_attachments  => parse_bool(message_node.xpath('t:HasAttachments'))
+        :body_type        => message_node.xpath('t:Body/@BodyType').to_s
       }
+
+      nodeset = message_node.xpath('t:HasAttachments')
+      attrs[:has_attachments] = if nodeset.empty?
+        nil
+      else
+        parse_bool(nodeset)
+      end
 
       nodeset = message_node.xpath('t:Attachments')
       attrs[:attachments] = if nodeset.empty?
@@ -119,7 +125,6 @@ module EWS
     def parse_header(header_node)
       header_node.xpath('t:InternetMessageHeader').inject({}) do |header, node|
         name = node.xpath('@HeaderName').to_s.downcase
-        
         header[name] = [] unless header.has_key?(name)          
         header[name] << node.xpath('text()').to_s        
         header

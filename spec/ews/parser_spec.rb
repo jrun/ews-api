@@ -47,9 +47,6 @@ module EWS
       it "should set the header to nil because the internet message headers are not in the response" do
         @item.header.should be_nil
       end
-      it "should have 'shallow' items" do
-        @item.should be_shallow
-      end
     end
 
     context 'parsing get_item with all properites should build a message with' do
@@ -108,6 +105,17 @@ module EWS
       end
     end
 
+    context 'parsing get_item with base_shape of "IdOnly"' do
+      before(:each) do
+        @message = @parser.parse_get_item response_to_doc(:get_item_id_only)        
+      end
+
+      it "should set the item_id" do
+        @message.item_id[:id].should == 'AFTRNedwA'
+        @message.item_id[:change_key].should == 'FwAAA'
+      end
+    end
+    
     context 'parsing get_item with base_shape of "Default"' do
       before(:each) do
         @message = @parser.parse_get_item response_to_doc(:get_item_default)

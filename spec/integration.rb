@@ -92,12 +92,18 @@ describe 'Integration Tests' do
   end
   
   context 'get_item' do
-    it "should get the item using the Default base_shape" do
-      EWS::Service.get_item(EWS_CONFIG['item_id']).should be_instance_of(EWS::Message)
+    it "should get the item using the base_shape of 'IdOnly'" do
+      item = EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :IdOnly
+      item.should be_instance_of(EWS::Message)      
+    end
+    
+    it "should get the item using the base_shape of 'Default'" do
+      item = EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :Default
+      item.should be_instance_of(EWS::Message)
     end
 
-    it "should get the item using the AllProperties base_shape" do
-      item = EWS::Service.get_item(EWS_CONFIG['item_id'], :base_shape => :AllProperties)
+    it "should get the item using the base_shape of 'AllProperties'" do
+      item = EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :AllProperties
       item.should be_instance_of(EWS::Message)
     end
 
