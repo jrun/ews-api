@@ -23,13 +23,32 @@ module EWS
     end
     
     context 'parsing find_item with the base_shape of "AllProperties"' do
+      before(:each) do
+        @items = @parser.parse_find_item response_to_doc(:find_item_all_properties)
+        @item = @items.first
+      end
+
       it "should build an array of items" do
-        items = @parser.parse_find_item response_to_doc(:find_item_all_properties)
-        items.size.should == 3
-        
-        item = items.first
-        item.item_id.should == {:id => 'BUEm5G5U', :change_key => 'LABU0Ut45'}
-        item.subject.should == 'test'
+        @items.size.should == 3
+      end
+
+      it "should set the item id" do              
+        @item.item_id.should == {:id => 'BUEm5G5U', :change_key => 'LABU0Ut45'}
+      end
+
+      it "should set the message body to nil" do
+        @item.body.should be_nil
+      end
+
+      it "should set the attachments to nil because they are not in the response" do
+        @item.attachments.should be_nil
+      end
+
+      it "should set the header to nil because the internet message headers are not in the response" do
+        @item.header.should be_nil
+      end
+      it "should have 'shallow' items" do
+        @item.should be_shallow
       end
     end
 
@@ -84,7 +103,7 @@ module EWS
         @message = @parser.parse_get_item response_to_doc(:get_item_no_attachments)
       end
 
-      it "should create a message with an empty array of attachments" do
+      it "should create an item with an empty array of attachments" do
         @message.attachments.should == []
       end
     end
@@ -98,8 +117,8 @@ module EWS
         @message.parent_folder_id be_nil
       end
 
-      it "should set the header to an empty hash" do
-        @message.header.should == {}
+      it "should set the header to nil when the internet message headers are not present" do
+        @message.header.should be_nil
       end
     end
     

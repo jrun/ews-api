@@ -73,12 +73,16 @@ describe 'Integration Tests' do
   end
 
   context 'find_item' do
-    it "should find the item without errors" do
-      lambda do
-        EWS::Service.find_item :inbox, :base_shape => :AllProperties
-      end.should_not raise_error
+    it "should find the item using the base_shape of 'Default'" do
+      items = EWS::Service.find_item :inbox, :base_shape => :Default
+      items.should be_instance_of(Array)
     end
 
+    it "should find the item using the base_shape of 'AllProperties'" do
+      items = EWS::Service.find_item :inbox, :base_shape => :AllProperties
+      items.should be_instance_of(Array)
+    end
+    
     it "should raise a Fault when the item does not exist" do
       error_msg = /The value 'does-not-exist' is invalid according to its datatype/
       lambda do

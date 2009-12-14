@@ -85,15 +85,27 @@ module EWS
         :subject          => message_node.xpath('t:Subject/text()').to_s,
         :body             => message_node.xpath('t:Body/text()').to_s,
         :body_type        => message_node.xpath('t:Body/@BodyType').to_s,
-        :has_attachments  => parse_bool(message_node.xpath('t:HasAttachments')),
-        :attachments      => parse_attachments(message_node.xpath('t:Attachments')),
-        :header           => parse_header(message_node.xpath('t:InternetMessageHeaders'))
+        :has_attachments  => parse_bool(message_node.xpath('t:HasAttachments'))
       }
+
+      nodeset = message_node.xpath('t:Attachments')
+      attrs[:attachments] = if nodeset.empty?
+        nil
+      else
+        parse_attachments nodeset
+      end
+
+      nodeset = message_node.xpath('t:InternetMessageHeaders')
+      attrs[:header] = if nodeset.empty?
+        nil
+      else
+        parse_header nodeset
+      end
+      
       Message.new attrs
     end
 
     def parse_attachments(attachments_node)
-      return [] if attachments_node.empty?
       attachments_node.xpath('t:ItemAttachment').map do |node|
         attrs = {
           :attachment_id => node.xpath('t:AttachmentId/@Id').to_s,
@@ -105,7 +117,6 @@ module EWS
     end
 
     def parse_header(header_node)
-      return {} if header_node.empty?
       header_node.xpath('t:InternetMessageHeader').inject({}) do |header, node|
         name = node.xpath('@HeaderName').to_s.downcase
         

@@ -4,8 +4,14 @@ module EWS
     def initialize(attrs = {})
       @attrs = attrs.dup
     end
+
+    def shallow?
+      raise NotImplementedError, "Each model must determine when it is shallow."
+    end
     
     protected
+    attr_reader :attrs
+    
     def service
       EWS::Service
     end
