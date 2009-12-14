@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jrun"]
-  s.date = %q{2009-12-11}
+  s.date = %q{2009-12-14}
   s.description = %q{Exchange Web Services API. It doesn't use soap4r.}
   s.email = %q{jeremy.burks@gmail.com}
   s.extra_rdoc_files = [
@@ -32,10 +32,22 @@ Gem::Specification.new do |s|
      "lib/ews/model.rb",
      "lib/ews/parser.rb",
      "lib/ews/service.rb",
+     "spec/ews/folder_spec.rb",
+     "spec/ews/message_spec.rb",
+     "spec/ews/model_spec.rb",
      "spec/ews/parser_spec.rb",
      "spec/ews/service_spec.rb",
+     "spec/fixtures/find_folder.xml",
+     "spec/fixtures/find_item.xml",
+     "spec/fixtures/find_item_all_properties.xml",
+     "spec/fixtures/get_attachment.xml",
+     "spec/fixtures/get_folder.xml",
+     "spec/fixtures/get_item_all_properties.xml",
+     "spec/fixtures/get_item_default.xml",
+     "spec/fixtures/get_item_id_only.xml",
+     "spec/fixtures/get_item_no_attachments.xml",
+     "spec/fixtures/get_item_with_error.xml",
      "spec/integration.rb",
-     "spec/response_fixtures.yml",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -45,10 +57,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Exchange Web Services API}
   s.test_files = [
-    "spec/ews/parser_spec.rb",
-     "spec/ews/service_spec.rb",
+    "spec/spec_helper.rb",
      "spec/integration.rb",
-     "spec/spec_helper.rb"
+     "spec/ews/parser_spec.rb",
+     "spec/ews/message_spec.rb",
+     "spec/ews/folder_spec.rb",
+     "spec/ews/service_spec.rb",
+     "spec/ews/model_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

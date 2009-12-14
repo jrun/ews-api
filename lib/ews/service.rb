@@ -10,7 +10,10 @@ module EWS
   # @see http://msdn.microsoft.com/en-us/library/bb409286.aspx Exchange Web Services Operations
   # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx BaseShape
   class Service < Handsoap::Service
-    
+    def self.endpoint(uri)
+      super :uri => uri, :version => 1
+    end
+                 
     @@username, @@password = nil, nil
           
     def set_auth(username, password)
@@ -432,7 +435,7 @@ module EWS
     private
     def parser
       @parser ||= Parser.new      
-    end   
+    end
     
     # helpers
     
