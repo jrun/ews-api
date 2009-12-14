@@ -1,75 +1,77 @@
-<m:GetAttachmentResponse xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
-      <m:ResponseMessages>
-        <m:GetAttachmentResponseMessage ResponseClass="Success">
-          <m:ResponseCode>NoError</m:ResponseCode>
-          <m:Attachments>
-            <t:ItemAttachment>
-              <t:AttachmentId Id="CCC"/>
-              <t:Name>I am an Attachment</t:Name>
-              <t:ContentType>message/rfc822</t:ContentType>
-              <t:Message>
-                <t:ItemClass>IPM.Note</t:ItemClass>
-                <t:Subject>I am subject. Hear me roar.</t:Subject>
-                <t:Sensitivity>Normal</t:Sensitivity>
-                <t:Body BodyType="Text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</t:Body>
-                <t:DateTimeReceived>2009-12-02T16:38:47Z</t:DateTimeReceived>
-                <t:Size>930</t:Size>
-                <t:Importance>Normal</t:Importance>
-                <t:IsSubmitted>false</t:IsSubmitted>
-                <t:IsDraft>false</t:IsDraft>
-                <t:IsFromMe>false</t:IsFromMe>
-                <t:IsResend>false</t:IsResend>
-                <t:IsUnmodified>false</t:IsUnmodified>
-                <t:InternetMessageHeaders>
-                  <t:InternetMessageHeader HeaderName="Received">from email.example.com ([0.0.0.0])  by filter.example.com; 02 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Received">from email.example.com (0.0.0.0) by email.example.com (0.0.0.0) with Microsoft SMTP Server ; Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Message-ID">&lt;boo@smtp.example.com&gt;</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Date">Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Subject">I am subject. Hear me roar.</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="MIME-Version">1.0</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Content-Type">text/plain</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Content-Transfer-Encoding">7bit</t:InternetMessageHeader>
-                  <t:InternetMessageHeader HeaderName="Return-Path">return@example.com</t:InternetMessageHeader>
-                </t:InternetMessageHeaders>
-                <t:DateTimeSent>2009-12-02T16:38:47Z</t:DateTimeSent>
-                <t:DateTimeCreated>2009-12-02T16:38:47Z</t:DateTimeCreated>
-                <t:ResponseObjects>
-                  <t:ReplyToItem/>
-                  <t:ReplyAllToItem/>
-                  <t:ForwardItem/>
-                </t:ResponseObjects>
-                <t:DisplayCc/>
-                <t:Display>jon.snow@example.com</t:DisplayTo>
-                <t:HasAttachments>false</t:HasAttachments>
-                <t:Culture>en</t:Culture>
-                <t:Sender>
-                  <t:Mailbox>
-                    <t:Name>arya@example.com</t:Name>
-                    <t:EmailAddress>arya@example.com</t:EmailAddress>
-                    <t:RoutingType>SMTP</t:RoutingType>
-                  </t:Mailbox>
-                </t:Sender>
-                <t:ToRecipients>
-                  <t:Mailbox>
-                    <t:Name>jon.snow@example.com</t:Name>
-                    <t:EmailAddress>jon.snow@example.com</t:EmailAddress>
-                    <t:RoutingType>SMTP</t:RoutingType>
-                  </t:Mailbox>
-                </t:ToRecipients>
-                <t:ConversationIndex>XYZ</t:ConversationIndex>
-                <t:ConversationTopic>I am subject. Hear me roar.</t:ConversationTopic>
-                <t:From>
-                  <t:Mailbox>
-                    <t:Name>arya@example.com</t:Name>
-                    <t:EmailAddress>arya@example.com</t:EmailAddress>
-                    <t:RoutingType>SMTP</t:RoutingType>
-                  </t:Mailbox>
-                </t:From>
-                <t:InternetMessageId>&lt;boo@smtp.example.com&gt;</t:InternetMessageId>
-                <t:IsRead>true</t:IsRead>
-              </t:Message>
-            </t:ItemAttachment>
-          </m:Attachments>
-        </m:GetAttachmentResponseMessage>
-      </m:ResponseMessages>
-    </m:GetAttachmentResponse>
+<m:GetAttachmentResponse 
+    xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" 
+    xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <m:ResponseMessages>
+    <m:GetAttachmentResponseMessage ResponseClass="Success">
+      <m:ResponseCode>NoError</m:ResponseCode>
+      <m:Attachments>
+        <t:ItemAttachment>
+          <t:AttachmentId Id="CCC"/>
+          <t:Name>I am an Attachment</t:Name>
+          <t:ContentType>message/rfc822</t:ContentType>
+          <t:Message>
+            <t:ItemClass>IPM.Note</t:ItemClass>
+            <t:Subject>I am subject. Hear me roar.</t:Subject>
+            <t:Sensitivity>Normal</t:Sensitivity>
+            <t:Body BodyType="Text">Lorem ipsum dolor sit amet</t:Body>
+            <t:DateTimeReceived>2009-12-02T16:38:47Z</t:DateTimeReceived>
+            <t:Size>930</t:Size>
+            <t:Importance>Normal</t:Importance>
+            <t:IsSubmitted>false</t:IsSubmitted>
+            <t:IsDraft>false</t:IsDraft>
+            <t:IsFromMe>false</t:IsFromMe>
+            <t:IsResend>false</t:IsResend>
+            <t:IsUnmodified>false</t:IsUnmodified>
+            <t:InternetMessageHeaders>
+              <t:InternetMessageHeader HeaderName="Received">from email.example.com ([0.0.0.0])  by filter.example.com; 02 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Received">from email.example.com (0.0.0.0) by email.example.com (0.0.0.0) with Microsoft SMTP Server ; Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Message-ID">&lt;boo@smtp.example.com&gt;</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Date">Wed, 2 Dec 2009 10:38:47 -0600</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Subject">I am subject. Hear me roar.</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="MIME-Version">1.0</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Content-Type">text/plain</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Content-Transfer-Encoding">7bit</t:InternetMessageHeader>
+              <t:InternetMessageHeader HeaderName="Return-Path">return@example.com</t:InternetMessageHeader>
+            </t:InternetMessageHeaders>
+            <t:DateTimeSent>2009-12-02T16:38:47Z</t:DateTimeSent>
+            <t:DateTimeCreated>2009-12-02T16:38:47Z</t:DateTimeCreated>
+            <t:ResponseObjects>
+              <t:ReplyToItem/>
+              <t:ReplyAllToItem/>
+              <t:ForwardItem/>
+            </t:ResponseObjects>
+            <t:DisplayCc/>
+            <t:DisplayTo>jon.snow@example.com</t:DisplayTo>
+            <t:HasAttachments>false</t:HasAttachments>
+            <t:Culture>en</t:Culture>
+            <t:Sender>
+              <t:Mailbox>
+                <t:Name>arya@example.com</t:Name>
+                <t:EmailAddress>arya@example.com</t:EmailAddress>
+                <t:RoutingType>SMTP</t:RoutingType>
+              </t:Mailbox>
+            </t:Sender>
+            <t:ToRecipients>
+              <t:Mailbox>
+                <t:Name>jon.snow@example.com</t:Name>
+                <t:EmailAddress>jon.snow@example.com</t:EmailAddress>
+                <t:RoutingType>SMTP</t:RoutingType>
+              </t:Mailbox>
+            </t:ToRecipients>
+            <t:ConversationIndex>XYZ</t:ConversationIndex>
+            <t:ConversationTopic>I am subject. Hear me roar.</t:ConversationTopic>
+            <t:From>
+              <t:Mailbox>
+                <t:Name>arya@example.com</t:Name>
+                <t:EmailAddress>arya@example.com</t:EmailAddress>
+                <t:RoutingType>SMTP</t:RoutingType>
+              </t:Mailbox>
+            </t:From>
+            <t:InternetMessageId>&lt;boo@smtp.example.com&gt;</t:InternetMessageId>
+            <t:IsRead>true</t:IsRead>
+          </t:Message>
+        </t:ItemAttachment>
+      </m:Attachments>
+    </m:GetAttachmentResponseMessage>
+  </m:ResponseMessages>
+</m:GetAttachmentResponse>

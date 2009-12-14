@@ -381,6 +381,7 @@ module EWS
           end
         end
       end
+      parser.parse_get_attachment response.document
     end
     
     def get_delegate

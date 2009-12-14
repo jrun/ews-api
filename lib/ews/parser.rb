@@ -27,6 +27,10 @@ module EWS
       # TODO: support all of the types of items
       parse_message doc.xpath('//t:Message')
     end
+
+    def parse_get_attachment(doc)
+      parse_attachments(doc.xpath('//m:Attachments')).first
+    end
     
     RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
                           '//m:GetFolderResponseMessage',
