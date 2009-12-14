@@ -249,7 +249,7 @@ module EWS
         end
         find_item.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |folder_id|
-            folder_id.set_attr 'Id', parent_folder_name
+            folder_id.set_attr 'Id', parent_folder_name.to_s.downcase
           end
         end
       end
