@@ -12,7 +12,7 @@ require 'ews/service'
 module EWS
   def self.folder(name)
     folder = Service.get_folder(name, :base_shape => :AllProperties)
-    folder.items = Service.find_item(name)
+    folder.items = Service.find_item(name, :base_shape => :AllProperties)
     folder
   end
 end
