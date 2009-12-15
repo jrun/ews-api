@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-EWS::Service.endpoint :uri => 'http://localhost/ews/exchange.aspx', :version => 1
+EWS::Service.endpoint 'http://localhost/ews/exchange.aspx'
 
 describe EWS::Service do
   context '#get_item' do    
