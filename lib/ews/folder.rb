@@ -1,6 +1,14 @@
 module EWS  
 
   class Folder < Model
+    def id
+      attrs[:folder_id][:id]
+    end
+
+    def change_key
+      attrs[:folder_id][:change_key]
+    end
+    
     def each_message
       find_folder_items.each do |message|
         yield message
