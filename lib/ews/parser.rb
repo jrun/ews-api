@@ -79,7 +79,7 @@ module EWS
         nil
       end
     end
-
+      
     def parse_message(message_node)
       attrs = {
         :item_id          => parse_id(message_node.xpath('t:ItemId')),
@@ -92,7 +92,7 @@ module EWS
       nodeset = message_node.xpath('t:HasAttachments')
       attrs[:has_attachments] = if not nodeset.empty?
         parse_bool(nodeset)
-                                end
+      end
       
       nodeset = message_node.xpath('t:Attachments')
       attrs[:attachments] = if not nodeset.empty?
