@@ -12,6 +12,11 @@ module EWS
     def shallow?
       self.body.nil? || self.header.nil?
     end
+
+    def move_to!(folder_id)
+      # TODO: support DistinguishedFolderId?
+      Service.move_to! folder_id, [self.id]
+    end
   end
   
 end
