@@ -10,7 +10,7 @@ require 'ews/parser'
 require 'ews/service'
 
 module EWS
-  def self.folder(name)
-    Service.get_folder(name, :base_shape => :AllProperties)
+  def self.inbox
+    Service.get_folder(:inbox, :base_shape => :AllProperties)
   end
 end
