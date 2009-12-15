@@ -121,21 +121,43 @@ describe 'Integration Tests' do
       end.should_not raise_error
     end
 
-    it "should raise a SoapError when the ResponseMessage is an Error" do
+    it "should raise a EWS::ResponseError when the ResponseMessage is an Error" do
       lambda do
         EWS::Service.get_attachment(nil)
       end.should raise_error(EWS::ResponseError, /Id must be non-empty/)
     end
   end
-  
-  context 'EWS' do
-    context '.folder' do
-      it "should get the folder" do
-        folder = EWS.folder(:inbox)
-        folder.should be_an_instance_of(EWS::Folder)
-        folder.name.should == 'Inbox'
-      end
+
+  context 'move_item' do
+    #it "should move the item" do
+    #  folder_id = 'AQAUAHRlc3RxZHNib3VuY2VAcWcuY29tAC4AAAMXckeXPuMKT4uj0fYRoj0SAQAUIOj2Wr1iR63wVBJuRuVLABU0TWDnAAAA'
+    #  
+    #  id = 'AAAUAHRlc3RxZHNib3VuY2VAcWcuY29tAEYAAAAAABdyR5c+4wpPi6PR9hGiPRIHABQg6PZavWJHrfBUEm5G5UsAFTRNedwAABQg6PZavWJHrfBUEm5G5UsAFTRNhHAAAA=='
+    #
+    #  EWS::Service.move_item!(folder_id, [id])
+    # end
+
+    it "should raise an EWS::ResponseError when the item id does not exist" do
+      lambda do
+        EWS::Service.move_item!('aaaaa', ['does-not-exist'])
+      end.should raise_error(EWS::ResponseError, /Id is malformed/)
+    end
+
+    it "should raise a EWS::ResponseError when the folder_id does not exist" do
+      lambda do
+        EWS::Service.move_item!('does-not-exist', ['whatever'])
+      end.should raise_error(EWS::ResponseError, /Id is malformed/)      
     end
   end
+  
+#  context 'EWS' do
+#    context '.folder' do
+#      it "should get the folder" do
+#        folder = EWS.folder(:inbox)
+#        folder.should be_an_instance_of(EWS::Folder)
+#        folder.name.should == 'Inbox'
+#      end
+#    end
+#  end
 
 end

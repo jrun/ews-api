@@ -331,11 +331,42 @@ module EWS
         raise "TODO"
       end
     end
-    
-    def move_item!
+
+    # @param folder_id Name of the destination folder
+    # @param item_ids [Array] List of item ids to be moved
+    #
+    # @example Request
+    #   <MoveItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+    #            xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+    #    <ToFolderId>
+    #      <t:FolderId Id="drafts"/>
+    #    </ToFolderId>
+    #    <ItemIds>
+    #      <t:ItemId Id="AAAtAEF/swbAAA=" ChangeKey="EwAAABYA/s4b"/>
+    #    </ItemIds>
+    #  </MoveItem>
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa565781%28EXCHG.80%29.aspx
+    # MoveItem
+    #
+    # @see http://msdn.microsoft.com/en-us/library/aa580808%28EXCHG.80%29.aspx
+    # DistinguishedFolderId
+    #
+    def move_item!(folder_id, item_ids)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'
-      response = invoke('tns:MoveItem', soap_action) do |message|
-        raise "TODO"
+      response = invoke('tns:MoveItem', soap_action) do |move_item|
+        move_item.add('tns:ToFolderId') do |to_folder|
+
+          # TODO: Support both FolderID and DistinguishedFolderId
+          to_folder.add('t:FolderId') do |folder_id_node|
+            folder_id_node.set_attr 'Id', folder_id
+          end          
+        end
+        move_item.add('tns:ItemIds') do |ids|
+          item_ids.each do |item_id|
+            ids.add('t:ItemId') {|item_node| item_node.set_attr 'Id', item_id }
+          end
+        end
       end
     end
     
