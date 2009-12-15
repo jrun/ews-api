@@ -97,6 +97,7 @@ module EWS
           end
         end
       end
+      parser.parse_find_folder response.document
     end
 
     # @param [Hash] opts Options to manipulate the FindFolder response
@@ -241,8 +242,7 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
     # BaseShape    
     def find_item(parent_folder_name = :root, opts = {})
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
-      
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'      
       opts[:base_shape] ||= :IdOnly
       
       response = invoke('tns:FindItem', soap_action) do |find_item|

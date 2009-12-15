@@ -8,6 +8,10 @@ module EWS
     def change_key
       attrs[:folder_id][:change_key]
     end
+
+    def name
+      attrs[:display_name]
+    end
     
     def each_message
       find_folder_items.each do |message|

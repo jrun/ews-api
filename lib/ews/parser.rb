@@ -1,19 +1,20 @@
 module EWS
   
   class Parser
+    def parse_find_folder(doc)
+      doc.xpath('//t:Folders/child::*').map do |node|
+        parse_exchange_folder node.xpath('.') # force NodeSelection
+      end.compact
+    end
+    
     def parse_get_folder(doc)
-      folder = doc.xpath('//t:Folder')
-      attrs = {
-        :folder_id => parse_id(folder.xpath('t:FolderId')),
-        :name      => folder.xpath('t:DisplayName/text()').to_s
-      }      
-      Folder.new attrs
+      parse_exchange_folder doc.xpath('//m:Folders/child::*[1]')
     end
     
     def parse_find_item(doc)
       doc.xpath('//t:Items/child::*').map do |node|
         parse_exchange_item node.xpath('.') # force NodeSelection
-      end.compact    
+      end.compact
     end
     
     def parse_get_item(doc)      
@@ -38,8 +39,33 @@ module EWS
     end
 
     private
+    def parse_exchange_folder(folder_node)
+      case folder_node.node_name
+      when 'Folder'
+        parse_folder folder_node
+      when 'CalendarFolder'
+      when 'ContactsFolder'
+      when 'SearchFolder'
+      when 'TasksFolder'
+      else
+        nil
+      end
+    end
+    
+    def parse_folder(folder_node)
+      attrs = {
+        :folder_id          => parse_id(folder_node.xpath('t:FolderId')),
+        :display_name       => folder_node.xpath('t:DisplayName/text()').to_s,
+        :total_count        => folder_node.xpath('t:TotalCount/text()').to_i,
+        :child_folder_count => folder_node.xpath('t:ChildFolderCount/text()').to_i,
+        :unread_count       => folder_node.xpath('t:UnreadCount/text()').to_i
+      }   
+      Folder.new attrs
+    end
+    
     def parse_exchange_item(item_node)
       case item_node.node_name
+      when 'Item'
       when 'Message'
         parse_message item_node
       when 'CalendarItem'
