@@ -5,7 +5,7 @@ module EWS
   describe Message do
     before(:each) do
       @parser = Parser.new
-      @message = @parser.parse_get_item  response_to_doc(:get_item_all_properties)
+      @message = @parser.parse_get_item response_to_doc(:get_item_all_properties)
     end
     
     it "#id should be the item_id id" do

@@ -107,7 +107,7 @@ module EWS
 
     context 'parsing get_item with base_shape of "IdOnly"' do
       before(:each) do
-        @message = @parser.parse_get_item response_to_doc(:get_item_id_only)        
+        @message = @parser.parse_get_item response_to_doc(:get_item_id_only)
       end
 
       it "should set the item_id" do

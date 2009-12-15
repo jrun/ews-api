@@ -3,33 +3,26 @@ module EWS
   class Parser
     def parse_get_folder(doc)
       folder = doc.xpath('//t:Folder')
-
       attrs = {
-        :folder_id => folder.xpath('t:FolderId/@Id').to_s,
+        :folder_id  => folder.xpath('t:FolderId/@Id').to_s,
         :change_key => folder.xpath('t:FolderId/@ChangeKey').to_s,
-        :name => folder.xpath('t:DisplayName/text()').to_s
+        :name       => folder.xpath('t:DisplayName/text()').to_s
       }      
       Folder.new attrs
     end
     
     def parse_find_item(doc)
-      doc.xpath('//t:Items/*').map do |node|
-        case node.node_name
-        when 'Message'
-          parse_message node.xpath('.') # force NodeSelection
-        else
-          nil
-        end
+      doc.xpath('//t:Items/child::*').map do |node|
+        parse_exchange_item node.xpath('.') # force NodeSelection
       end.compact    
     end
     
-    def parse_get_item(doc)
-      # TODO: support all of the types of items
-      parse_message doc.xpath('//t:Message')
+    def parse_get_item(doc)      
+      parse_exchange_item doc.xpath('//m:Items/child::*[1]')
     end
 
     def parse_get_attachment(doc)
-      parse_attachments(doc.xpath('//m:Attachments')).first
+      parse_attachment doc.xpath('//m:Attachments/child::*[1]')
     end
     
     RESPONSE_MSG_XPATH = ['//m:FindFolderResponseMessage',
@@ -81,8 +74,23 @@ module EWS
     end
 
     private
+    def parse_exchange_item(item_node)
+      case item_node.node_name
+      when 'Message'
+        parse_message item_node
+      when 'CalendarItem'
+      when 'Contact'
+      when 'Task'
+      when 'MeetingMessage'
+      when 'MeetingRequest'
+      when 'MeetingResponse'
+      when 'MeetingCancellation'
+      else
+        nil
+      end
+    end
+
     def parse_message(message_node)
-      return nil if message_node.empty?
       attrs = {
         :item_id          => parse_id(message_node.xpath('t:ItemId')),
         :parent_folder_id => parse_id(message_node.xpath('t:ParentFolderId')),
@@ -92,38 +100,51 @@ module EWS
       }
 
       nodeset = message_node.xpath('t:HasAttachments')
-      attrs[:has_attachments] = if nodeset.empty?
-        nil
-      else
+      attrs[:has_attachments] = if not nodeset.empty?
         parse_bool(nodeset)
-      end
-
+                                end
+      
       nodeset = message_node.xpath('t:Attachments')
-      attrs[:attachments] = if nodeset.empty?
-        nil
-      else
-        parse_attachments nodeset
+      attrs[:attachments] = if not nodeset.empty?
+        nodeset.xpath('t:ItemAttachment|t:FileAttachment').map do |node|
+          parse_attachment node
+        end
       end
 
       nodeset = message_node.xpath('t:InternetMessageHeaders')
-      attrs[:header] = if nodeset.empty?
-        nil
-      else
+      attrs[:header] = if not nodeset.empty?
         parse_header nodeset
       end
-      
+   
       Message.new attrs
     end
 
-    def parse_attachments(attachments_node)
-      attachments_node.xpath('t:ItemAttachment').map do |node|
-        attrs = {
-          :attachment_id => node.xpath('t:AttachmentId/@Id').to_s,
-          :name          => node.xpath('t:Name/text()').to_s,
-          :content_type  => node.xpath('t:ContentType/text()').to_s
-        }
-        Attachment.new attrs
+    EXCHANGE_ITEM_XPATH = ['t:Item',
+                           't:Message',
+                           't:CalendarItem',
+                           't:Contact',
+                           't:Task',
+                           't:MeetingMessage',
+                           't:MeetingRequest',
+                           't:MeetingResponse',
+                           't:MeetingCancellation'].join('|').freeze
+    
+    def parse_attachment(attachment_node)
+      attrs = {
+        :attachment_id => attachment_node.xpath('t:AttachmentId/@Id').to_s,
+        :name          => attachment_node.xpath('t:Name/text()').to_s,
+        :content_type  => attachment_node.xpath('t:ContentType/text()').to_s,
+        :content_id    => attachment_node.xpath('t:ContentId/text()').to_s,
+        :content_location => attachment_node.xpath('t:ContentLocation/text()').to_s
+      }
+      
+      case attachment_node.node_name
+      when 'ItemAttachment'
+        attrs[:item] = parse_exchange_item attachment_node.xpath(EXCHANGE_ITEM_XPATH)
+      when 'FileAttachment'
       end
+      
+      Attachment.new attrs
     end
 
     def parse_header(header_node)
@@ -151,6 +172,5 @@ module EWS
         nil
       end
     end
-
   end
 end
