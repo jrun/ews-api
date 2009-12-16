@@ -19,7 +19,7 @@ module EWS
     it "should be able to move itself to the give folder id" do
       id = 'xyz'
       folder_id = '123'
-      Service.should_receive(:move_to!).with(folder_id, [id])
+      Service.should_receive(:move_item!).with(folder_id, [id])
 
       Message.new(:item_id => {:id => id}).move_to!(folder_id)
     end
