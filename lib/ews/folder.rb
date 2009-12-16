@@ -12,19 +12,32 @@ module EWS
     def name
       attrs[:display_name]
     end
-    
+
     def each_message
-      find_folder_items.each do |message|
-        yield message
+      items.each {|message| yield message }
+    end
+
+    def folders
+      @folders ||= find_folders.inject({}) do |folders, folder|
+        folders[folder.name] = folder
+        folders
       end
     end
 
+    def items
+      @items ||= find_folder_items
+    end
+    
     private
     def find_folder_items
       # NOTE: This assumes Service#find_item only returns
       # Messages. That is true now but will change as more
       # of the parser is implemented.
-      @items ||= service.find_item(self.name.downcase, :base_shape => :AllProperties)
+      service.find_item(self.name, :base_shape => :AllProperties)
+    end
+
+    def find_folders
+      service.find_folder(self.name)
     end
   end
   

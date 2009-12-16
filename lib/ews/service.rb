@@ -93,7 +93,7 @@ module EWS
         end
         find_folder.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |id|
-            id.set_attr 'Id', parent_folder_name
+            id.set_attr 'Id', parent_folder_name.to_s.downcase
           end
         end
       end

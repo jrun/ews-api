@@ -150,14 +150,4 @@ describe 'Integration Tests' do
     end
   end
   
-#  context 'EWS' do
-#    context '.folder' do
-#      it "should get the folder" do
-#        folder = EWS.folder(:inbox)
-#        folder.should be_an_instance_of(EWS::Folder)
-#        folder.name.should == 'Inbox'
-#      end
-#    end
-#  end
-
 end

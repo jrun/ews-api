@@ -6,6 +6,32 @@ module EWS
       @parser = Parser.new
     end
 
+    context '#folders' do
+      it "should be indexed by display name" do
+        mock_response response(:find_folder)
+        folder = Folder.new        
+        folder.folders['subfolder1'].should_not be_nil
+        folder.folders['subfolder2'].should_not be_nil
+      end
+    end
+
+    context '#each_message' do
+      it "should iterate through the messages" do
+        mock_response response(:find_item_all_properties)
+        
+        message_count = 0
+        subjects = ['test', 'Regarding Brandon Stark', 'Re: Regarding Brandon Stark']
+        folder = Folder.new(:display_name => 'Inbox')
+        
+        folder.each_message do |message|
+          message_count += 1
+          message.subject.should == subjects.shift
+        end
+        
+        message_count.should == 3
+      end
+    end
+    
     context 'get' do
       before(:each) do
         @folder = @parser.parse_get_folder response_to_doc(:get_folder)
@@ -42,20 +68,6 @@ module EWS
       it "should have a unread count" do
         @folder.unread_count.should == 0
       end
-      
-      it "should iterate through each message" do
-        mock_response response(:find_item_all_properties)
-        
-        message_count = 0
-        subjects = ['test', 'Regarding Brandon Stark', 'Re: Regarding Brandon Stark']
-        
-        @folder.each_message do |message|
-          message_count += 1
-          message.subject.should == subjects.shift
-        end
-        
-        message_count.should == 3
-      end
     end
 
     context 'find' do
@@ -65,7 +77,7 @@ module EWS
 
       it "should build an array of folders" do
         @folders.size.should > 0
-        @folders.first.should be_instance_of(EWS::Folder)
+        @folders.first.should be_instance_of(Folder)
       end
     end
     

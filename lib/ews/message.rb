@@ -15,7 +15,7 @@ module EWS
 
     def move_to!(folder_id)
       # TODO: support DistinguishedFolderId?
-      Service.move_to! folder_id, [self.id]
+      service.move_to! folder_id, [self.id]
     end
   end
   

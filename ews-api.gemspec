@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jrun"]
-  s.date = %q{2009-12-14}
+  s.date = %q{2009-12-16}
   s.description = %q{Exchange Web Services API. It doesn't use soap4r.}
   s.email = %q{jeremy.burks@gmail.com}
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/ews/model.rb",
      "lib/ews/parser.rb",
      "lib/ews/service.rb",
+     "spec/ews/attachment_spec.rb",
      "spec/ews/folder_spec.rb",
      "spec/ews/message_spec.rb",
      "spec/ews/model_spec.rb",
@@ -61,6 +62,7 @@ Gem::Specification.new do |s|
      "spec/integration.rb",
      "spec/ews/parser_spec.rb",
      "spec/ews/message_spec.rb",
+     "spec/ews/attachment_spec.rb",
      "spec/ews/folder_spec.rb",
      "spec/ews/service_spec.rb",
      "spec/ews/model_spec.rb"
