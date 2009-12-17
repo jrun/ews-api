@@ -5,9 +5,9 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ews-api}
-  s.version = "0.0.1"
+  s.version = "0.1.0.a"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["jrun"]
   s.date = %q{2009-12-17}
   s.description = %q{Exchange Web Services API. It doesn't use soap4r.}
