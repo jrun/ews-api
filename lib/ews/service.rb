@@ -287,13 +287,8 @@ module EWS
           builder.base_shape! shape, opts
           shape.add 't:IncludeMimeContent', false
         end
-        get_item.add('tns:ItemIds') do |ids|
-          ids.add('t:ItemId') do |item|
-            item.set_attr 'Id', item_id
-            if opts[:change_key]
-              item.set_attr 'ChangeKey', opts[:change_key]
-            end
-          end
+        get_item.add('tns:ItemIds') do |item_ids|
+          builder.item_id! item_ids, item_id, opts
         end
       end
       parser.parse_get_item response.document
@@ -357,10 +352,8 @@ module EWS
             folder_id_node.set_attr 'Id', folder_id
           end          
         end
-        move_item.add('tns:ItemIds') do |ids|
-          item_ids.each do |item_id|
-            ids.add('t:ItemId') {|item_node| item_node.set_attr 'Id', item_id }
-          end
+        move_item.add('tns:ItemIds') do |ids|          
+          item_ids.each {|item_id| builder.item_id! ids, item_id }
         end
       end
     end
