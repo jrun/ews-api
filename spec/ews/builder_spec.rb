@@ -23,9 +23,36 @@ describe EWS::Builder do
       @builder.base_shape!(@doc, :base_shape => 'IdOnly')      
       @doc.to_s.should == expected_base_shape('IdOnly')      
     end
+
+    context "#distinguished_folder_id! should build a DistinguishedFolderId" do        
+      it "given a symbol as the folder name " do
+        @builder.distinguished_folder_id!(@doc, :inbox)
+        @doc.to_s.should == expected_distinguished_folder_id
+      end
+
+      it "givne  a capitalized string as the folder name " do
+        @builder.distinguished_folder_id!(@doc, 'Inbox')
+        @doc.to_s.should == expected_distinguished_folder_id
+      end
+
+      it "with a ChangeKey when the :change_key option is given" do
+        @builder.distinguished_folder_id!(@doc, :inbox, :change_key => '222')
+        @doc.to_s.should == expected_distinguished_folder_id_with_change_key
+      end
+    end
   end
 
+  TNS = %q|xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"|
+  
   def expected_base_shape(shape)
-    %Q|<t:BaseShape xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">#{shape}</t:BaseShape>|
+    %Q|<t:BaseShape #{TNS}>#{shape}</t:BaseShape>|
+  end
+
+  def expected_distinguished_folder_id
+    %Q|<t:DistinguishedFolderId #{TNS} Id="inbox" />|
+  end
+
+  def expected_distinguished_folder_id_with_change_key
+    %Q|<t:DistinguishedFolderId #{TNS} ChangeKey="222" Id="inbox" />|
   end
 end

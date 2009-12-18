@@ -94,9 +94,7 @@ module EWS
           builder.base_shape! shape, opts
         end
         find_folder.add('tns:ParentFolderIds') do |ids|
-          ids.add('t:DistinguishedFolderId') do |id|
-            id.set_attr 'Id', parent_folder_name.to_s.downcase
-          end
+          builder.distinguished_folder_id! ids, parent_folder_name, opts
         end
       end
       parser.parse_find_folder response.document
@@ -251,9 +249,7 @@ module EWS
           builder.base_shape! shape, opts
         end
         find_item.add('tns:ParentFolderIds') do |ids|
-          ids.add('t:DistinguishedFolderId') do |folder_id|
-            folder_id.set_attr 'Id', parent_folder_name.to_s.downcase
-          end
+          builder.distinguished_folder_id! ids, parent_folder_name, opts
         end
       end
       parser.parse_find_item response.document
