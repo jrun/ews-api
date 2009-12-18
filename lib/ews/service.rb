@@ -126,7 +126,7 @@ module EWS
           builder.base_shape! shape, opts
         end
         get_folder.add('tns:FolderIds') do |ids|
-          ids.add('t:DistinguishedFolderId') { |id| id.set_attr 'Id', name }
+          builder.distinguished_folder_id! ids, name, opts
         end
       end
       parser.parse_get_folder response.document
