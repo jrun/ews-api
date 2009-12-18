@@ -2,6 +2,7 @@ require 'net/ntlm'
 require 'handsoap'
 
 require 'ews/error'
+require "ews/distinguished_folders"
 require 'ews/model'
 require 'ews/attachment'
 require 'ews/message'

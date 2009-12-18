@@ -85,17 +85,14 @@ module EWS
     # @todo Support options
     #   Traversal: +Shallow, Deep, SoftDeleted+
     #   FolderShape: +IdOnly, Default, AllProperties+
-    def find_folder(parent_folder_name = :root, opts = {})
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'
-      
+    def find_folder(folder_ids = :root, opts = {})
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'     
       response = invoke('tns:FindFolder', soap_action) do |find_folder|
         find_folder.set_attr 'Traversal', 'Deep'
         find_folder.add('tns:FolderShape') do |shape|
           builder.base_shape! shape, opts
-        end
-        find_folder.add('tns:ParentFolderIds') do |ids|
-          builder.distinguished_folder_id! ids, parent_folder_name, opts
-        end
+        end        
+        builder.parent_folder_ids! find_folder, folder_ids, opts
       end
       parser.parse_find_folder response.document
     end
@@ -118,16 +115,13 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa580274.aspx
     # MSDN - GetFolder operation
     #
-    def get_folder(name = :root, opts = {})
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'
-      
+    def get_folder(folder_id = :root, opts = {})
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'      
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
         get_folder.add('tns:FolderShape') do |shape|
           builder.base_shape! shape, opts
         end
-        get_folder.add('tns:FolderIds') do |ids|
-          builder.distinguished_folder_id! ids, name, opts
-        end
+        builder.folder_ids! get_folder, folder_id, opts
       end
       parser.parse_get_folder response.document
     end
@@ -240,7 +234,7 @@ module EWS
     #
     # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
     # BaseShape    
-    def find_item(parent_folder_name = :root, opts = {})
+    def find_item(folder_ids = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'      
       
       response = invoke('tns:FindItem', soap_action) do |find_item|
@@ -248,9 +242,7 @@ module EWS
         find_item.add('tns:ItemShape') do |shape|
           builder.base_shape! shape, opts
         end
-        find_item.add('tns:ParentFolderIds') do |ids|
-          builder.distinguished_folder_id! ids, parent_folder_name, opts
-        end
+        builder.parent_folder_ids! find_item, folder_ids, opts
       end
       parser.parse_find_item response.document
     end
