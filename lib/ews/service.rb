@@ -27,16 +27,19 @@ module EWS
     end
     
     def on_create_document(doc)
-      # register namespaces for the request
-      doc.alias 'tns', 'http://schemas.microsoft.com/exchange/services/2006/messages'
-      doc.alias 't', 'http://schemas.microsoft.com/exchange/services/2006/types'
+      register_aliases! doc    
     end
     
     def on_response_document(doc)
       apply_namespaces! doc
       parser.parse_response_message doc
     end
-
+    
+    def register_aliases!(doc)
+      doc.alias 'tns', 'http://schemas.microsoft.com/exchange/services/2006/messages'
+      doc.alias 't', 'http://schemas.microsoft.com/exchange/services/2006/types'
+    end
+    
     def apply_namespaces!(doc)
       doc.add_namespace 'soap', '"http://schemas.xmlsoap.org/soap/envelope'
       doc.add_namespace 't', 'http://schemas.microsoft.com/exchange/services/2006/types'
@@ -84,12 +87,11 @@ module EWS
     #   FolderShape: +IdOnly, Default, AllProperties+
     def find_folder(parent_folder_name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'
-      opts[:base_shape] ||= :Default
       
       response = invoke('tns:FindFolder', soap_action) do |find_folder|
         find_folder.set_attr 'Traversal', 'Deep'
         find_folder.add('tns:FolderShape') do |shape|
-          shape.add 't:BaseShape', opts[:base_shape]
+          builder.base_shape! shape, opts
         end
         find_folder.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |id|
@@ -120,11 +122,10 @@ module EWS
     #
     def get_folder(name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'
-      opts[:base_shape] ||= :Default
       
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
         get_folder.add('tns:FolderShape') do |shape|
-          shape.add 't:BaseShape', opts[:base_shape]
+          builder.base_shape! shape, opts
         end
         get_folder.add('tns:FolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') { |id| id.set_attr 'Id', name }
@@ -243,12 +244,11 @@ module EWS
     # BaseShape    
     def find_item(parent_folder_name = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'      
-      opts[:base_shape] ||= :IdOnly
       
       response = invoke('tns:FindItem', soap_action) do |find_item|
         find_item.set_attr 'Traversal', 'Shallow'
         find_item.add('tns:ItemShape') do |shape|
-          shape.add 't:BaseShape', opts[:base_shape]
+          builder.base_shape! shape, opts
         end
         find_item.add('tns:ParentFolderIds') do |ids|
           ids.add('t:DistinguishedFolderId') do |folder_id|
@@ -285,11 +285,10 @@ module EWS
     # ItmeIds
     def get_item(item_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
-      opts[:base_shape] ||= :Default
       
       response = invoke('tns:GetItem', soap_action) do |get_item|
         get_item.add('tns:ItemShape') do |shape|
-          shape.add 't:BaseShape', opts[:base_shape]
+          builder.base_shape! shape, opts
           shape.add 't:IncludeMimeContent', false
         end
         get_item.add('tns:ItemIds') do |ids|
@@ -468,9 +467,9 @@ module EWS
     def parser
       @parser ||= Parser.new      
     end
-    
-    # helpers
-    
-    # TODO
+
+    def builder
+      @builder ||= Builder.new
+    end
   end
 end
