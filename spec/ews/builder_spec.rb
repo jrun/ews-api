@@ -8,7 +8,7 @@ describe EWS::Builder do
     EWS::Service.register_aliases! @doc
   end
 
-  context "#build_base_shape!" do
+  context "#base_shape!" do
     it "should build a BaseShape node with 'Default'" do
       @builder.base_shape!(@doc)      
       @doc.to_s.should == expected_base_shape('Default')
