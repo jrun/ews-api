@@ -7,6 +7,7 @@ require 'ews/model'
 require 'ews/attachment'
 require 'ews/message'
 require 'ews/folder'
+require "ews/builders/shape_builder"
 require 'ews/builder'
 require 'ews/parser'
 require 'ews/service'

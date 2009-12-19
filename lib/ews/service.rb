@@ -89,9 +89,7 @@ module EWS
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindFolder'     
       response = invoke('tns:FindFolder', soap_action) do |find_folder|
         find_folder.set_attr 'Traversal', 'Deep'
-        find_folder.add('tns:FolderShape') do |shape|
-          builder.base_shape! shape, opts
-        end        
+        builder.folder_shape! find_folder, opts
         builder.parent_folder_ids! find_folder, folder_ids, opts
       end
       parser.parse_find_folder response.document
@@ -118,9 +116,7 @@ module EWS
     def get_folder(folder_id = :root, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetFolder'      
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
-        get_folder.add('tns:FolderShape') do |shape|
-          builder.base_shape! shape, opts
-        end
+        builder.folder_shape! get_folder, opts
         builder.folder_ids! get_folder, folder_id, opts
       end
       parser.parse_get_folder response.document
@@ -235,13 +231,10 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa580545.aspx
     # BaseShape    
     def find_item(folder_ids = :root, opts = {})
-      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'      
-      
+      soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/FindItem'
       response = invoke('tns:FindItem', soap_action) do |find_item|
         find_item.set_attr 'Traversal', 'Shallow'
-        find_item.add('tns:ItemShape') do |shape|
-          builder.base_shape! shape, opts
-        end
+        builder.item_shape! find_item, opts
         builder.parent_folder_ids! find_item, folder_ids, opts
       end
       parser.parse_find_item response.document
@@ -273,15 +266,9 @@ module EWS
     # ItmeIds
     def get_item(item_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
-      
       response = invoke('tns:GetItem', soap_action) do |get_item|
-        get_item.add('tns:ItemShape') do |shape|
-          builder.base_shape! shape, opts
-          shape.add 't:IncludeMimeContent', false
-        end
-        get_item.add('tns:ItemIds') do |item_ids|
-          builder.item_id! item_ids, item_id, opts
-        end
+        builder.item_shape! get_item, opts
+        builder.item_ids! get_item, item_id, opts
       end
       parser.parse_get_item response.document
     end
@@ -378,10 +365,10 @@ module EWS
     #
     # @see http://msdn.microsoft.com/en-us/library/aa494316.aspx
     # GetAttachment
-    def get_attachment(attachment_id)
+    def get_attachment(attachment_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment'
       response = invoke('tns:GetAttachment', soap_action) do |get_attachment|
-        get_attachment.add('tns:AttachmentShape')
+        builder.attachment_shape! get_attachment, opts
         get_attachment.add('tns:AttachmentIds') do |ids|
           ids.add('t:AttachmentId') do |attachment|
             attachment.set_attr 'Id', attachment_id
