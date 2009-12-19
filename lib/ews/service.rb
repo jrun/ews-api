@@ -338,11 +338,7 @@ module EWS
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'
       response = invoke('tns:MoveItem', soap_action) do |move_item|
         move_item.add('tns:ToFolderId') do |to_folder|
-
-          # TODO: Support both FolderID and DistinguishedFolderId
-          to_folder.add('t:FolderId') do |folder_id_node|
-            folder_id_node.set_attr 'Id', folder_id
-          end          
+          builder.folder_id! to_folder, folder_id
         end
         move_item.add('tns:ItemIds') do |ids|          
           item_ids.each {|item_id| builder.item_id! ids, item_id }
