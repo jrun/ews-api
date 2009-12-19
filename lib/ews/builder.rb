@@ -1,17 +1,19 @@
 module EWS
   
+  # @see http://msdn.microsoft.com/en-us/library/aa563810(EXCHG.80).aspx
+  # AdditionalProperties
+  # @see http://msdn.microsoft.com/en-us/library/aa580545(EXCHG.80).aspx
+  # BaseShape  
+  # @see http://msdn.microsoft.com/en-us/library/aa565622(EXCHG.80).aspx
+  # BodyType
+  # @see http://msdn.microsoft.com/en-us/library/aa580499(EXCHG.80).aspx
+  # IncludeMimeContent  
   class Builder
     # @param [Hash] opts
     # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
     # @option opts [true, false] :include_mime_content
     # @option opts [String, Symbol] :body_type Best, HTML or Text
-    # @option opts [Symbol] :additional_properties
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa580499(EXCHG.80).aspx
-    # IncludeMimeContent
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa565622(EXCHG.80).aspx
-    # BodyType
+    # @option opts [Symbol] :additional_properties  
     def item_shape!(action, opts = {})      
       action.add('tns:ItemShape') do |shape|
         ShapeBuilder.new(shape, opts) do
@@ -68,7 +70,6 @@ module EWS
       id_element! parent, 't:ItemId', item_id, opts
     end
 
-    
     # @param parent [Handsoap::XmlMason::Node]
     #
     # @param folder_id [String, Symbol] When a EWS::DistinguishedFolder a
