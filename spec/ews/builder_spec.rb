@@ -1,8 +1,15 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
+module BuilderHelper
+  def builder(opts = {})
+    EWS::Builder.new(@doc, opts)
+  end
+end
+
 describe EWS::Builder do
+  include BuilderHelper
+  
   before(:each) do
-    @builder = EWS::Builder.new
     @doc = Handsoap::XmlMason::Document.new
     @doc.xml_header = nil
     EWS::Service.register_aliases! @doc
@@ -32,32 +39,32 @@ EOS
       end
 
     it "with the BaseShape of 'Default' when no :base_shape option is given" do
-      @builder.item_shape!(@doc)
+      builder.item_shape!
       @doc.to_s.should == expected_item_shape('Default')
     end
     
     it "with the BaseShape of 'Default'" do
-      @builder.item_shape!(@doc)      
+      builder.item_shape!
       @doc.to_s.should == expected_item_shape('Default')
     end
 
     it "with the BaseShape of 'AllProperties'" do
-      @builder.item_shape!(@doc, :base_shape => 'AllProperties')      
+      builder(:base_shape => 'AllProperties').item_shape!
       @doc.to_s.should == expected_item_shape('AllProperties')      
     end
 
     it "with the BaseShape of  'IdOnly'" do
-      @builder.item_shape!(@doc, :base_shape => 'IdOnly')      
+      builder(:base_shape => 'IdOnly').item_shape!
       @doc.to_s.should == expected_item_shape('IdOnly')      
     end
 
     it "with IncludeMimeContent false" do
-      @builder.item_shape!(@doc, :include_mime_content => false)
+      builder(:include_mime_content => false).item_shape!
       @doc.to_s.should == expected_include_mime_type(false)
     end
 
     it "with IncludeMimeContent true" do
-      @builder.item_shape!(@doc, :include_mime_content => true)
+      builder(:include_mime_content => true).item_shape!
       @doc.to_s.should == expected_include_mime_type(true)
     end
 
@@ -74,22 +81,22 @@ EOS
     end
 
     it "with the BaseShape of 'Default' when no :base_shape option is given" do
-      @builder.folder_shape!(@doc)
+      builder.folder_shape!
       @doc.to_s.should == expected_folder_shape('Default')
     end
     
     it "with the BaseShape of 'Default'" do
-      @builder.folder_shape!(@doc)      
+      builder.folder_shape!
       @doc.to_s.should == expected_folder_shape('Default')
     end
 
     it "with the BaseShape of 'AllProperties'" do
-      @builder.folder_shape!(@doc, :base_shape => 'AllProperties')      
+      builder(:base_shape => 'AllProperties').folder_shape!
       @doc.to_s.should == expected_folder_shape('AllProperties')      
     end
 
     it "with the BaseShape of  'IdOnly'" do
-      @builder.folder_shape!(@doc, :base_shape => 'IdOnly')      
+      builder(:base_shape => 'IdOnly').folder_shape!
       @doc.to_s.should == expected_folder_shape('IdOnly')      
     end
   end  
@@ -118,22 +125,22 @@ EOS
     end
     
     it "an empty shape when no options are given" do
-      @builder.attachment_shape!(@doc)
+      builder.attachment_shape!
       @doc.to_s.should == expected_empty_shape
     end
     
     it "with IncludeMimeContent false" do
-      @builder.attachment_shape!(@doc, :include_mime_content => false)
+      builder(:include_mime_content => false).attachment_shape!
       @doc.to_s.should == expected_include_mime_type(false)
     end
 
     it "with IncludeMimeContent true" do
-      @builder.attachment_shape!(@doc, :include_mime_content => true)
+      builder(:include_mime_content => true).attachment_shape!
       @doc.to_s.should == expected_include_mime_type(true)
     end
     
     it "with BodyType Best" do
-      @builder.attachment_shape!(@doc, :body_type => :Best)
+      builder(:body_type => :Best).attachment_shape!
       @doc.to_s.should == expected_body_type(:Best)      
     end
   end
@@ -148,12 +155,12 @@ EOS
     end
     
     it "given an id" do
-      @builder.item_id!(@doc, 'XYZ')
+      builder.item_id!(@doc, 'XYZ')
       @doc.to_s.should == expected_item_id
     end
 
     it "with a ChangeKey whe the :change_key option is given" do
-      @builder.item_id!(@doc, 'XYZ', :change_key => '123')
+      builder.item_id!(@doc, 'XYZ', :change_key => '123')
       @doc.to_s.should == expected_item_id_with_change_key
     end
   end
@@ -169,12 +176,12 @@ EOS
       end
       
       it "given an id" do
-        @builder.folder_id!(@doc, 'XYZ')
+        builder.folder_id!(@doc, 'XYZ')
         @doc.to_s.should == expected_folder_id
       end
       
       it "with a ChangeKey whe the :change_key option is given" do
-        @builder.folder_id!(@doc, 'XYZ', :change_key => '123')
+        builder.folder_id!(@doc, 'XYZ', :change_key => '123')
         @doc.to_s.should == expected_folder_id_with_change_key
       end
     end
@@ -190,13 +197,13 @@ EOS
     
       EWS::DistinguishedFolders.each do |folder|
         it "given #{folder.inspect}" do
-          @builder.folder_id!(@doc, folder)
+          builder.folder_id!(@doc, folder)
           @doc.to_s.should == expected_distinguished_folder_id(folder)
         end
       end
       
       it "with a ChangeKey when given the :change_key option" do
-        @builder.folder_id!(@doc, :inbox, :change_key => '222')
+        builder.folder_id!(@doc, :inbox, :change_key => '222')
         @doc.to_s.should == expected_distinguished_folder_id_with_change_key
       end
     end
@@ -232,17 +239,17 @@ EOS
     end
         
     it "when given one id" do
-      @builder.parent_folder_ids!(@doc, '111')
+      builder.parent_folder_ids!('111')
       @doc.to_s.should == expected_parent_folder_ids_with_one
     end
 
     it "when given one distinguished folder" do
-      @builder.parent_folder_ids!(@doc, :inbox)
+      builder.parent_folder_ids!(:inbox)
       @doc.to_s.should == expected_parent_folder_ids_with_one_distinguished
     end
 
     it "when given an array of ids" do
-      @builder.parent_folder_ids!(@doc, ['111', :inbox])
+      builder.parent_folder_ids!(['111', :inbox])
       @doc.to_s.should == expected_parent_folder_ids_with_more
     end
   end

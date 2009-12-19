@@ -9,14 +9,19 @@ module EWS
   # @see http://msdn.microsoft.com/en-us/library/aa580499(EXCHG.80).aspx
   # IncludeMimeContent  
   class Builder
+    def initialize(action_node, opts, &block)
+      @action_node, @opts = action_node, opts
+      instance_eval(&block) if block_given?
+    end
+    
     # @param [Hash] opts
     # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
     # @option opts [true, false] :include_mime_content
     # @option opts [String, Symbol] :body_type Best, HTML or Text
     # @option opts [Symbol] :additional_properties  
-    def item_shape!(action, opts = {})      
-      action.add('tns:ItemShape') do |shape|
-        ShapeBuilder.new(shape, opts) do
+    def item_shape!
+      @action_node.add('tns:ItemShape') do |shape_node|
+        ShapeBuilder.new(shape_node, @opts) do
           base_shape!
           include_mime_content!
           body_type!
@@ -28,9 +33,9 @@ module EWS
     # @param [Hash] opts
     # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
     # @option opts [Symbol] :additional_properties
-    def folder_shape!(action, opts = {})
-      action.add('tns:FolderShape') do |shape|
-        ShapeBuilder.new(shape, opts)  do
+    def folder_shape!
+      @action_node.add('tns:FolderShape') do |shape_node|
+        ShapeBuilder.new(shape_node, @opts)  do
           base_shape!
           additional_properties!
         end
@@ -44,9 +49,9 @@ module EWS
     #
     # @see http://msdn.microsoft.com/en-us/library/aa563727(EXCHG.80).aspx
     # AttachmentShape
-    def attachment_shape!(action, opts = {})
-      action.add('tns:AttachmentShape') do |shape|
-        ShapeBuilder.new(shape, opts) do
+    def attachment_shape!
+      @action_node.add('tns:AttachmentShape') do |shape|
+        ShapeBuilder.new(shape, @opts) do
           include_mime_content!
           body_type!
           additional_properties!
@@ -56,15 +61,53 @@ module EWS
     
     # @see http://msdn.microsoft.com/en-us/library/aa563525(EXCHG.80).aspx
     # ItemIds
-    def item_ids!(action, item_ids, opts = {})
-      action.add('tns:ItemIds') do |ids_element|
+    def item_ids!(item_ids)
+      @action_node.add('tns:ItemIds') do |ids_element|
         to_a(item_ids).each do |item_id|
-          item_id! ids_element, item_id, opts
+          item_id! ids_element, item_id, @opts
+        end
+      end
+    end
+
+    # @see http://msdn.microsoft.com/en-us/library/aa565998(EXCHG.80).aspx
+    # ParentFolderIds
+    def parent_folder_ids!(folder_ids)
+      folder_ids_element! 'tns:ParentFolderIds', folder_ids
+    end
+
+    # @see http://msdn.microsoft.com/en-us/library/aa580509(EXCHG.80).aspx
+    # FolderIds
+    def folder_ids!(folder_ids)
+      folder_ids_element! 'tns:FolderIds', folder_ids
+    end
+    
+    def folder_ids_element!(ids_element_name, folder_ids)
+      @action_node.add(ids_element_name) do |ids_element|
+        to_a(folder_ids).each do |folder_id|
+          folder_id! ids_element, folder_id
         end
       end
     end
     
-    # @see http://msdn.microsoft.com/en-us/library/aa580234(EXCHG.80).aspx
+    def attachment_ids!(attachment_ids)
+      @action_node.add('tns:AttachmentIds') do |ids_node|
+        to_a(attachment_ids).each do |attachment_id|
+          id_element! ids_node, 't:AttachmentId', attachment_id
+        end
+      end
+    end
+
+    def to_folder_id!(folder_id)
+      @action_node.add('tns:ToFolderId') do |folder_id_node|
+        folder_id! folder_id_node, folder_id, @opts
+      end
+    end
+    
+    def traversal!
+      @action_node.set_attr 'Traversal', (@opts[:traversal] || :Shallow) 
+    end
+
+        # @see http://msdn.microsoft.com/en-us/library/aa580234(EXCHG.80).aspx
     # ItemId
     def item_id!(parent, item_id, opts = {})
       id_element! parent, 't:ItemId', item_id, opts
@@ -91,28 +134,8 @@ module EWS
       end
       id_element! parent, folder_id_element_name, folder_id, opts
     end
-    
-    # @see http://msdn.microsoft.com/en-us/library/aa565998(EXCHG.80).aspx
-    # ParentFolderIds
-    def parent_folder_ids!(action, folder_ids, opts = {})
-      folder_ids_element! action, 'tns:ParentFolderIds', folder_ids, opts
-    end
 
-    # @see http://msdn.microsoft.com/en-us/library/aa580509(EXCHG.80).aspx
-    # FolderIds
-    def folder_ids!(action, folder_ids, opts = {})
-      folder_ids_element! action, 'tns:FolderIds', folder_ids, opts
-    end
-            
-    private
-    def folder_ids_element!(parent, ids_element_name, folder_ids, opts = {})
-      parent.add(ids_element_name) do |ids_element|
-        to_a(folder_ids).each do |folder_id|
-          folder_id! ids_element, folder_id, opts
-        end
-      end
-    end
-    
+    # @param opts [Hash] Still an argument so opts can remain optional
     def id_element!(parent, id_name, id, opts = {})
       parent.add(id_name) do |id_element|
         id_element.set_attr 'Id', id        
@@ -129,7 +152,7 @@ module EWS
         [ids]
       end
     end
-    
+
   end
   
 end

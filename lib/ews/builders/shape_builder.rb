@@ -2,7 +2,7 @@ module EWS
   class ShapeBuilder
     def initialize(shape, opts = {}, &block)
       @shape, @opts = shape, opts
-      instance_eval(&block)# if block_given?
+      instance_eval(&block) if block_given?
     end
     
     def base_shape!
