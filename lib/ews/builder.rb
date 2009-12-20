@@ -69,23 +69,7 @@ module EWS
       end
     end
 
-    # @see http://msdn.microsoft.com/en-us/library/aa565998(EXCHG.80).aspx
-    # ParentFolderIds
-    def parent_folder_ids!(folder_ids)
-      folder_container! 'tns:ParentFolderIds', folder_ids
-    end
-
-    # @see http://msdn.microsoft.com/en-us/library/aa580509(EXCHG.80).aspx
-    # FolderIds
-    def folder_ids!(folder_ids)
-      folder_container! 'tns:FolderIds', folder_ids
-    end
-        
-    def to_folder_id!(folder_id)
-      folder_container! 'tns:ToFolderId', folder_id
-    end
-        
-    def folder_container!(container_node_name, folder_ids)
+    def folder_id_container!(container_node_name, folder_ids)
       @action_node.add(container_node_name) do |container_node|
         to_a(folder_ids).each do |folder_id|
           folder_id! container_node, folder_id, @opts

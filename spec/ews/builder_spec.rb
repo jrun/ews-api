@@ -209,7 +209,7 @@ EOS
     end
   end
   
-  context "#parent_folder_ids should bulid ParentFolderIds" do
+  context "#folder_id_container should bulid the container node" do
     def expected_parent_folder_ids_with_one
       (<<-EOS
 <tns:ParentFolderIds #{MNS}>
@@ -239,17 +239,17 @@ EOS
     end
         
     it "when given one id" do
-      builder.parent_folder_ids!('111')
+      builder.folder_id_container! 'tns:ParentFolderIds', '111'
       @doc.to_s.should == expected_parent_folder_ids_with_one
     end
 
     it "when given one distinguished folder" do
-      builder.parent_folder_ids!(:inbox)
+      builder.folder_id_container! 'tns:ParentFolderIds', :inbox
       @doc.to_s.should == expected_parent_folder_ids_with_one_distinguished
     end
 
     it "when given an array of ids" do
-      builder.parent_folder_ids!(['111', :inbox])
+      builder.folder_id_container! 'tns:ParentFolderIds', ['111', :inbox]
       @doc.to_s.should == expected_parent_folder_ids_with_more
     end
   end

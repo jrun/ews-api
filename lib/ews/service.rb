@@ -91,7 +91,7 @@ module EWS
         builder(find_folder, opts) do
           traversal!
           folder_shape!
-          parent_folder_ids! folder_ids
+          folder_id_container! 'tns:ParentFolderIds', folder_ids
         end        
       end
       parser.parse_find_folder response.document
@@ -120,7 +120,7 @@ module EWS
       response = invoke('tns:GetFolder', soap_action) do |get_folder|
         builder(get_folder, opts) do 
           folder_shape!
-          folder_ids! folder_id
+          folder_id_container! 'tns:FolderIds', folder_id
         end
       end
       parser.parse_get_folder response.document
@@ -240,7 +240,7 @@ module EWS
         builder(find_item, opts) do
           traversal!
           item_shape!
-          parent_folder_ids! folder_ids
+          folder_id_container! 'tns:ParentFolderIds', folder_ids         
         end
       end
       parser.parse_find_item response.document
@@ -281,10 +281,13 @@ module EWS
       parser.parse_get_item response.document
     end
     
-    def create_item!
+    def create_item!(item, destination_folder_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/CreateItem'
-      response = invoke('tns:CreateItem', soap_action) do |message|
-        raise "TODO"
+      response = invoke('tns:CreateItem', soap_action) do |create_item|
+        builder(create_item, opts) do
+          folder_id_container! 'SavedItemFolderId', destination_folder_id
+        end
+        raise 'TODO'
       end
     end
     
@@ -333,7 +336,7 @@ module EWS
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'
       response = invoke('tns:MoveItem', soap_action) do |move_item|
         builder(move_item, opts) do
-          to_folder_id! folder_id
+          folder_id_container! 'tns:ToFolderId', folder_id
           item_ids! item_ids
         end
       end
