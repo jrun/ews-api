@@ -60,26 +60,26 @@ module EWS
     end
     
     def item_id_container!(container_node_name, item_ids)
-      @action_node.add(container_node_name) do |container_node|
-        to_a(item_ids).each do |item_id|
-          item_id! container_node, item_id, @opts
-        end
+      id_container!(container_node_name, item_ids) do |container_node, id|
+        item_id! container_node, id, @opts
       end
     end
 
     def folder_id_container!(container_node_name, folder_ids)
-      @action_node.add(container_node_name) do |container_node|
-        to_a(folder_ids).each do |folder_id|
-          folder_id! container_node, folder_id, @opts
-        end
+      id_container!(container_node_name, folder_ids) do |container_node, id|
+        folder_id! container_node, id, @opts
       end
     end
 
     def attachment_ids!(attachment_ids)
-      @action_node.add('tns:AttachmentIds') do |ids_node|
-        to_a(attachment_ids).each do |attachment_id|
-          id_node! ids_node, 't:AttachmentId', attachment_id
-        end
+      id_container!('tns:AttachmentIds', attachment_ids) do |container_node, id|
+        id_node! container_node, 't:AttachmentId', id
+      end
+    end
+    
+    def id_container!(container_node_name, ids)
+      @action_node.add(container_node_name) do |container_node|
+        to_a(ids).each {|id| yield container_node, id }
       end
     end
 
