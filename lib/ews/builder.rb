@@ -59,12 +59,10 @@ module EWS
       end
     end
     
-    # @see http://msdn.microsoft.com/en-us/library/aa563525(EXCHG.80).aspx
-    # ItemIds
-    def item_ids!(item_ids)
-      @action_node.add('tns:ItemIds') do |ids_element|
+    def item_id_container!(container_node_name, item_ids)
+      @action_node.add(container_node_name) do |container_node|
         to_a(item_ids).each do |item_id|
-          item_id! ids_element, item_id, @opts
+          item_id! container_node, item_id, @opts
         end
       end
     end
@@ -80,7 +78,7 @@ module EWS
     def attachment_ids!(attachment_ids)
       @action_node.add('tns:AttachmentIds') do |ids_node|
         to_a(attachment_ids).each do |attachment_id|
-          id_element! ids_node, 't:AttachmentId', attachment_id
+          id_node! ids_node, 't:AttachmentId', attachment_id
         end
       end
     end
@@ -91,8 +89,8 @@ module EWS
         
     # @see http://msdn.microsoft.com/en-us/library/aa580234(EXCHG.80).aspx
     # ItemId
-    def item_id!(parent, item_id, opts = {})
-      id_element! parent, 't:ItemId', item_id, opts
+    def item_id!(container_node, item_id, opts = {})
+      id_node! container_node, 't:ItemId', item_id, opts
     end
         
     # @param parent [Handsoap::XmlMason::Node]
@@ -108,20 +106,20 @@ module EWS
     #   
     # @see http://msdn.microsoft.com/en-us/library/aa579461(EXCHG.80).aspx
     # FolderId
-    def folder_id!(parent, folder_id, opts = {})
-      folder_id_element_name = if DistinguishedFolders.include?(folder_id)
+    def folder_id!(container_node, folder_id, opts = {})
+      node_name = if DistinguishedFolders.include?(folder_id)
         't:DistinguishedFolderId'
       else
         't:FolderId'
       end
-      id_element! parent, folder_id_element_name, folder_id, opts
+      id_node! container_node, node_name, folder_id, opts
     end
 
     # @param opts [Hash] Still an argument so opts can remain optional
-    def id_element!(parent, id_name, id, opts = {})
-      parent.add(id_name) do |id_element|
-        id_element.set_attr 'Id', id        
-        id_element.set_attr 'ChangeKey', opts[:change_key] if opts[:change_key]
+    def id_node!(container_node, id_node_name, id, opts = {})
+      container_node.add(id_node_name) do |id_node|
+        id_node.set_attr 'Id', id        
+        id_node.set_attr 'ChangeKey', opts[:change_key] if opts[:change_key]
       end 
     end
 

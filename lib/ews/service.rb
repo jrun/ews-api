@@ -275,7 +275,7 @@ module EWS
       response = invoke('tns:GetItem', soap_action) do |get_item|
         builder(get_item, opts) do
           item_shape!
-          item_ids! item_id
+          item_id_container! 'tns:ItemIds', item_id
         end
       end
       parser.parse_get_item response.document
@@ -332,12 +332,12 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa580808%28EXCHG.80%29.aspx
     # DistinguishedFolderId
     #
-    def move_item!(folder_id, item_ids, opts = {})
+    def move_item!(folder_id, item_id, opts = {})
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/MoveItem'
       response = invoke('tns:MoveItem', soap_action) do |move_item|
         builder(move_item, opts) do
           folder_id_container! 'tns:ToFolderId', folder_id
-          item_ids! item_ids
+          item_id_container! 'tns:ItemIds', item_id
         end
       end
     end
