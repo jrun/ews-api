@@ -72,23 +72,27 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa565998(EXCHG.80).aspx
     # ParentFolderIds
     def parent_folder_ids!(folder_ids)
-      folder_ids_element! 'tns:ParentFolderIds', folder_ids
+      folder_container! 'tns:ParentFolderIds', folder_ids
     end
 
     # @see http://msdn.microsoft.com/en-us/library/aa580509(EXCHG.80).aspx
     # FolderIds
     def folder_ids!(folder_ids)
-      folder_ids_element! 'tns:FolderIds', folder_ids
+      folder_container! 'tns:FolderIds', folder_ids
     end
-    
-    def folder_ids_element!(ids_element_name, folder_ids)
-      @action_node.add(ids_element_name) do |ids_element|
+        
+    def to_folder_id!(folder_id)
+      folder_container! 'tns:ToFolderId', folder_id
+    end
+        
+    def folder_container!(container_node_name, folder_ids)
+      @action_node.add(container_node_name) do |container_node|
         to_a(folder_ids).each do |folder_id|
-          folder_id! ids_element, folder_id
+          folder_id! container_node, folder_id, @opts
         end
       end
     end
-    
+
     def attachment_ids!(attachment_ids)
       @action_node.add('tns:AttachmentIds') do |ids_node|
         to_a(attachment_ids).each do |attachment_id|
@@ -97,22 +101,16 @@ module EWS
       end
     end
 
-    def to_folder_id!(folder_id)
-      @action_node.add('tns:ToFolderId') do |folder_id_node|
-        folder_id! folder_id_node, folder_id, @opts
-      end
-    end
-    
     def traversal!
       @action_node.set_attr 'Traversal', (@opts[:traversal] || :Shallow) 
-    end
-
-        # @see http://msdn.microsoft.com/en-us/library/aa580234(EXCHG.80).aspx
+    end        
+        
+    # @see http://msdn.microsoft.com/en-us/library/aa580234(EXCHG.80).aspx
     # ItemId
     def item_id!(parent, item_id, opts = {})
       id_element! parent, 't:ItemId', item_id, opts
     end
-
+        
     # @param parent [Handsoap::XmlMason::Node]
     #
     # @param folder_id [String, Symbol] When a EWS::DistinguishedFolder a
