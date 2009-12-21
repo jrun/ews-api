@@ -7,7 +7,7 @@ require 'spec/autorun'
 TNS = %q|xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"|
 MNS = %q|xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/messages"|  
 
-module EWS::SpecHelper
+module EWS::SpecHelper  
   def fixtures
     @fixtures ||= Dir[File.dirname(__FILE__) + '/fixtures/*.xml'].inject({}) do |fixtures, f|
       fixtures[File.basename(f).chomp('.xml')] = File.expand_path(f)
@@ -56,6 +56,13 @@ module EWS::SpecHelper
   </soap:Body>
 </soap:Envelope>
 EOS
+  end
+  
+  def new_document
+    doc = Handsoap::XmlMason::Document.new
+    doc.xml_header = nil
+    EWS::Service.register_aliases! doc
+    doc
   end
 end
 

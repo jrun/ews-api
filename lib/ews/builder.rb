@@ -2,7 +2,6 @@ require 'forwardable'
 
 module EWS
   
-  # @see http://msdn.microsoft.com/en-us/library/aa563810(EXCHG.80).aspx
   # AdditionalProperties
   # @see http://msdn.microsoft.com/en-us/library/aa580545(EXCHG.80).aspx
   # BaseShape  
@@ -16,58 +15,19 @@ module EWS
     def_delegators :@resolve_names_builder,
                    :unresolved_entry!,
                    :return_full_contact_data!
+
+    def_delegators :@shape_builder,
+                   :item_shape!,
+                   :folder_shape!,
+                   :attachment_shape!
     
     def initialize(action_node, opts, &block)
       @action_node, @opts = action_node, opts
-      @resolve_names_builder = ResolveNamesBuilder.new(@action_node)
+      @resolve_names_builder = ResolveNamesBuilder.new(action_node)
+      @shape_builder = ShapeBuilder.new(action_node, opts)
       instance_eval(&block) if block_given?
     end
-    
-    # @param [Hash] opts
-    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
-    # @option opts [true, false] :include_mime_content
-    # @option opts [String, Symbol] :body_type Best, HTML or Text
-    # @option opts [Symbol] :additional_properties  
-    def item_shape!
-      @action_node.add('tns:ItemShape') do |shape_node|
-        ShapeBuilder.new(shape_node, @opts) do
-          base_shape!
-          include_mime_content!
-          body_type!
-          additional_properties!
-        end
-      end
-    end
-    
-    # @param [Hash] opts
-    # @option opts [String, Symbol] :base_shape (Default) IdOnly, Default, AllProperties
-    # @option opts [Symbol] :additional_properties
-    def folder_shape!
-      @action_node.add('tns:FolderShape') do |shape_node|
-        ShapeBuilder.new(shape_node, @opts)  do
-          base_shape!
-          additional_properties!
-        end
-      end
-    end
-    
-    # @param [Hash] opts
-    # @option opts [true, false] :include_mime_type
-    # @option opts [String, Symbol] :body_type Best, HTML or Text
-    # @option opts [Symbol] :additional_properties
-    #
-    # @see http://msdn.microsoft.com/en-us/library/aa563727(EXCHG.80).aspx
-    # AttachmentShape
-    def attachment_shape!
-      @action_node.add('tns:AttachmentShape') do |shape|
-        ShapeBuilder.new(shape, @opts) do
-          include_mime_content!
-          body_type!
-          additional_properties!
-        end
-      end
-    end
-    
+        
     def item_id_container!(container_node_name, item_ids)
       id_container!(container_node_name, item_ids) do |container_node, id|
         item_id! container_node, id, @opts

@@ -2,12 +2,8 @@ require File.join(File.dirname(__FILE__), '..', '..', 'spec_helper')
 
 module EWS
   describe ResolveNamesBuilder do
-    before(:each) do
-      @doc = Handsoap::XmlMason::Document.new
-      @doc.xml_header = nil
-      EWS::Service.register_aliases! @doc
-      
-      @action_node = Handsoap::XmlMason::Element.new(@doc, 'tns', 'ResolveNames')
+    before(:each) do      
+      @action_node = Handsoap::XmlMason::Element.new(new_document, 'tns', 'ResolveNames')
       @builder = ResolveNamesBuilder.new(@action_node)
     end
 
