@@ -47,11 +47,15 @@ module EWS
     end
     # public methods
   
-    def resolve_names!
+    def resolve_names!(unresolved_entry, return_full_contact_data = true)
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/ResolveNames'
-      response = invoke('tns:ResolveNames', soap_action) do |message|
-        raise "TODO"
+      response = invoke('tns:ResolveNames', soap_action) do |resolve_names|
+        builder(resolve_names) do
+          unresolved_entry! unresolved_entry
+          return_full_contact_data! return_full_contact_data
+        end
       end
+      parser.parse_resolve_names response.document
     end
     
     def expand_dl!
@@ -439,7 +443,7 @@ module EWS
       @parser ||= Parser.new      
     end
 
-    def builder(action_node, opts, &block)
+    def builder(action_node, opts = {}, &block)
       Builder.new(action_node, opts, &block)
     end
   end

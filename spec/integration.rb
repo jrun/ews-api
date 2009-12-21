@@ -35,6 +35,14 @@ end
 EWS::Service.logger = $stdout
 
 describe 'Integration Tests' do
+  context "resolve_names" do
+    it "should resolve names" do
+      lambda do
+        EWS::Service.resolve_names! EWS_CONFIG['resolve_names']
+      end.should_not raise_error
+    end    
+  end
+  
   context 'find_folder' do
     it "should find the folder without errors" do
       lambda do
@@ -127,9 +135,8 @@ describe 'Integration Tests' do
 
   context 'move_item' do
     #it "should move the item" do
-    #  folder_id = 'AQAUAHRlc3RxZHNib3VuY2VAcWcuY29tAC4AAAMXckeXPuMKT4uj0fYRoj0SAQAUIOj2Wr1iR63wVBJuRuVLABU0TWDnAAAA'
-    #  
-    #  id = 'AAAUAHRlc3RxZHNib3VuY2VAcWcuY29tAEYAAAAAABdyR5c+4wpPi6PR9hGiPRIHABQg6PZavWJHrfBUEm5G5UsAFTRNedwAABQg6PZavWJHrfBUEm5G5UsAFTRNhHAAAA=='
+    #  folder_id =
+    #  id = 
     #
     #  EWS::Service.move_item!(folder_id, [id])
     # end

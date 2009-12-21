@@ -1,3 +1,5 @@
+require 'forwardable'
+
 module EWS
   
   # @see http://msdn.microsoft.com/en-us/library/aa563810(EXCHG.80).aspx
@@ -9,8 +11,15 @@ module EWS
   # @see http://msdn.microsoft.com/en-us/library/aa580499(EXCHG.80).aspx
   # IncludeMimeContent  
   class Builder
+    extend Forwardable
+
+    def_delegators :@resolve_names_builder,
+                   :unresolved_entry!,
+                   :return_full_contact_data!
+    
     def initialize(action_node, opts, &block)
       @action_node, @opts = action_node, opts
+      @resolve_names_builder = ResolveNamesBuilder.new(@action_node)
       instance_eval(&block) if block_given?
     end
     

@@ -14,10 +14,7 @@ describe EWS::Builder do
     @doc.xml_header = nil
     EWS::Service.register_aliases! @doc
   end
-  
-  TNS = %q|xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"|
-  MNS = %q|xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/messages"|
-    
+      
   context "#item_shape!  should build an ItemShape node" do
     def expected_item_shape(base_shape)
       ( <<-EOS
