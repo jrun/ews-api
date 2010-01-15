@@ -1,6 +1,10 @@
 module EWS
   
   class Parser
+    def parse_resolve_names(doc)
+      raise 'TODO'
+    end
+    
     def parse_find_folder(doc)
       doc.xpath('//t:Folders/child::*').map do |node|
         parse_exchange_folder node.xpath('.') # force NodeSelection

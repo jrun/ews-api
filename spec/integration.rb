@@ -35,6 +35,14 @@ end
 EWS::Service.logger = $stdout
 
 describe 'Integration Tests' do
+  context "resolve_names" do
+    it "should resolve names" do
+      lambda do
+        EWS::Service.resolve_names! EWS_CONFIG['resolve_names']
+      end.should_not raise_error
+    end    
+  end
+  
   context 'find_folder' do
     it "should find the folder without errors" do
       lambda do
@@ -42,11 +50,10 @@ describe 'Integration Tests' do
       end.should_not raise_error
     end
 
-    it "should raise a Fault when the item does not exist" do
-      error_msg = /The value 'does-not-exist' is invalid according to its datatype/
+    it "should raise a ResponseError when the folder does not exist" do
       lambda do
         EWS::Service.find_folder('does-not-exist')
-      end.should raise_error(Handsoap::Fault,  error_msg)
+      end.should raise_error(EWS::ResponseError, /Id is malformed/)
     end
   end
 
@@ -64,11 +71,10 @@ describe 'Integration Tests' do
       EWS::Service.get_folder(:inbox).should be_instance_of(EWS::Folder)
     end
     
-    it "should raise a SoapError when the ResponseMessage is an Error" do
-      error_msg = /The value 'does-not-exist' is invalid according to its datatype/
+    it "should raise a ResponseError when the folder does not exist" do
       lambda do
         EWS::Service.get_folder('does-not-exist')
-      end.should raise_error(Handsoap::Fault,  error_msg)
+      end.should raise_error(EWS::ResponseError, /Id is malformed/)
     end
   end
 
@@ -83,11 +89,10 @@ describe 'Integration Tests' do
       items.should be_instance_of(Array)
     end
     
-    it "should raise a Fault when the item does not exist" do
-      error_msg = /The value 'does-not-exist' is invalid according to its datatype/
+    it "should raise a ResponseError when the item does not exist" do
       lambda do
         EWS::Service.find_item('does-not-exist')
-      end.should raise_error(Handsoap::Fault,  error_msg)
+      end.should raise_error(EWS::ResponseError, /Id is malformed/)
     end
   end
   
@@ -130,9 +135,8 @@ describe 'Integration Tests' do
 
   context 'move_item' do
     #it "should move the item" do
-    #  folder_id = 'AQAUAHRlc3RxZHNib3VuY2VAcWcuY29tAC4AAAMXckeXPuMKT4uj0fYRoj0SAQAUIOj2Wr1iR63wVBJuRuVLABU0TWDnAAAA'
-    #  
-    #  id = 'AAAUAHRlc3RxZHNib3VuY2VAcWcuY29tAEYAAAAAABdyR5c+4wpPi6PR9hGiPRIHABQg6PZavWJHrfBUEm5G5UsAFTRNedwAABQg6PZavWJHrfBUEm5G5UsAFTRNhHAAAA=='
+    #  folder_id =
+    #  id = 
     #
     #  EWS::Service.move_item!(folder_id, [id])
     # end

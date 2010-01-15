@@ -2,10 +2,14 @@ require 'net/ntlm'
 require 'handsoap'
 
 require 'ews/error'
+require "ews/distinguished_folders"
 require 'ews/model'
 require 'ews/attachment'
 require 'ews/message'
 require 'ews/folder'
+require "ews/builders/shape_builder"
+require "ews/builders/resolve_names_builder"
+require 'ews/builder'
 require 'ews/parser'
 require 'ews/service'
 
