@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ews-api}
-  s.version = "0.1.0.a"
+  s.version = "0.1.0"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["jrun"]
-  s.date = %q{2009-12-17}
+  s.date = %q{2010-01-25}
   s.description = %q{Exchange Web Services API. It doesn't use soap4r.}
   s.email = %q{jeremy.burks@gmail.com}
   s.extra_rdoc_files = [
@@ -26,6 +26,10 @@ Gem::Specification.new do |s|
      "ews-api.gemspec",
      "lib/ews-api.rb",
      "lib/ews/attachment.rb",
+     "lib/ews/builder.rb",
+     "lib/ews/builders/resolve_names_builder.rb",
+     "lib/ews/builders/shape_builder.rb",
+     "lib/ews/distinguished_folders.rb",
      "lib/ews/error.rb",
      "lib/ews/folder.rb",
      "lib/ews/message.rb",
@@ -33,6 +37,9 @@ Gem::Specification.new do |s|
      "lib/ews/parser.rb",
      "lib/ews/service.rb",
      "spec/ews/attachment_spec.rb",
+     "spec/ews/builder_spec.rb",
+     "spec/ews/builders/resolve_names_builder_spec.rb",
+     "spec/ews/builders/shape_builder_spec.rb",
      "spec/ews/folder_spec.rb",
      "spec/ews/message_spec.rb",
      "spec/ews/model_spec.rb",
@@ -52,7 +59,7 @@ Gem::Specification.new do |s|
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/jrun/ews-api}
+  s.homepage = %q{http://jrun.github.com/ews-api/ews}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
@@ -62,9 +69,12 @@ Gem::Specification.new do |s|
      "spec/integration.rb",
      "spec/ews/parser_spec.rb",
      "spec/ews/message_spec.rb",
+     "spec/ews/builder_spec.rb",
      "spec/ews/attachment_spec.rb",
      "spec/ews/folder_spec.rb",
      "spec/ews/service_spec.rb",
+     "spec/ews/builders/resolve_names_builder_spec.rb",
+     "spec/ews/builders/shape_builder_spec.rb",
      "spec/ews/model_spec.rb"
   ]
 
@@ -75,20 +85,20 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<httpclient>, [">= 0"])
       s.add_runtime_dependency(%q<rubyntlm>, [">= 0"])
-      s.add_runtime_dependency(%q<handsoap>, ["= 1.1.4"])
+      s.add_runtime_dependency(%q<handsoap>, ["= 1.1.6"])
       s.add_development_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_development_dependency(%q<yard>, [">= 0"])
     else
       s.add_dependency(%q<httpclient>, [">= 0"])
       s.add_dependency(%q<rubyntlm>, [">= 0"])
-      s.add_dependency(%q<handsoap>, ["= 1.1.4"])
+      s.add_dependency(%q<handsoap>, ["= 1.1.6"])
       s.add_dependency(%q<rspec>, [">= 1.2.9"])
       s.add_dependency(%q<yard>, [">= 0"])
     end
   else
     s.add_dependency(%q<httpclient>, [">= 0"])
     s.add_dependency(%q<rubyntlm>, [">= 0"])
-    s.add_dependency(%q<handsoap>, ["= 1.1.4"])
+    s.add_dependency(%q<handsoap>, ["= 1.1.6"])
     s.add_dependency(%q<rspec>, [">= 1.2.9"])
     s.add_dependency(%q<yard>, [">= 0"])
   end
