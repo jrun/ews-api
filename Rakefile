@@ -12,7 +12,7 @@ begin
     gem.authors = ["jrun"]
     gem.add_dependency 'httpclient'
     gem.add_dependency 'rubyntlm'
-    gem.add_dependency 'handsoap', '1.1.4'
+    gem.add_dependency 'handsoap', '1.1.6'
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
 
