@@ -48,7 +48,7 @@ module EWS
     
     def id_container!(container_node_name, ids)
       @action_node.add(container_node_name) do |container_node|
-        to_a(ids).each {|id| yield container_node, id }
+        Array(ids).each {|id| yield container_node, id }
       end
     end
 
@@ -91,17 +91,6 @@ module EWS
         id_node.set_attr 'ChangeKey', opts[:change_key] if opts[:change_key]
       end 
     end
-
-    # TODO: core_ext?
-    def to_a(ids)
-      case ids
-      when Enumerable
-        ids
-      else
-        [ids]
-      end
-    end
-
   end
   
 end

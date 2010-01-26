@@ -275,6 +275,8 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa563525.aspx
     # ItmeIds
     def get_item(item_id, opts = {})
+      raise PreconditionFailed, "Id must be non-empty" if item_id.nil?
+      
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetItem'
       response = invoke('tns:GetItem', soap_action) do |get_item|
         builder(get_item, opts) do
@@ -379,6 +381,8 @@ module EWS
     # @see http://msdn.microsoft.com/en-us/library/aa494316.aspx
     # GetAttachment
     def get_attachment(attachment_id, opts = {})
+      raise PreconditionFailed, "Id must be non-empty" if attachment_id.nil?
+      
       soap_action = 'http://schemas.microsoft.com/exchange/services/2006/messages/GetAttachment'
       response = invoke('tns:GetAttachment', soap_action) do |get_attachment|
         builder(get_attachment, opts) do

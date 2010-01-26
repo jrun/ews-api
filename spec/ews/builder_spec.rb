@@ -12,7 +12,7 @@ describe EWS::Builder do
   before(:each) do
     @doc = new_document
   end      
-  
+
   context '#item_id! should build ItemId' do
     def expected_item_id
       %Q|<t:ItemId #{TNS} Id="XYZ" />|

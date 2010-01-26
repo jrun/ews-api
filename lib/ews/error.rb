@@ -3,6 +3,9 @@ module EWS
   class Error < StandardError
   end
   
+  class PreconditionFailed < Error
+  end
+  
   class ResponseError < Error
     attr_reader :response_code
 

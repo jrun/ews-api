@@ -111,11 +111,11 @@ describe 'Integration Tests' do
       item = EWS::Service.get_item EWS_CONFIG['item_id'], :base_shape => :AllProperties
       item.should be_instance_of(EWS::Message)
     end
-
-    it "should raise a SoapError when the ResponseMessage is an Error" do
+    
+    it "should raise an error when the requested id is nil" do
       lambda do
         EWS::Service.get_item(nil)
-      end.should raise_error(EWS::ResponseError, /Id must be non-empty/)
+      end.should raise_error(EWS::PreconditionFailed, /Id must be non-empty/)
     end
   end
 
@@ -125,11 +125,11 @@ describe 'Integration Tests' do
         rtn = EWS::Service.get_attachment EWS_CONFIG['attachment_id'] # lame
       end.should_not raise_error
     end
-
-    it "should raise a EWS::ResponseError when the ResponseMessage is an Error" do
+    
+    it "should raise an error when the requested id is nil" do
       lambda do
         EWS::Service.get_attachment(nil)
-      end.should raise_error(EWS::ResponseError, /Id must be non-empty/)
+      end.should raise_error(EWS::PreconditionFailed, /Id must be non-empty/)
     end
   end
 
