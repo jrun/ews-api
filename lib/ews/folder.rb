@@ -33,7 +33,7 @@ module EWS
       # NOTE: This assumes Service#find_item only returns
       # Messages. That is true now but will change as more
       # of the parser is implemented.
-      service.find_item(self.name, :base_shape => :AllProperties)
+      service.find_item(self.id, :base_shape => :AllProperties)
     end
 
     def find_folders

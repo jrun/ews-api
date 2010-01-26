@@ -1,8 +1,11 @@
 module EWS
     
   class Model
+    attr_accessor :service
+    
     def initialize(attrs = {})
       @attrs = attrs.dup
+      @service = EWS::Service
     end
 
     def shallow?
@@ -12,10 +15,6 @@ module EWS
     protected
     attr_reader :attrs
     
-    def service
-      EWS::Service
-    end
-
     public
     def method_missing(meth, *args)
       method_name = meth.to_s

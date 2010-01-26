@@ -6,6 +6,18 @@ module EWS
       @parser = Parser.new
     end
 
+    context "#iems" do
+      it "should call service#find_item with the folder id" do
+        service = mock(:service)
+        service.should_receive(:find_item).with('maid of tarth', anything())
+        
+        folder = Folder.new(:folder_id => {:id => 'maid of tarth'})
+        folder.service = service
+        
+        folder.items
+      end      
+    end
+    
     context '#folders' do
       it "should be indexed by display name" do
         mock_response response(:find_folder)
@@ -21,7 +33,7 @@ module EWS
         
         message_count = 0
         subjects = ['test', 'Regarding Brandon Stark', 'Re: Regarding Brandon Stark']
-        folder = Folder.new(:display_name => 'Inbox')
+        folder = Folder.new(:display_name => 'Inbox', :folder_id => {:id => 'maid of tarth'})
         
         folder.each_message do |message|
           message_count += 1

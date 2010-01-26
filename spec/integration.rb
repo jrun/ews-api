@@ -153,5 +153,14 @@ describe 'Integration Tests' do
       end.should raise_error(EWS::ResponseError, /Id is malformed/)      
     end
   end
-  
+
+  context "EWS.inbox" do
+    it "#each_message should iterate through the inbox without errors" do
+      # lame test but will help protect against a regression until a
+      # proper inbox setup is complete
+      count = 0
+      EWS.inbox.each_message {|m| count += 1}
+      count.should > 0
+    end
+  end
 end
