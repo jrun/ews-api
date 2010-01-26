@@ -162,5 +162,10 @@ describe 'Integration Tests' do
       EWS.inbox.each_message {|m| count += 1}
       count.should > 0
     end
+
+    it "#folders return the Inbox's folders without errors" do
+      EWS.inbox.folders
+    end
   end
+
 end

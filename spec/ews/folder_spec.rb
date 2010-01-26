@@ -19,9 +19,19 @@ module EWS
     end
     
     context '#folders' do
+      it "should call service#find_folder with the folder id" do
+        service = mock(:service)
+        service.should_receive(:find_folder).with('Brienne').and_return([])
+        
+        folder = Folder.new(:folder_id => {:id => 'Brienne'})
+        folder.service = service
+        
+        folder.folders
+      end
+      
       it "should be indexed by display name" do
         mock_response response(:find_folder)
-        folder = Folder.new        
+        folder = Folder.new(:folder_id => {:id => 'Brienne'})
         folder.folders['subfolder1'].should_not be_nil
         folder.folders['subfolder2'].should_not be_nil
       end

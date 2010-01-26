@@ -37,7 +37,7 @@ module EWS
     end
 
     def find_folders
-      service.find_folder(self.name)
+      service.find_folder(self.id)
     end
   end
   
