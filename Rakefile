@@ -8,11 +8,11 @@ begin
     gem.summary = 'Exchange Web Services API'
     gem.description = "Exchange Web Services API. It doesn't use soap4r."
     gem.email = "jeremy.burks@gmail.com"
-    gem.homepage = "http://github.com/jrun/ews-api"
+    gem.homepage = "http://jrun.github.com/ews-api/ews"
     gem.authors = ["jrun"]
     gem.add_dependency 'httpclient'
     gem.add_dependency 'rubyntlm'
-    gem.add_dependency 'handsoap', '1.1.4'
+    gem.add_dependency 'handsoap', '1.1.6'
     gem.add_development_dependency "rspec", ">= 1.2.9"
     gem.add_development_dependency "yard", ">= 0"
 
